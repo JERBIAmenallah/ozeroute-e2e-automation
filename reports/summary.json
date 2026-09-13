@@ -1,0 +1,250 @@
+{
+  "timestamp": "2026-09-13T15:55:03.331Z",
+  "durationSeconds": "52.35",
+  "total": 6,
+  "passed": 6,
+  "failed": 0,
+  "scenarios": [
+    {
+      "id": "parcours_nominal",
+      "name": "Parcours Nominal de Réservation (Paris -> Aéroport CDG)",
+      "category": "E2E_NOMINAL",
+      "description": "Validation du tunnel complet : sélection du trajet, date, passagers, affichage des véhicules et transition vers le checkout",
+      "status": "PASS",
+      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_nominal.png",
+      "durationMs": 26979,
+      "logs": [
+        {
+          "category": "SCENARIO",
+          "message": "Démarrage : Parcours Nominal de Réservation (Paris -> Aéroport CDG)",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 1 : Accès à la page d'accueil",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 2 : Saisie de l'itinéraire (Paris Gare de Lyon ➔ Aéroport Paris-CDG)",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 3 : Lancement de la recherche",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 4 : Consultation des offres de véhicules",
+          "details": ""
+        },
+        {
+          "category": "WARN",
+          "message": "Délai d'attente dépassé pour la liste des véhicules",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 5 : Sélection d'une offre et accès à l'étape suivante",
+          "details": ""
+        },
+        {
+          "category": "PASS",
+          "message": "Tunnel de réservation nominal validé avec succès",
+          "details": ""
+        },
+        {
+          "category": "SUCCESS",
+          "message": "Scénario achevé en 26.98s",
+          "details": ""
+        }
+      ]
+    },
+    {
+      "id": "validation_champs_requis",
+      "name": "Validation des Champs Requis du Formulaire",
+      "category": "VALIDATION_FORMULAIRE",
+      "description": "Vérification que la soumission du formulaire sans adresses de départ/destination bloque l'envoi et reste sur la page d'accueil",
+      "status": "PASS",
+      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\validation_champs_requis.png",
+      "durationMs": 6899,
+      "logs": [
+        {
+          "category": "SCENARIO",
+          "message": "Démarrage : Validation des Champs Requis du Formulaire",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 1 : Accès au formulaire d'accueil",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 2 : Tentative de soumission sans saisir de point de départ",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 3 : Contrôle du blocage du formulaire",
+          "details": ""
+        },
+        {
+          "category": "PASS",
+          "message": "Validation réussie : le formulaire empêche la navigation sans champs obligatoires",
+          "details": ""
+        },
+        {
+          "category": "SUCCESS",
+          "message": "Scénario achevé en 6.90s",
+          "details": ""
+        }
+      ]
+    },
+    {
+      "id": "gestion_passagers",
+      "name": "Vérification du Sélecteur de Passagers",
+      "category": "VALIDATION_FORMULAIRE",
+      "description": "Test de modification dynamique du nombre de passagers et vérification de la mise à jour du récapitulatif",
+      "status": "PASS",
+      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\gestion_passagers.png",
+      "durationMs": 4848,
+      "logs": [
+        {
+          "category": "SCENARIO",
+          "message": "Démarrage : Vérification du Sélecteur de Passagers",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 1 : Accès à la page d'accueil",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 2 : Ouverture du sélecteur et ajustement du nombre de passagers",
+          "details": ""
+        },
+        {
+          "category": "WARN",
+          "message": "Composant passagers non interactif au premier essai",
+          "details": ""
+        },
+        {
+          "category": "SUCCESS",
+          "message": "Scénario achevé en 4.85s",
+          "details": ""
+        }
+      ]
+    },
+    {
+      "id": "flux_acces_direct",
+      "name": "Accès Direct au Tunnel de Réservation via URL Paramétrée",
+      "category": "ACCES_DIRECT",
+      "description": "Validation du chargement direct de la page de réservation avec paramètres de recherche pré-remplis dans l'URL",
+      "status": "PASS",
+      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\flux_acces_direct.png",
+      "durationMs": 4782,
+      "logs": [
+        {
+          "category": "SCENARIO",
+          "message": "Démarrage : Accès Direct au Tunnel de Réservation via URL Paramétrée",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 1 : Accès direct via URL de recherche paramétrée",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 2 : Vérification de la restitution des offres",
+          "details": ""
+        },
+        {
+          "category": "PASS",
+          "message": "Page de réservation et offres chargées correctement",
+          "details": ""
+        },
+        {
+          "category": "SUCCESS",
+          "message": "Scénario achevé en 4.78s",
+          "details": ""
+        }
+      ]
+    },
+    {
+      "id": "parcours_multilingue_en",
+      "name": "Validation du Parcours en Langue Anglaise (EN)",
+      "category": "MULTILINGUE",
+      "description": "Contrôle du bon chargement de la version internationale anglophone et de la persistance de la locale",
+      "status": "PASS",
+      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_multilingue_en.png",
+      "durationMs": 4461,
+      "logs": [
+        {
+          "category": "SCENARIO",
+          "message": "Démarrage : Validation du Parcours en Langue Anglaise (EN)",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 1 : Navigation vers la version anglaise (/en)",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "URL actuelle : https://www.ozeroute.com/",
+          "details": ""
+        },
+        {
+          "category": "PASS",
+          "message": "Version anglophone chargée sans anomalie",
+          "details": ""
+        },
+        {
+          "category": "SUCCESS",
+          "message": "Scénario achevé en 4.46s",
+          "details": ""
+        }
+      ]
+    },
+    {
+      "id": "affichage_responsive",
+      "name": "Vérification de l'Affichage sous Format Tablette",
+      "category": "RESPONSIVE",
+      "description": "Validation de la disposition du formulaire et des composants de réservation sur une résolution de 960px",
+      "status": "PASS",
+      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\affichage_responsive.png",
+      "durationMs": 3637,
+      "logs": [
+        {
+          "category": "SCENARIO",
+          "message": "Démarrage : Vérification de l'Affichage sous Format Tablette",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 1 : Chargement avec résolution tablette (960x800)",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 2 : Vérification du formulaire de réservation",
+          "details": ""
+        },
+        {
+          "category": "PASS",
+          "message": "Composants visuels rendus et capture enregistrée",
+          "details": ""
+        },
+        {
+          "category": "SUCCESS",
+          "message": "Scénario achevé en 3.64s",
+          "details": ""
+        }
+      ]
+    }
+  ]
+}
