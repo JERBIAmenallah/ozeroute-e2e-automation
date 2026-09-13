@@ -1,0 +1,71 @@
+[
+  {
+    "id": "parcours_nominal",
+    "category": "E2E_NOMINAL",
+    "name": "Parcours Nominal de Réservation (Paris -> Aéroport CDG)",
+    "description": "Validation du tunnel complet : sélection du trajet, date, passagers, affichage des véhicules et transition vers le checkout",
+    "active": true,
+    "locale": "fr",
+    "viewport": "desktop",
+    "route": {
+      "from": "Paris Gare de Lyon",
+      "to": "Aéroport Paris-CDG",
+      "date": "15/09/2026",
+      "time": "14:30"
+    },
+    "passengers": {
+      "adults": 2,
+      "children": 1
+    }
+  },
+  {
+    "id": "validation_champs_requis",
+    "category": "VALIDATION_FORMULAIRE",
+    "name": "Validation des Champs Requis du Formulaire",
+    "description": "Vérification que la soumission du formulaire sans adresses de départ/destination bloque l'envoi et reste sur la page d'accueil",
+    "active": true,
+    "locale": "fr",
+    "viewport": "desktop"
+  },
+  {
+    "id": "gestion_passagers",
+    "category": "VALIDATION_FORMULAIRE",
+    "name": "Vérification du Sélecteur de Passagers",
+    "description": "Test de modification dynamique du nombre de passagers et vérification de la mise à jour du récapitulatif",
+    "active": true,
+    "locale": "fr",
+    "viewport": "desktop"
+  },
+  {
+    "id": "flux_acces_direct",
+    "category": "ACCES_DIRECT",
+    "name": "Accès Direct au Tunnel de Réservation via URL Paramétrée",
+    "description": "Validation du chargement direct de la page de réservation avec paramètres de recherche pré-remplis dans l'URL",
+    "active": true,
+    "locale": "fr",
+    "viewport": "desktop",
+    "url": "https://www.ozeroute.com/mobilite-aeroport/reservation?q=eyImcm91dGUiOiI2NTk2NmE5NWRlNGYyYjAwMWIwOTBkNWUiLCJ0eXBlIjoiYWlycG9ydCIsInZlaGljbGUiOiJzZWRhbiIsImRhdGUiOiIwNS8wOS8yMDI2IDE3OjIwIn0="
+  },
+  {
+    "id": "parcours_multilingue_en",
+    "category": "MULTILINGUE",
+    "name": "Validation du Parcours en Langue Anglaise (EN)",
+    "description": "Contrôle du bon chargement de la version internationale anglophone et de la persistance de la locale",
+    "active": true,
+    "locale": "en",
+    "viewport": "desktop",
+    "route": {
+      "from": "Disneyland Paris",
+      "to": "Paris Charles de Gaulle Airport"
+    }
+  },
+  {
+    "id": "affichage_responsive",
+    "category": "RESPONSIVE",
+    "name": "Vérification de l'Affichage sous Format Tablette",
+    "description": "Validation de la disposition du formulaire et des composants de réservation sur une résolution de 960px",
+    "active": true,
+    "locale": "fr",
+    "viewport": "tablet"
+  }
+]
