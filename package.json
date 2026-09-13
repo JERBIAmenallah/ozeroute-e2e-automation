@@ -1,0 +1,30 @@
+{
+  "name": "ozeroute-e2e-automation",
+  "version": "1.0.0",
+  "description": "Suite d'automatisation de tests End-to-End pour la plateforme Ozeroute (REM4U SARL)",
+  "main": "runner.js",
+  "scripts": {
+    "test": "node runner.js",
+    "test:nominal": "node runner.js --scenario=parcours_nominal",
+    "test:validation": "node runner.js --scenario=validation_champs_requis",
+    "test:passengers": "node runner.js --scenario=gestion_passagers",
+    "test:direct": "node runner.js --scenario=flux_acces_direct",
+    "test:multilang": "node runner.js --scenario=parcours_multilingue_en",
+    "test:responsive": "node runner.js --scenario=affichage_responsive",
+    "report:open": "powershell -Command \"Start-Process .\\reports\\report.html\""
+  },
+  "keywords": [
+    "playwright",
+    "e2e",
+    "testing",
+    "qa",
+    "ozeroute",
+    "pom",
+    "automation"
+  ],
+  "author": "Amenallah JERBI <amenallah.jerbi@esprit.tn>",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.63.0"
+  }
+}

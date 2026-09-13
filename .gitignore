@@ -1,0 +1,30 @@
+# Node dependencies
+node_modules/
+
+# Academic & Personal documents
+*.docx
+*.pdf
+*.txt
+~$*
+
+# Build, Archives & Temporary scripts
+*.zip
+*.bat
+*.ps1
+test_*.js
+inspect_*.js
+capture_*.js
+hunt_bugs.js
+generate_report.py
+RAPPORT_*
+scanner/
+scratch/
+
+# Execution log (keeping HTML and JSON reports)
+reports/execution.log
+
+# OS & IDE metadata
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
