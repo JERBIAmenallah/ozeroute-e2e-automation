@@ -1,0 +1,49 @@
+/**
+ * Patch CSS Flexbox - Remédiation Ergonomique Responsive à 960px
+ * Résout la troncature de la date ("05/09/202") et du sélecteur passagers ("enger")
+ * Réf: Rapport de Stage Chapitre 4.3
+ * Auteur : Amenallah JERBI - REM4U SARL / ESPRIT
+ */
+
+/* Breakpoint 960px - Adaptation fluide du bandeau horizontal de réservation */
+@media screen and (max-width: 960px) {
+  /* 1. Autoriser le retour à la ligne automatique des champs */
+  .search-horizontal-bar,
+  header + div form,
+  [class*="SearchBar"] {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2. Éviter l'écrasement du champ date (garantir affichage complet JJ/MM/AAAA) */
+  input[placeholder*="dd/mm"],
+  input[value*="/20"],
+  .MuiInputBase-root:has(input[type="text"]) {
+    min-width: 145px !important;
+    flex: 1 1 145px !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  /* 3. Sécuriser le libellé du bouton passagers ("1 passager", pas "enger") */
+  button:has-text("passager"),
+  [class*="passenger-button"],
+  .passenger-trigger {
+    min-width: 130px !important;
+    flex: 1 1 130px !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+  }
+
+  /* 4. Bouton de soumission en pleine largeur sur tablette étroite */
+  button[type="submit"]:has-text("Rechercher"),
+  button:has-text("Search") {
+    flex: 1 1 100% !important;
+    margin-top: 6px !important;
+  }
+}
