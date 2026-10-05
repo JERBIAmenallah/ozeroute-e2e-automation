@@ -1,129 +1,174 @@
-# Ozeroute — Suite de Tests Automatisés E2E (Playwright)
+# Ozeroute QA — Système d'Automatisation E2E Modulaire, Audits & Remédiations
 
 > **Projet de Stage d'Immersion en Entreprise — ESPRIT (2025 - 2026)**  
-> **Élève-Ingénieur :** Amenallah JERBI (`201JMT0157`)  
+> **Élève-Ingénieur :** Amenallah JERBI (`201JMT0157`) — Spécialisation Informatique  
 > **Entreprise d'Accueil :** REM4U SARL (Tunis)  
 > **Plateforme Cible :** [Ozeroute](https://www.ozeroute.com) (Mobilité & Transferts Aéroportuaires)  
-> **Encadrant Entreprise :** Wael (Pôle Technique REM4U)
+> **Encadrant Technique :** Wael Jlassi (Pôle Technique REM4U)  
+> **Lien du Dépôt :** [https://github.com/JERBIAmenallah/ozeroute-e2e-automation](https://github.com/JERBIAmenallah/ozeroute-e2e-automation)
 
 ---
 
-## 1. Contexte & Objectifs
+## 1. Contexte & Problématique Métier
 
-Dans le cadre du projet de validation continue de la plateforme **Ozeroute**, ce projet met en place une suite de tests End-to-End (E2E) automatisés à l'aide de **Playwright** et **Node.js**.
+Dans le cadre de la fiabilisation du tunnel de vente de la plateforme **Ozeroute**, ce projet d'ingénierie implémente une solution industrielle de validation continue et d'audit automatisé basée sur **Playwright** et **Node.js**.
 
-L'objectif principal est de sécuriser le tunnel de réservation (sélection du trajet, affichage des offres de véhicules, saisie des informations) et de prévenir les régressions fonctionnelles lors des futures évolutions de la plateforme.
+La plateforme présentait initialement une couverture de validation exclusivement manuelle, générant des risques critiques de régressions lors des déploiements continus et limitant le taux de conversion sur le tunnel d'achat.
 
-Le projet est conçu selon deux principes majeurs :
-1. **Page Object Model (POM)** : Séparation claire entre les sélecteurs / interactions de pages et les scénarios de test pour faciliter la maintenance.
-2. **Architecture Data-Driven** : Centralisation des scénarios dans un fichier de configuration (`scenarios.json`), permettant d'ajouter ou ajuster des cas de test sans modifier le code source du moteur d'exécution.
+Pour répondre à cette problématique, la solution développée repose sur une architecture **Data-Driven Testing** couplée au pattern **Page Object Model (POM)**, enrichie de modules d'interception réseau, de tests API REST, de télémétrie de performance et d'intégration continue sous **GitHub Actions** et **Docker**.
 
 ---
 
-## 2. Structure du Projet
+## 2. Correspondance avec le Rapport de Stage
+
+Ce dépôt constitue le livrable technique complet formalisé dans le **Rapport de Stage d'Immersion** :
+
+| Chapitre du Rapport | Composant Technique dans le Dépôt | Description & Objectif |
+| :--- | :--- | :--- |
+| **Chapitre 2.1 & 3.1** | `pages/`, `config/scenarios.json` | Spécification et automatisation des 4 parcours nominaux clés (CDG, Aller-Retour, Deep Link, Multilingue). |
+| **Chapitre 2.2** | `runner.js` (`audit_faille_metier_0km`) | Détection et capture de la faille logique métier : trajet 0 km Orly-Orly facturé à 31,25 €. |
+| **Chapitre 2.3** | `runner.js` (`audit_responsive_960px`) | Mesure de la régression Flexbox à 960px (écrasement du champ date et libellé passagers tronqué). |
+| **Chapitre 2.4** | `runner.js` (`audit_console_elfsight`) | Surveillance console et détection du crash tiers Elfsight (`APP_VIEWS_LIMIT_REACHED`). |
+| **Chapitre 2.5** | `runner.js` (`audit_reseau_promo_404`) | Interception des requêtes HTTP 404 non gérées sur l'endpoint `/v1/common/promo`. |
+| **Chapitre 2.6** | `runner.js` (`audit_validation_typo_ui`) | Détection du défaut de qualité UI en production (*"Faut avoir au moin un adulte"*). |
+| **Chapitre 3.3** | `config/ozeroute.config.js` | Neutralisation des cookies Axeptio et résilience réseau face aux Adblockers (Stripe Radar). |
+| **Chapitre 3.4 & 3.5** | `benchmark.js`, `reports/rapport_console.txt` | Moteur de télémétrie et de benchmark de performance (TTFB, FCP, LCP, volumétrie réseau). |
+| **Chapitre 3.6** | `.github/workflows/playwright.yml`, `Dockerfile` | Pipeline d'Intégration Continue (CI/CD) automatisée sous GitHub Actions et conteneurisation Docker. |
+| **Chapitre 4.2** | `remediation/validationSchema.js` | Implémentation du schéma de validation Zod/Yup pour interdire les trajets aberrants < 1 km. |
+| **Chapitre 4.3** | `remediation/responsive-patch.css` | Patch CSS Flexbox résolvant l'écrasement des composants sur breakpoint tablette 960px. |
+| **Chapitre 4.4** | `remediation/reviews-service.js` | Architecture de secours avec cache ISR pour éliminer la dépendance bloquante à Elfsight. |
+
+---
+
+## 3. Architecture du Projet
 
 ```text
+├── .github/
+│   └── workflows/
+│       └── playwright.yml      # Pipeline CI/CD GitHub Actions (exécute tests, API, benchmark)
 ├── config/
-│   ├── ozeroute.config.js      # Configuration globale (URL de base, viewports, cookies Axeptio, timeouts)
-│   └── scenarios.json          # Référentiel des scénarios de test (adresses, options, langues)
-├── pages/                      # Classes Page Object Model (POM)
-│   ├── BasePage.js             # Classe de base (méthodes communes, gestion des cookies et overlays)
-│   ├── HomePage.js             # Formulaire d'accueil (départ, destination, passagers, recherche)
-│   ├── BookingPage.js          # Affichage des offres, sélection de véhicules et bandeau de recherche
-│   └── CheckoutPage.js         # Écran de récapitulatif et finalisation de commande
+│   ├── ozeroute.config.js      # Configuration globale (viewports, cookies Axeptio, règles réseau)
+│   └── scenarios.json          # Référentiel Data-Driven (10 scénarios : nominaux & audits d'anomalies)
+├── pages/                      # Pattern Page Object Model (POM)
+│   ├── BasePage.js             # Méthodes communes (navigation, cookies, neutralisation des modales)
+│   ├── HomePage.js             # Formulaire d'accueil (adresses, dates, passagers, validation)
+│   ├── BookingPage.js          # Cartes de véhicules, stepper et inspection responsive à 960px
+│   └── CheckoutPage.js         # Tunnel de checkout, récapitulatif et intégration Stripe
+├── remediation/                # Solutions logicielles correctives (Chapitre 4 du rapport)
+│   ├── validationSchema.js     # Validateur Zod/Yup anti-0km et cohérence des itinéraires
+│   ├── responsive-patch.css    # Correctif CSS Flexbox pour les résolutions intermédiaires
+│   └── reviews-service.js      # Service résilient avec cache ISR pour les avis clients
+├── tests/
+│   └── api.test.js             # Suite de tests d'intégration API REST (endpoints backend)
 ├── utils/
-│   ├── logger.js               # Journalisation horodatée (console et fichier execution.log)
-│   └── reporter.js             # Génération automatique du rapport HTML et du fichier JSON
-├── reports/                    # Résultats d'exécution générés automatiquement
-│   ├── report.html             # Rapport de synthèse visuel
-│   ├── summary.json            # Statistiques d'exécution au format JSON
-│   └── execution.log           # Fichier de journalisation
-├── screenshots/                # Captures d'écran prises au cours des tests
-├── runner.js                   # Moteur d'exécution et orchestration des tests Playwright
+│   ├── logger.js               # Journalisation horodatée console et fichier (execution.log)
+│   └── reporter.js             # Générateur du rapport HTML interactif et synthèse JSON
+├── reports/                    # Artefacts d'exécution générés automatiquement
+│   ├── report.html             # Dashboard interactif avec statuts, durées et screenshots
+│   ├── summary.json            # Métriques brutes de test au format JSON
+│   ├── rapport_console.txt     # Bilan de télémétrie de performance et temps de chargement
+│   └── execution.log           # Trace d'exécution détaillée
+├── screenshots/                # Captures d'écran et preuves d'audit certifiées
+├── runner.js                   # Moteur d'orchestration Master Playwright Data-Driven
+├── benchmark.js                # Moteur de télémétrie de performance et Web Vitals
+├── Dockerfile                  # Image Docker officielle Playwright pour exécution hermétique
+├── docker-compose.yml          # Orchestration multi-conteneurs
 └── package.json                # Dépendances npm et scripts de lancement
 ```
 
 ---
 
-## 3. Prérequis et Installation
+## 4. Prérequis et Installation
 
-- **Node.js** : Version 18 ou supérieure recommandée.
-- **Navigateur** : Microsoft Edge ou Chromium.
+- **Node.js :** Version 18.0 ou supérieure recommandée
+- **Navigateur :** Microsoft Edge ou Chromium natif
+- *(Optionnel)* **Docker & Docker-Compose :** Pour l'exécution en conteneur isolé
 
 ```bash
-# 1. Cloner le projet ou extraire le dossier
-cd "Stage projet"
+# 1. Cloner le projet
+git clone https://github.com/JERBIAmenallah/ozeroute-e2e-automation.git
+cd ozeroute-e2e-automation
 
 # 2. Installer les dépendances
 npm install
+
+# 3. Installer les navigateurs Playwright (si non préinstallés)
+npx playwright install chromium
 ```
 
 ---
 
-## 4. Exécution des Tests
+## 5. Commandes d'Exécution
 
-Plusieurs scripts npm sont disponibles pour lancer l'ensemble des scénarios ou un test spécifique :
+Le projet propose des scripts prêts à l'emploi via `package.json` :
 
 ```bash
-# Exécuter l'ensemble de la suite de tests
+# 1. Exécuter l'intégralité de la suite de tests E2E et audits d'anomalies
 npm test
 
-# Exécuter uniquement le parcours nominal (Paris -> Aéroport CDG)
+# 2. Exécuter uniquement le parcours nominal (Paris Gare de Lyon -> CDG)
 npm run test:nominal
 
-# Tester la validation des champs obligatoires (formulaire vide)
-npm run test:validation
+# 3. Exécuter le test d'accès direct référencé (Google / Deep Link)
+npm run test:deeplink
 
-# Tester la gestion du compteur de passagers
-npm run test:passengers
+# 4. Exécuter le parcours Aller-Retour avec date de reprise
+npm run test:roundtrip
 
-# Tester l'accès direct via URL paramétrée
-npm run test:direct
-
-# Tester la version en langue anglaise
+# 5. Exécuter le parcours internationalisé en anglais (/en)
 npm run test:multilang
 
-# Tester l'affichage sous format tablette
-npm run test:responsive
+# 6. Exécuter l'audit de reproduction de la faille métier 0 km (Orly -> Orly)
+npm run test:anomalies
 
-# Ouvrir le dernier rapport HTML généré
+# 7. Exécuter les tests d'intégration des endpoints API REST
+npm run test:api
+
+# 8. Lancer le moteur de télémétrie et de benchmark de performance
+npm run benchmark
+
+# 9. Ouvrir le rapport HTML interactif généré
 npm run report:open
 ```
 
-Il est également possible d'exécuter un scénario spécifique directement avec Node :
+### Exécution ciblée via le Runner :
 
 ```bash
-node runner.js --scenario=parcours_nominal
+# Lancer un scénario spécifique par son ID
+node runner.js --scenario=audit_responsive_960px
+node runner.js --scenario=resilience_stripe_radar
 ```
 
 ---
 
-## 5. Ajouter un Nouveau Scénario de Test
+## 6. Exécution Conteneurisée (Docker)
 
-Grâce à la structure pilotée par les données, un nouveau scénario s'ajoute simplement dans `config/scenarios.json` :
+Pour garantir une exécution hermétique identique à l'environnement de production :
 
-```json
-{
-  "id": "parcours_orly_paris",
-  "category": "E2E_NOMINAL",
-  "name": "Réservation Navette Orly vers Paris Centre",
-  "description": "Validation du parcours de transfert depuis l'aéroport d'Orly vers Paris",
-  "active": true,
-  "locale": "fr",
-  "viewport": "desktop",
-  "route": {
-    "from": "Aéroport de Paris-Orly",
-    "to": "Paris Bastille"
-  },
-  "passengers": { "adults": 1, "children": 0 }
-}
+```bash
+# Construire et exécuter la suite dans un conteneur Playwright
+docker-compose up --build
 ```
+
+Les rapports et captures d'écran sont automatiquement synchronisés dans les dossiers locaux `./reports` et `./screenshots`.
 
 ---
 
-## 6. Rapports d'Exécution
+## 7. Pipeline CI/CD (GitHub Actions)
 
-À la fin de chaque exécution, le framework génère automatiquement :
-- Un **rapport HTML interactif** (`reports/report.html`) présentant la liste des tests, leur statut (PASS/FAIL), la durée et les captures d'écran associées.
-- Un **fichier JSON** (`reports/summary.json`) contenant les métriques complètes.
-- Un **fichier de log** (`reports/execution.log`) traçant chaque étape avec horodatage.
+Le workflow `.github/workflows/playwright.yml` est déclenché automatiquement à chaque `push` et `pull_request` sur la branche `main` :
+1. Mise en place de l'environnement Node.js 20 et cache des dépendances.
+2. Installation des dépendances système et du navigateur Chromium.
+3. Exécution de la suite E2E complète (`runner.js --all`).
+4. Exécution des tests d'intégration API (`tests/api.test.js`).
+5. Exécution du benchmark de performance (`benchmark.js`).
+6. Archivage automatique des rapports HTML et captures d'écran en tant qu'artefacts téléchargeables (rétention 14 jours).
+
+---
+
+## 8. Synthèse des Résultats & Télémétrie
+
+À chaque exécution :
+- Un **dashboard visuel interactif** est mis à jour dans [`reports/report.html`](./reports/report.html).
+- Une **synthèse JSON complète** est générée dans [`reports/summary.json`](./reports/summary.json).
+- Les **temps de réponse et Core Web Vitals** sont consignés dans [`reports/rapport_console.txt`](./reports/rapport_console.txt).
