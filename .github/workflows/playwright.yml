@@ -1,0 +1,51 @@
+name: Ozeroute E2E Playwright Automation CI/CD
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Install Playwright Browsers & OS Dependencies
+        run: npx playwright install --with-deps chromium
+
+      - name: Run E2E Test Suite (Data-Driven Engine)
+        run: node runner.js --all
+        env:
+          HEADLESS: 'true'
+          BROWSER_CHANNEL: 'chromium'
+
+      - name: Run REST API Integration Tests
+        run: node tests/api.test.js
+
+      - name: Run Telemetry & Performance Benchmark
+        run: node benchmark.js
+
+      - name: Archive Test Reports & Screenshots Artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ozeroute-qa-reports
+          path: |
+            reports/
+            screenshots/
+          retention-days: 14

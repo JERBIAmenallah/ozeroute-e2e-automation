@@ -1,16 +1,18 @@
 {
   "name": "ozeroute-e2e-automation",
-  "version": "1.0.0",
-  "description": "Suite d'automatisation de tests End-to-End pour la plateforme Ozeroute (REM4U SARL)",
+  "version": "2.0.0",
+  "description": "Système d'automatisation de tests End-to-End, audits de régression et remédiations logicielles pour la plateforme Ozeroute (REM4U SARL / ESPRIT)",
   "main": "runner.js",
   "scripts": {
-    "test": "node runner.js",
-    "test:nominal": "node runner.js --scenario=parcours_nominal",
-    "test:validation": "node runner.js --scenario=validation_champs_requis",
-    "test:passengers": "node runner.js --scenario=gestion_passagers",
-    "test:direct": "node runner.js --scenario=flux_acces_direct",
+    "test": "node runner.js --all",
+    "test:all": "node runner.js --all",
+    "test:nominal": "node runner.js --scenario=parcours_nominal_cdg",
+    "test:deeplink": "node runner.js --scenario=parcours_acces_deeplink",
+    "test:roundtrip": "node runner.js --scenario=parcours_aller_retour",
     "test:multilang": "node runner.js --scenario=parcours_multilingue_en",
-    "test:responsive": "node runner.js --scenario=affichage_responsive",
+    "test:anomalies": "node runner.js --scenario=audit_faille_metier_0km",
+    "test:api": "node tests/api.test.js",
+    "benchmark": "node benchmark.js",
     "report:open": "powershell -Command \"Start-Process .\\reports\\report.html\""
   },
   "keywords": [
@@ -19,8 +21,12 @@
     "testing",
     "qa",
     "ozeroute",
+    "data-driven",
     "pom",
-    "automation"
+    "automation",
+    "ci-cd",
+    "docker",
+    "regression-testing"
   ],
   "author": "Amenallah JERBI <amenallah.jerbi@esprit.tn>",
   "license": "MIT",

@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  ozeroute-e2e-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ozeroute-qa-runner
+    environment:
+      - HEADLESS=true
+      - BROWSER_CHANNEL=chromium
+      - BASE_URL=https://www.ozeroute.com
+    volumes:
+      - ./reports:/app/reports
+      - ./screenshots:/app/screenshots
+    command: ["npm", "test"]
