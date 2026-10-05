@@ -5,6 +5,8 @@ node_modules/
 *.docx
 *.pdf
 *.txt
+*.mp4
+*.sh
 ~$*
 
 # Build, Archives & Temporary scripts

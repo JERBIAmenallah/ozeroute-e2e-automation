@@ -1,0 +1,32 @@
+[
+  {
+    "target": "Page d'Accueil (FR)",
+    "url": "https://www.ozeroute.com/",
+    "totalLoadTimeMs": 1690,
+    "dnsLookup": 93,
+    "tcpConnect": 151,
+    "ttfb": 113,
+    "domInteractive": 437,
+    "domContentLoaded": 1279
+  },
+  {
+    "target": "Page Internationale (EN)",
+    "url": "https://www.ozeroute.com/en",
+    "totalLoadTimeMs": 367,
+    "dnsLookup": 0,
+    "tcpConnect": 0,
+    "ttfb": 97,
+    "domInteractive": 236,
+    "domContentLoaded": 357
+  },
+  {
+    "target": "Page Contact & FAQ",
+    "url": "https://www.ozeroute.com/contact",
+    "totalLoadTimeMs": 1491,
+    "dnsLookup": 0,
+    "tcpConnect": 0,
+    "ttfb": 130,
+    "domInteractive": 216,
+    "domContentLoaded": 286
+  }
+]

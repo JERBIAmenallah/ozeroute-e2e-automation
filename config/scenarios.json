@@ -1,16 +1,16 @@
 [
   {
-    "id": "parcours_nominal",
+    "id": "parcours_nominal_cdg",
     "category": "E2E_NOMINAL",
-    "name": "Parcours Nominal de Réservation (Paris -> Aéroport CDG)",
-    "description": "Validation du tunnel complet : sélection du trajet, date, passagers, affichage des véhicules et transition vers le checkout",
+    "name": "Parcours Nominal de Réservation Navette (Paris -> Aéroport CDG)",
+    "description": "Validation du tunnel complet depuis la page d'accueil jusqu'à la sélection d'une offre navette et l'accès au checkout",
     "active": true,
     "locale": "fr",
     "viewport": "desktop",
     "route": {
       "from": "Paris Gare de Lyon",
       "to": "Aéroport Paris-CDG",
-      "date": "15/09/2026",
+      "date": "15/10/2026",
       "time": "14:30"
     },
     "passengers": {
@@ -19,38 +19,33 @@
     }
   },
   {
-    "id": "validation_champs_requis",
-    "category": "VALIDATION_FORMULAIRE",
-    "name": "Validation des Champs Requis du Formulaire",
-    "description": "Vérification que la soumission du formulaire sans adresses de départ/destination bloque l'envoi et reste sur la page d'accueil",
+    "id": "parcours_acces_deeplink",
+    "category": "DEEPLINK_ACCESS",
+    "name": "Flux d'Accès Référencé (Google / Deep Link Pré-encodé Base64)",
+    "description": "Validation du chargement direct de la grille tarifaire via paramètres de recherche injectés dans l'URL",
     "active": true,
     "locale": "fr",
-    "viewport": "desktop"
-  },
-  {
-    "id": "gestion_passagers",
-    "category": "VALIDATION_FORMULAIRE",
-    "name": "Vérification du Sélecteur de Passagers",
-    "description": "Test de modification dynamique du nombre de passagers et vérification de la mise à jour du récapitulatif",
-    "active": true,
-    "locale": "fr",
-    "viewport": "desktop"
-  },
-  {
-    "id": "flux_acces_direct",
-    "category": "ACCES_DIRECT",
-    "name": "Accès Direct au Tunnel de Réservation via URL Paramétrée",
-    "description": "Validation du chargement direct de la page de réservation avec paramètres de recherche pré-remplis dans l'URL",
-    "active": true,
-    "locale": "fr",
-    "viewport": "desktop",
+    "viewport": "tablet_960",
     "url": "https://www.ozeroute.com/mobilite-aeroport/reservation?q=eyImcm91dGUiOiI2NTk2NmE5NWRlNGYyYjAwMWIwOTBkNWUiLCJ0eXBlIjoiYWlycG9ydCIsInZlaGljbGUiOiJzZWRhbiIsImRhdGUiOiIwNS8wOS8yMDI2IDE3OjIwIn0="
   },
   {
+    "id": "parcours_aller_retour",
+    "category": "E2E_ROUNDTRIP",
+    "name": "Parcours Réservation Aller-Retour avec Date de Reprise",
+    "description": "Validation du formulaire avec activation de l'option aller-retour et saisie d'un retour décalé",
+    "active": true,
+    "locale": "fr",
+    "viewport": "desktop",
+    "route": {
+      "from": "Paris Montparnasse",
+      "to": "Aéroport de Paris-Beauvais (BVA)"
+    }
+  },
+  {
     "id": "parcours_multilingue_en",
-    "category": "MULTILINGUE",
-    "name": "Validation du Parcours en Langue Anglaise (EN)",
-    "description": "Contrôle du bon chargement de la version internationale anglophone et de la persistance de la locale",
+    "category": "MULTILANG_I18N",
+    "name": "Parcours de Réservation Internationalisé (Locale EN)",
+    "description": "Contrôle de l'affichage du formulaire, de la persistance de langue et du rendu des composants anglophones",
     "active": true,
     "locale": "en",
     "viewport": "desktop",
@@ -60,12 +55,87 @@
     }
   },
   {
-    "id": "affichage_responsive",
-    "category": "RESPONSIVE",
-    "name": "Vérification de l'Affichage sous Format Tablette",
-    "description": "Validation de la disposition du formulaire et des composants de réservation sur une résolution de 960px",
+    "id": "audit_faille_metier_0km",
+    "category": "ANOMALIE_METIER",
+    "name": "Audit Faille Métier - Trajet intra-aéroport 0 km (Orly -> Orly facturé 31,25 €)",
+    "description": "Vérification du comportement d'intégrité lorsque les adresses de départ et d'arrivée sont identiques (Réf: Rapport Chapitre 2.2)",
     "active": true,
     "locale": "fr",
-    "viewport": "tablet"
+    "viewport": "desktop",
+    "route": {
+      "from": "Aéroport de Paris-Orly (ORY)",
+      "to": "Aéroport de Paris-Orly (ORY)"
+    },
+    "anomalyDetection": {
+      "type": "LOGIC_PRICING_BUG",
+      "expectedAnomaly": true,
+      "referenceSection": "Rapport Stage 2.2"
+    }
+  },
+  {
+    "id": "audit_responsive_960px",
+    "category": "ANOMALIE_CSS",
+    "name": "Audit Ergonomie Responsive CSS à 960px (Troncature Date et Passagers)",
+    "description": "Mesure des conteneurs Flexbox et capture haute résolution de la troncature des dates et libellés (Réf: Rapport Chapitre 2.3)",
+    "active": true,
+    "locale": "fr",
+    "viewport": "tablet_960",
+    "url": "https://www.ozeroute.com/mobilite-aeroport/reservation?q=eyImcm91dGUiOiI2NTk2NmE5NWRlNGYyYjAwMWIwOTBkNWUiLCJ0eXBlIjoiYWlycG9ydCIsInZlaGljbGUiOiJzZWRhbiIsImRhdGUiOiIwNS8wOS8yMDI2IDE3OjIwIn0=",
+    "anomalyDetection": {
+      "type": "RESPONSIVE_TRUNCATION",
+      "targetBreakpoint": 960,
+      "referenceSection": "Rapport Stage 2.3"
+    }
+  },
+  {
+    "id": "audit_console_elfsight",
+    "category": "ANOMALIE_TIERS",
+    "name": "Audit Intégrité Console - Crash Widget Elfsight (APP_VIEWS_LIMIT_REACHED)",
+    "description": "Surveillance des erreurs non interceptées et dépassement de quota sur le widget d'avis Google (Réf: Rapport Chapitre 2.4)",
+    "active": true,
+    "locale": "fr",
+    "viewport": "desktop",
+    "anomalyDetection": {
+      "type": "THIRD_PARTY_QUOTA_CRASH",
+      "expectedConsoleError": "APP_VIEWS_LIMIT_REACHED",
+      "referenceSection": "Rapport Stage 2.4"
+    }
+  },
+  {
+    "id": "audit_reseau_promo_404",
+    "category": "ANOMALIE_RESEAU",
+    "name": "Audit Réseau HTTP - Détection 404 sur Endpoint /v1/common/promo",
+    "description": "Interception réseau lors du chargement pour consigner les requêtes 404 non maîtrisées (Réf: Rapport Chapitre 2.5)",
+    "active": true,
+    "locale": "fr",
+    "viewport": "desktop",
+    "anomalyDetection": {
+      "type": "NETWORK_REGRESSION_404",
+      "expectedStatusCode": 404,
+      "referenceSection": "Rapport Stage 2.5"
+    }
+  },
+  {
+    "id": "audit_validation_typo_ui",
+    "category": "ANOMALIE_UI",
+    "name": "Audit Qualité Logicielle UI - Faute de Français en Production",
+    "description": "Validation du décompte passagers à 0 adulte et capture du message d'erreur 'Faut avoir au moin un adulte' (Réf: Rapport Chapitre 2.6)",
+    "active": true,
+    "locale": "fr",
+    "viewport": "desktop",
+    "anomalyDetection": {
+      "type": "UI_COPYWRITING_DEFECT",
+      "expectedTypo": "Faut avoir au moin un adulte",
+      "referenceSection": "Rapport Stage 2.6"
+    }
+  },
+  {
+    "id": "resilience_stripe_radar",
+    "category": "RESILIENCE_SECURITE",
+    "name": "Test Résilience Réseau - Simulation Filtre Adblocker sur Stripe Radar",
+    "description": "Vérifie la robustesse du tunnel de paiement lors du blocage client de r.stripe.com (Réf: Rapport Chapitre 3.3)",
+    "active": true,
+    "locale": "fr",
+    "viewport": "desktop"
   }
 ]

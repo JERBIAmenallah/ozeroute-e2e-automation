@@ -1,32 +1,40 @@
 const BasePage = require('./BasePage');
 
 /**
- * CheckoutPage - Page Object pour l'écran de finalisation de commande
- * Encapsule les éléments du récapitulatif et des coordonnées client.
- * Auteur : Amenallah JERBI - REM4U SARL / ESPRIT
+ * CheckoutPage - Page Object pour l'écran de finalisation et paiement
+ * Encapsule les formulaires client, l'intégration Stripe Elements et le calcul récapitulatif.
+ * Auteur : Amenallah JERBI - Élève-Ingénieur ESPRIT (REM4U SARL)
  */
 class CheckoutPage extends BasePage {
   constructor(page, context, config) {
     super(page, context, config);
 
     this.selectors = {
-      emailInput: 'input[name="email"], input[type="email"]',
-      phoneInput: 'input[name="phone"], input[type="tel"]',
       firstNameInput: 'input[name="firstName"], input[placeholder*="Prénom"]',
       lastNameInput: 'input[name="lastName"], input[placeholder*="Nom"]',
-      stripeFrame: 'iframe[name*="__privateStripeFrame"], .StripeElement',
-      summaryContainer: '.summary, [class*="summary"], [class*="recap"]'
+      emailInput: 'input[name="email"], input[type="email"]',
+      phoneInput: 'input[name="phone"], input[type="tel"]',
+      stripeCardElement: 'iframe[name*="__privateStripeFrame"], .StripeElement',
+      submitPaymentBtn: 'button[type="submit"]:has-text("Payer"), button:has-text("Valider et payer")',
+      summaryTotal: '.total-amount, [class*="total"], [class*="Total"]'
     };
   }
 
-  /**
-   * Vérifie si le tunnel est parvenu à l'étape de confirmation / saisie des informations
-   */
   async isCheckoutReached() {
     await this.clearOverlays();
     const url = this.page.url();
-    const hasForm = await this.page.$(this.selectors.emailInput) || await this.page.$(this.selectors.phoneInput);
-    return url.includes('reservation') || !!hasForm;
+    const hasStripeOrForm = await this.page.$(this.selectors.emailInput) || await this.page.$(this.selectors.stripeCardElement);
+    return url.includes('reservation') || url.includes('checkout') || !!hasStripeOrForm;
+  }
+
+  async verifyStripePresence() {
+    await this.clearOverlays();
+    try {
+      const stripeFrame = await this.page.waitForSelector(this.selectors.stripeCardElement, { timeout: 8000 });
+      return !!stripeFrame;
+    } catch (e) {
+      return false;
+    }
   }
 }
 

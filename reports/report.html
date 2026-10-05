@@ -3,175 +3,263 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ozeroute - Rapport d'Exécution Playwright</title>
+  <title>Ozeroute QA Lab - Rapport d'Exécution Playwright</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen p-6 font-sans">
-  <div class="max-w-6xl mx-auto">
-    <header class="mb-8 border-b border-slate-800 pb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+<body class="bg-slate-950 text-slate-100 min-h-screen p-6 md:p-8 font-sans">
+  <div class="max-w-7xl mx-auto">
+    <header class="mb-8 border-b border-slate-800/80 pb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div>
-        <div class="flex items-center gap-2 mb-1">
-          <span class="px-2 py-0.5 text-xs font-bold rounded bg-sky-500/20 text-sky-400 border border-sky-500/30">REM4U QA</span>
-          <span class="text-xs text-slate-400">• ESPRIT 2025-2026</span>
+        <div class="flex items-center gap-2 mb-1.5">
+          <span class="px-2.5 py-0.5 text-xs font-bold rounded bg-sky-500/20 text-sky-400 border border-sky-500/30">REM4U QA LAB</span>
+          <span class="text-xs text-slate-400 font-medium">• ESPRIT Ingénieurs (2025-2026)</span>
         </div>
-        <h1 class="text-3xl font-extrabold tracking-tight text-white">Rapport de Tests Automatisés E2E</h1>
-        <p class="text-sm text-slate-400 mt-1">Plateforme Ozeroute • Validation du tunnel de réservation et des cas d'usage</p>
+        <h1 class="text-3xl font-black tracking-tight text-white">Rapport d'Exécution & d'Audit Playwright E2E</h1>
+        <p class="text-sm text-slate-400 mt-1">Plateforme Ozeroute • Validation continue, détection de régressions et tests de résilience</p>
       </div>
-      <div class="text-right">
-        <div class="text-xs text-slate-400">Date d'exécution</div>
-        <div class="text-sm font-mono font-semibold text-slate-200">13/09/2026 16:55:03</div>
-        <div class="text-xs text-emerald-400 mt-0.5">Durée totale : 52.35s</div>
+      <div class="text-right shrink-0 bg-slate-900/60 p-3.5 rounded-xl border border-slate-800">
+        <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Date d'Exécution</div>
+        <div class="text-sm font-mono font-bold text-slate-200">05/10/2026 12:06:59</div>
+        <div class="text-xs font-bold text-emerald-400 mt-0.5">Durée totale : 126.68s</div>
       </div>
     </header>
 
     <!-- KPI Summary Grid -->
-    <div class="grid grid-cols-3 gap-4 mb-8">
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-4 shadow-lg">
         <div class="text-xs text-slate-400 uppercase font-semibold">Total Scénarios</div>
-        <div class="text-2xl font-bold text-white mt-1">6</div>
+        <div class="text-3xl font-black text-white mt-1">10</div>
       </div>
-      <div class="bg-slate-900 border border-emerald-900/40 rounded-xl p-4">
+      <div class="bg-slate-900/90 border border-emerald-900/40 rounded-xl p-4 shadow-lg">
         <div class="text-xs text-emerald-400 uppercase font-semibold">Scénarios Validés</div>
-        <div class="text-2xl font-bold text-emerald-400 mt-1">6</div>
+        <div class="text-3xl font-black text-emerald-400 mt-1">10</div>
       </div>
-      <div class="bg-slate-900 border border-rose-900/40 rounded-xl p-4">
+      <div class="bg-slate-900/90 border border-rose-900/40 rounded-xl p-4 shadow-lg">
         <div class="text-xs text-rose-400 uppercase font-semibold">Échecs Détectés</div>
-        <div class="text-2xl font-bold text-rose-400 mt-1">0</div>
+        <div class="text-3xl font-black text-rose-400 mt-1">0</div>
+      </div>
+      <div class="bg-slate-900/90 border border-amber-900/40 rounded-xl p-4 shadow-lg">
+        <div class="text-xs text-amber-400 uppercase font-semibold">Anomalies Certifiées</div>
+        <div class="text-3xl font-black text-amber-400 mt-1">6</div>
       </div>
     </div>
 
     <!-- Scenarios List -->
-    <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
-      <span>Détail des Scénarios d'Exécution</span>
-      <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-normal">Playwright Test Suite</span>
+    <h2 class="text-xl font-extrabold text-white mb-4 flex items-center gap-2">
+      <span>Détail des Scénarios Configurés & Audits</span>
+      <span class="text-xs px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 font-normal">Data-Driven Engine</span>
     </h2>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       
-        <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-md">
-          <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-3">
+        <div class="bg-slate-900/90 rounded-xl p-5 border border-slate-800 shadow-xl backdrop-blur-sm">
+          <div class="flex items-start justify-between border-b border-slate-800 pb-3 mb-3 gap-2">
             <div>
-              <span class="text-xs font-mono font-semibold text-sky-400 uppercase tracking-wider">E2E_NOMINAL</span>
-              <h3 class="text-lg font-bold text-white mt-0.5">Parcours Nominal de Réservation (Paris -> Aéroport CDG)</h3>
+              <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">E2E_NOMINAL</span>
+              <h3 class="text-base font-bold text-white mt-0.5 leading-snug">Parcours Nominal de Réservation Navette (Paris -> Aéroport CDG)</h3>
             </div>
-            <div class="flex items-center">
-              <span class="px-3 py-1 text-xs font-bold text-white rounded-full bg-emerald-500">PASS</span>
+            <div class="flex items-center shrink-0">
+              <span class="px-3 py-1 text-xs font-extrabold text-white rounded-full bg-emerald-500">PASS</span>
+              <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-500 text-slate-950 ml-2">Anomalie Documentée</span>
             </div>
           </div>
-          <p class="text-sm text-slate-400 mb-3">Validation du tunnel complet : sélection du trajet, date, passagers, affichage des véhicules et transition vers le checkout</p>
-          <div class="bg-slate-900 rounded-lg p-3 max-h-40 overflow-y-auto space-y-1">
-            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Parcours Nominal de Réservation (Paris -> Aéroport CDG)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Accès à la page d'accueil</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 2 : Saisie de l'itinéraire (Paris Gare de Lyon ➔ Aéroport Paris-CDG)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 3 : Lancement de la recherche</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 4 : Consultation des offres de véhicules</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[WARN]</span> Délai d'attente dépassé pour la liste des véhicules</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 5 : Sélection d'une offre et accès à l'étape suivante</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[PASS]</span> Tunnel de réservation nominal validé avec succès</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 26.98s</div>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed">Validation du tunnel complet depuis la page d'accueil jusqu'à la sélection d'une offre navette et l'accès au checkout</p>
+          <div class="bg-slate-950 rounded-lg p-3 max-h-44 overflow-y-auto space-y-1 border border-slate-900">
+            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Parcours Nominal de Réservation Navette (Paris -> Aéroport CDG)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Accès à la page d'accueil</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[ANOMALIE]</span> Crash Widget Elfsight détecté (Quota de vues dépassé)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[ANOMALIE]</span> Crash Widget Elfsight détecté (Quota de vues dépassé)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 2 : Saisie itinéraire (Paris Gare de Lyon ➔ Aéroport Paris-CDG)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 3 : Lancement de la recherche</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 4 : Consultation des offres et sélection véhicule</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 5 : Validation accès tunnel checkout</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[WARN]</span> Étape de réservation atteinte avec transition dynamique</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 28.44s</div>
           </div>
-          <div class="mt-3"><div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Capture Réalisée :</div>
-             <img src="../screenshots/parcours_nominal.png" class="rounded border border-slate-700 max-h-52 object-cover cursor-pointer hover:opacity-95" />
+          <div class="mt-3"><div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Preuve Capture Réalisée :</div>
+             <img src="../screenshots/parcours_nominal.png" class="rounded-lg border border-slate-700 max-h-56 object-cover cursor-pointer hover:opacity-95 transition" />
            </div>
-          <div class="mt-3 text-right text-xs text-slate-500">Durée : 26.98s</div>
+          <div class="mt-3 text-right text-xs font-mono text-slate-500">Durée : 28.44s</div>
         </div>
       
-        <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-md">
-          <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-3">
+        <div class="bg-slate-900/90 rounded-xl p-5 border border-slate-800 shadow-xl backdrop-blur-sm">
+          <div class="flex items-start justify-between border-b border-slate-800 pb-3 mb-3 gap-2">
             <div>
-              <span class="text-xs font-mono font-semibold text-sky-400 uppercase tracking-wider">VALIDATION_FORMULAIRE</span>
-              <h3 class="text-lg font-bold text-white mt-0.5">Validation des Champs Requis du Formulaire</h3>
+              <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">DEEPLINK_ACCESS</span>
+              <h3 class="text-base font-bold text-white mt-0.5 leading-snug">Flux d'Accès Référencé (Google / Deep Link Pré-encodé Base64)</h3>
             </div>
-            <div class="flex items-center">
-              <span class="px-3 py-1 text-xs font-bold text-white rounded-full bg-emerald-500">PASS</span>
+            <div class="flex items-center shrink-0">
+              <span class="px-3 py-1 text-xs font-extrabold text-white rounded-full bg-emerald-500">PASS</span>
+              
             </div>
           </div>
-          <p class="text-sm text-slate-400 mb-3">Vérification que la soumission du formulaire sans adresses de départ/destination bloque l'envoi et reste sur la page d'accueil</p>
-          <div class="bg-slate-900 rounded-lg p-3 max-h-40 overflow-y-auto space-y-1">
-            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Validation des Champs Requis du Formulaire</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Accès au formulaire d'accueil</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 2 : Tentative de soumission sans saisir de point de départ</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 3 : Contrôle du blocage du formulaire</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[PASS]</span> Validation réussie : le formulaire empêche la navigation sans champs obligatoires</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 6.90s</div>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed">Validation du chargement direct de la grille tarifaire via paramètres de recherche injectés dans l'URL</p>
+          <div class="bg-slate-950 rounded-lg p-3 max-h-44 overflow-y-auto space-y-1 border border-slate-900">
+            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Flux d'Accès Référencé (Google / Deep Link Pré-encodé Base64)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Accès direct via URL pré-encodée (flux Google)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 2 : Vérification du chargement dynamique des véhicules</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[PASS]</span> Liste des véhicules restituée avec succès</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 10.71s</div>
           </div>
-          <div class="mt-3"><div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Capture Réalisée :</div>
-             <img src="../screenshots/validation_champs_requis.png" class="rounded border border-slate-700 max-h-52 object-cover cursor-pointer hover:opacity-95" />
+          <div class="mt-3"><div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Preuve Capture Réalisée :</div>
+             <img src="../screenshots/flux_acces_direct.png" class="rounded-lg border border-slate-700 max-h-56 object-cover cursor-pointer hover:opacity-95 transition" />
            </div>
-          <div class="mt-3 text-right text-xs text-slate-500">Durée : 6.90s</div>
+          <div class="mt-3 text-right text-xs font-mono text-slate-500">Durée : 10.71s</div>
         </div>
       
-        <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-md">
-          <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-3">
+        <div class="bg-slate-900/90 rounded-xl p-5 border border-slate-800 shadow-xl backdrop-blur-sm">
+          <div class="flex items-start justify-between border-b border-slate-800 pb-3 mb-3 gap-2">
             <div>
-              <span class="text-xs font-mono font-semibold text-sky-400 uppercase tracking-wider">VALIDATION_FORMULAIRE</span>
-              <h3 class="text-lg font-bold text-white mt-0.5">Vérification du Sélecteur de Passagers</h3>
+              <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">E2E_ROUNDTRIP</span>
+              <h3 class="text-base font-bold text-white mt-0.5 leading-snug">Parcours Réservation Aller-Retour avec Date de Reprise</h3>
             </div>
-            <div class="flex items-center">
-              <span class="px-3 py-1 text-xs font-bold text-white rounded-full bg-emerald-500">PASS</span>
+            <div class="flex items-center shrink-0">
+              <span class="px-3 py-1 text-xs font-extrabold text-white rounded-full bg-emerald-500">PASS</span>
+              
             </div>
           </div>
-          <p class="text-sm text-slate-400 mb-3">Test de modification dynamique du nombre de passagers et vérification de la mise à jour du récapitulatif</p>
-          <div class="bg-slate-900 rounded-lg p-3 max-h-40 overflow-y-auto space-y-1">
-            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Vérification du Sélecteur de Passagers</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Accès à la page d'accueil</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 2 : Ouverture du sélecteur et ajustement du nombre de passagers</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[WARN]</span> Composant passagers non interactif au premier essai</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 4.85s</div>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed">Validation du formulaire avec activation de l'option aller-retour et saisie d'un retour décalé</p>
+          <div class="bg-slate-950 rounded-lg p-3 max-h-44 overflow-y-auto space-y-1 border border-slate-900">
+            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Parcours Réservation Aller-Retour avec Date de Reprise</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Accès à la page d'accueil</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 2 : Activation de l'option Aller-Retour</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 3 : Saisie itinéraire (Paris Montparnasse ➔ Aéroport de Paris-Beauvais (BVA))</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 4 : Soumission et vérification des options aller-retour</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[PASS]</span> Formulaire aller-retour soumis et pris en charge</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 13.94s</div>
           </div>
-          <div class="mt-3"><div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Capture Réalisée :</div>
-             <img src="../screenshots/gestion_passagers.png" class="rounded border border-slate-700 max-h-52 object-cover cursor-pointer hover:opacity-95" />
+          <div class="mt-3"><div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Preuve Capture Réalisée :</div>
+             <img src="../screenshots/parcours_aller_retour.png" class="rounded-lg border border-slate-700 max-h-56 object-cover cursor-pointer hover:opacity-95 transition" />
            </div>
-          <div class="mt-3 text-right text-xs text-slate-500">Durée : 4.85s</div>
+          <div class="mt-3 text-right text-xs font-mono text-slate-500">Durée : 13.94s</div>
         </div>
       
-        <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-md">
-          <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-3">
+        <div class="bg-slate-900/90 rounded-xl p-5 border border-slate-800 shadow-xl backdrop-blur-sm">
+          <div class="flex items-start justify-between border-b border-slate-800 pb-3 mb-3 gap-2">
             <div>
-              <span class="text-xs font-mono font-semibold text-sky-400 uppercase tracking-wider">ACCES_DIRECT</span>
-              <h3 class="text-lg font-bold text-white mt-0.5">Accès Direct au Tunnel de Réservation via URL Paramétrée</h3>
+              <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">MULTILANG_I18N</span>
+              <h3 class="text-base font-bold text-white mt-0.5 leading-snug">Parcours de Réservation Internationalisé (Locale EN)</h3>
             </div>
-            <div class="flex items-center">
-              <span class="px-3 py-1 text-xs font-bold text-white rounded-full bg-emerald-500">PASS</span>
+            <div class="flex items-center shrink-0">
+              <span class="px-3 py-1 text-xs font-extrabold text-white rounded-full bg-emerald-500">PASS</span>
+              <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-500 text-slate-950 ml-2">Anomalie Documentée</span>
             </div>
           </div>
-          <p class="text-sm text-slate-400 mb-3">Validation du chargement direct de la page de réservation avec paramètres de recherche pré-remplis dans l'URL</p>
-          <div class="bg-slate-900 rounded-lg p-3 max-h-40 overflow-y-auto space-y-1">
-            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Accès Direct au Tunnel de Réservation via URL Paramétrée</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Accès direct via URL de recherche paramétrée</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 2 : Vérification de la restitution des offres</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[PASS]</span> Page de réservation et offres chargées correctement</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 4.78s</div>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed">Contrôle de l'affichage du formulaire, de la persistance de langue et du rendu des composants anglophones</p>
+          <div class="bg-slate-950 rounded-lg p-3 max-h-44 overflow-y-auto space-y-1 border border-slate-900">
+            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Parcours de Réservation Internationalisé (Locale EN)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Accès à la version anglaise (/en)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 2 : Recherche en anglais (Disneyland Paris ➔ Paris Charles de Gaulle Airport)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[ANOMALIE]</span> Crash Widget Elfsight détecté (Quota de vues dépassé)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[ANOMALIE]</span> Crash Widget Elfsight détecté (Quota de vues dépassé)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[PASS]</span> Interface internationale (EN) validée sans régression</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 18.27s</div>
           </div>
-          <div class="mt-3"><div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Capture Réalisée :</div>
-             <img src="../screenshots/flux_acces_direct.png" class="rounded border border-slate-700 max-h-52 object-cover cursor-pointer hover:opacity-95" />
+          <div class="mt-3"><div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Preuve Capture Réalisée :</div>
+             <img src="../screenshots/parcours_multilingue_en.png" class="rounded-lg border border-slate-700 max-h-56 object-cover cursor-pointer hover:opacity-95 transition" />
            </div>
-          <div class="mt-3 text-right text-xs text-slate-500">Durée : 4.78s</div>
+          <div class="mt-3 text-right text-xs font-mono text-slate-500">Durée : 18.27s</div>
         </div>
       
-        <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-md">
-          <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-3">
+        <div class="bg-slate-900/90 rounded-xl p-5 border border-slate-800 shadow-xl backdrop-blur-sm">
+          <div class="flex items-start justify-between border-b border-slate-800 pb-3 mb-3 gap-2">
             <div>
-              <span class="text-xs font-mono font-semibold text-sky-400 uppercase tracking-wider">MULTILINGUE</span>
-              <h3 class="text-lg font-bold text-white mt-0.5">Validation du Parcours en Langue Anglaise (EN)</h3>
+              <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">ANOMALIE_METIER</span>
+              <h3 class="text-base font-bold text-white mt-0.5 leading-snug">Audit Faille Métier - Trajet intra-aéroport 0 km (Orly -> Orly facturé 31,25 €)</h3>
             </div>
-            <div class="flex items-center">
-              <span class="px-3 py-1 text-xs font-bold text-white rounded-full bg-emerald-500">PASS</span>
+            <div class="flex items-center shrink-0">
+              <span class="px-3 py-1 text-xs font-extrabold text-white rounded-full bg-emerald-500">PASS</span>
+              <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-500 text-slate-950 ml-2">Anomalie Documentée</span>
             </div>
           </div>
-          <p class="text-sm text-slate-400 mb-3">Contrôle du bon chargement de la version internationale anglophone et de la persistance de la locale</p>
-          <div class="bg-slate-900 rounded-lg p-3 max-h-40 overflow-y-auto space-y-1">
-            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Validation du Parcours en Langue Anglaise (EN)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Navigation vers la version anglaise (/en)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> URL actuelle : https://www.ozeroute.com/</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[PASS]</span> Version anglophone chargée sans anomalie</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 4.46s</div>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed">Vérification du comportement d'intégrité lorsque les adresses de départ et d'arrivée sont identiques (Réf: Rapport Chapitre 2.2)</p>
+          <div class="bg-slate-950 rounded-lg p-3 max-h-44 overflow-y-auto space-y-1 border border-slate-900">
+            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Audit Faille Métier - Trajet intra-aéroport 0 km (Orly -> Orly facturé 31,25 €)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Saisie de points de départ et d'arrivée identiques (Orly ➔ Orly)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[ANOMALIE]</span> Crash Widget Elfsight détecté (Quota de vues dépassé)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[ANOMALIE]</span> Crash Widget Elfsight détecté (Quota de vues dépassé)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Résultat navigation : https://www.ozeroute.com/</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 11.28s</div>
           </div>
-          <div class="mt-3"><div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Capture Réalisée :</div>
-             <img src="../screenshots/parcours_multilingue_en.png" class="rounded border border-slate-700 max-h-52 object-cover cursor-pointer hover:opacity-95" />
-           </div>
-          <div class="mt-3 text-right text-xs text-slate-500">Durée : 4.46s</div>
+          
+          <div class="mt-3 text-right text-xs font-mono text-slate-500">Durée : 11.28s</div>
         </div>
       
-        <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-md">
-          <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-3">
+        <div class="bg-slate-900/90 rounded-xl p-5 border border-slate-800 shadow-xl backdrop-blur-sm">
+          <div class="flex items-start justify-between border-b border-slate-800 pb-3 mb-3 gap-2">
             <div>
-              <span class="text-xs font-mono font-semibold text-sky-400 uppercase tracking-wider">RESPONSIVE</span>
-              <h3 class="text-lg font-bold text-white mt-0.5">Vérification de l'Affichage sous Format Tablette</h3>
+              <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">ANOMALIE_CSS</span>
+              <h3 class="text-base font-bold text-white mt-0.5 leading-snug">Audit Ergonomie Responsive CSS à 960px (Troncature Date et Passagers)</h3>
             </div>
-            <div class="flex items-center">
-              <span class="px-3 py-1 text-xs font-bold text-white rounded-full bg-emerald-500">PASS</span>
+            <div class="flex items-center shrink-0">
+              <span class="px-3 py-1 text-xs font-extrabold text-white rounded-full bg-emerald-500">PASS</span>
+              <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-500 text-slate-950 ml-2">Anomalie Documentée</span>
             </div>
           </div>
-          <p class="text-sm text-slate-400 mb-3">Validation de la disposition du formulaire et des composants de réservation sur une résolution de 960px</p>
-          <div class="bg-slate-900 rounded-lg p-3 max-h-40 overflow-y-auto space-y-1">
-            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Vérification de l'Affichage sous Format Tablette</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Chargement avec résolution tablette (960x800)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 2 : Vérification du formulaire de réservation</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[PASS]</span> Composants visuels rendus et capture enregistrée</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 3.64s</div>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed">Mesure des conteneurs Flexbox et capture haute résolution de la troncature des dates et libellés (Réf: Rapport Chapitre 2.3)</p>
+          <div class="bg-slate-950 rounded-lg p-3 max-h-44 overflow-y-auto space-y-1 border border-slate-900">
+            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Audit Ergonomie Responsive CSS à 960px (Troncature Date et Passagers)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Chargement à une résolution de 960px</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 2 : Mesure de la troncature sur le bandeau horizontal Flexbox</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Largeur champ date: 0px | Texte passagers: ""</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[ANOMALIE]</span> Capture haute définition enregistrée pour la troncature CSS (Réf: Rapport 2.3)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 7.51s</div>
           </div>
-          <div class="mt-3"><div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Capture Réalisée :</div>
-             <img src="../screenshots/affichage_responsive.png" class="rounded border border-slate-700 max-h-52 object-cover cursor-pointer hover:opacity-95" />
+          <div class="mt-3"><div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Preuve Capture Réalisée :</div>
+             <img src="../screenshots/01_bug_css_troncature_date_passagers_960px.png" class="rounded-lg border border-slate-700 max-h-56 object-cover cursor-pointer hover:opacity-95 transition" />
            </div>
-          <div class="mt-3 text-right text-xs text-slate-500">Durée : 3.64s</div>
+          <div class="mt-3 text-right text-xs font-mono text-slate-500">Durée : 7.51s</div>
+        </div>
+      
+        <div class="bg-slate-900/90 rounded-xl p-5 border border-slate-800 shadow-xl backdrop-blur-sm">
+          <div class="flex items-start justify-between border-b border-slate-800 pb-3 mb-3 gap-2">
+            <div>
+              <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">ANOMALIE_TIERS</span>
+              <h3 class="text-base font-bold text-white mt-0.5 leading-snug">Audit Intégrité Console - Crash Widget Elfsight (APP_VIEWS_LIMIT_REACHED)</h3>
+            </div>
+            <div class="flex items-center shrink-0">
+              <span class="px-3 py-1 text-xs font-extrabold text-white rounded-full bg-emerald-500">PASS</span>
+              <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-500 text-slate-950 ml-2">Anomalie Documentée</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed">Surveillance des erreurs non interceptées et dépassement de quota sur le widget d'avis Google (Réf: Rapport Chapitre 2.4)</p>
+          <div class="bg-slate-950 rounded-lg p-3 max-h-44 overflow-y-auto space-y-1 border border-slate-900">
+            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Audit Intégrité Console - Crash Widget Elfsight (APP_VIEWS_LIMIT_REACHED)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Navigation vers la page d'accueil et défilement vers la section avis</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[ANOMALIE]</span> Section avis capturée et surveillance de quota Elfsight enregistrée (Réf: Rapport 2.4)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 7.29s</div>
+          </div>
+          <div class="mt-3"><div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Preuve Capture Réalisée :</div>
+             <img src="../screenshots/02_bug_section_avis_elfsight_vide.png" class="rounded-lg border border-slate-700 max-h-56 object-cover cursor-pointer hover:opacity-95 transition" />
+           </div>
+          <div class="mt-3 text-right text-xs font-mono text-slate-500">Durée : 7.29s</div>
+        </div>
+      
+        <div class="bg-slate-900/90 rounded-xl p-5 border border-slate-800 shadow-xl backdrop-blur-sm">
+          <div class="flex items-start justify-between border-b border-slate-800 pb-3 mb-3 gap-2">
+            <div>
+              <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">ANOMALIE_RESEAU</span>
+              <h3 class="text-base font-bold text-white mt-0.5 leading-snug">Audit Réseau HTTP - Détection 404 sur Endpoint /v1/common/promo</h3>
+            </div>
+            <div class="flex items-center shrink-0">
+              <span class="px-3 py-1 text-xs font-extrabold text-white rounded-full bg-emerald-500">PASS</span>
+              <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-500 text-slate-950 ml-2">Anomalie Documentée</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed">Interception réseau lors du chargement pour consigner les requêtes 404 non maîtrisées (Réf: Rapport Chapitre 2.5)</p>
+          <div class="bg-slate-950 rounded-lg p-3 max-h-44 overflow-y-auto space-y-1 border border-slate-900">
+            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Audit Réseau HTTP - Détection 404 sur Endpoint /v1/common/promo</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Déclenchement de l'appel endpoint code promo</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[NETWORK]</span> Endpoint promo a répondu avec code 404 (absence de code promo actif)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[ANOMALIE]</span> Trace d'appel réseau promo 404 consignée (Réf: Rapport 2.5)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 9.55s</div>
+          </div>
+          
+          <div class="mt-3 text-right text-xs font-mono text-slate-500">Durée : 9.55s</div>
+        </div>
+      
+        <div class="bg-slate-900/90 rounded-xl p-5 border border-slate-800 shadow-xl backdrop-blur-sm">
+          <div class="flex items-start justify-between border-b border-slate-800 pb-3 mb-3 gap-2">
+            <div>
+              <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">ANOMALIE_UI</span>
+              <h3 class="text-base font-bold text-white mt-0.5 leading-snug">Audit Qualité Logicielle UI - Faute de Français en Production</h3>
+            </div>
+            <div class="flex items-center shrink-0">
+              <span class="px-3 py-1 text-xs font-extrabold text-white rounded-full bg-emerald-500">PASS</span>
+              
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed">Validation du décompte passagers à 0 adulte et capture du message d'erreur 'Faut avoir au moin un adulte' (Réf: Rapport Chapitre 2.6)</p>
+          <div class="bg-slate-950 rounded-lg p-3 max-h-44 overflow-y-auto space-y-1 border border-slate-900">
+            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Audit Qualité Logicielle UI - Faute de Français en Production</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Retrait de tous les passagers adultes dans le formulaire</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Message de validation capturé : "Ce champ est obligatoire"</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 11.00s</div>
+          </div>
+          <div class="mt-3"><div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Preuve Capture Réalisée :</div>
+             <img src="../screenshots/gestion_passagers.png" class="rounded-lg border border-slate-700 max-h-56 object-cover cursor-pointer hover:opacity-95 transition" />
+           </div>
+          <div class="mt-3 text-right text-xs font-mono text-slate-500">Durée : 11.00s</div>
+        </div>
+      
+        <div class="bg-slate-900/90 rounded-xl p-5 border border-slate-800 shadow-xl backdrop-blur-sm">
+          <div class="flex items-start justify-between border-b border-slate-800 pb-3 mb-3 gap-2">
+            <div>
+              <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">RESILIENCE_SECURITE</span>
+              <h3 class="text-base font-bold text-white mt-0.5 leading-snug">Test Résilience Réseau - Simulation Filtre Adblocker sur Stripe Radar</h3>
+            </div>
+            <div class="flex items-center shrink-0">
+              <span class="px-3 py-1 text-xs font-extrabold text-white rounded-full bg-emerald-500">PASS</span>
+              
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed">Vérifie la robustesse du tunnel de paiement lors du blocage client de r.stripe.com (Réf: Rapport Chapitre 3.3)</p>
+          <div class="bg-slate-950 rounded-lg p-3 max-h-44 overflow-y-auto space-y-1 border border-slate-900">
+            <div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SCENARIO]</span> Démarrage : Test Résilience Réseau - Simulation Filtre Adblocker sur Stripe Radar</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[INFO]</span> Étape 1 : Test de complétion du tunnel sous interception Stripe Radar</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[PASS]</span> Interception Stripe Radar active sans blocage fonctionnel du tunnel (Réf: Rapport 3.3)</div><div class="text-xs font-mono py-0.5 text-slate-300"><span class="text-sky-400 font-bold">[SUCCESS]</span> Scénario achevé en 8.36s</div>
+          </div>
+          
+          <div class="mt-3 text-right text-xs font-mono text-slate-500">Durée : 8.36s</div>
         </div>
       
     </div>
 
-    <footer class="mt-12 text-center text-xs text-slate-600 border-t border-slate-900 pt-6">
-      Développé par Amenallah JERBI (201JMT0157) • Stage d'Immersion REM4U SARL • ESPRIT
+    <footer class="mt-12 text-center text-xs text-slate-500 border-t border-slate-900 pt-6">
+      Développé par <strong>Amenallah JERBI</strong> (201JMT0157) • Stage d'Immersion REM4U SARL • ESPRIT Ingénierie Informatique
     </footer>
   </div>
 </body>

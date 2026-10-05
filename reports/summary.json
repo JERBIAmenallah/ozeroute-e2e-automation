@@ -1,22 +1,24 @@
 {
-  "timestamp": "2026-09-13T15:55:03.331Z",
-  "durationSeconds": "52.35",
-  "total": 6,
-  "passed": 6,
+  "timestamp": "2026-10-05T11:06:59.504Z",
+  "durationSeconds": "126.68",
+  "total": 10,
+  "passed": 10,
   "failed": 0,
+  "anomaliesDetected": 6,
   "scenarios": [
     {
-      "id": "parcours_nominal",
-      "name": "Parcours Nominal de Réservation (Paris -> Aéroport CDG)",
+      "id": "parcours_nominal_cdg",
+      "name": "Parcours Nominal de Réservation Navette (Paris -> Aéroport CDG)",
       "category": "E2E_NOMINAL",
-      "description": "Validation du tunnel complet : sélection du trajet, date, passagers, affichage des véhicules et transition vers le checkout",
+      "description": "Validation du tunnel complet depuis la page d'accueil jusqu'à la sélection d'une offre navette et l'accès au checkout",
       "status": "PASS",
+      "anomalyDetected": true,
       "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_nominal.png",
-      "durationMs": 26979,
+      "durationMs": 28438,
       "logs": [
         {
           "category": "SCENARIO",
-          "message": "Démarrage : Parcours Nominal de Réservation (Paris -> Aéroport CDG)",
+          "message": "Démarrage : Parcours Nominal de Réservation Navette (Paris -> Aéroport CDG)",
           "details": ""
         },
         {
@@ -25,8 +27,18 @@
           "details": ""
         },
         {
+          "category": "ANOMALIE",
+          "message": "Crash Widget Elfsight détecté (Quota de vues dépassé)",
+          "details": "eapps.Platform throws: \"Widget \"793bd03e-fa19-4ebf-a7ed-1c86ba0dbeaa\" can`t be initialized because APP_VIEWS_LIMIT_REACHED\" with \n\t -> JSHandle@node"
+        },
+        {
+          "category": "ANOMALIE",
+          "message": "Crash Widget Elfsight détecté (Quota de vues dépassé)",
+          "details": "eapps.Platform throws: \"Widget \"eb98f77c-7a87-4f78-bcbb-0f637b4f5bc5\" can`t be initialized because APP_VIEWS_LIMIT_REACHED\" with \n\t -> JSHandle@node"
+        },
+        {
           "category": "INFO",
-          "message": "Étape 2 : Saisie de l'itinéraire (Paris Gare de Lyon ➔ Aéroport Paris-CDG)",
+          "message": "Étape 2 : Saisie itinéraire (Paris Gare de Lyon ➔ Aéroport Paris-CDG)",
           "details": ""
         },
         {
@@ -36,84 +48,76 @@
         },
         {
           "category": "INFO",
-          "message": "Étape 4 : Consultation des offres de véhicules",
+          "message": "Étape 4 : Consultation des offres et sélection véhicule",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 5 : Validation accès tunnel checkout",
           "details": ""
         },
         {
           "category": "WARN",
-          "message": "Délai d'attente dépassé pour la liste des véhicules",
-          "details": ""
-        },
-        {
-          "category": "INFO",
-          "message": "Étape 5 : Sélection d'une offre et accès à l'étape suivante",
-          "details": ""
-        },
-        {
-          "category": "PASS",
-          "message": "Tunnel de réservation nominal validé avec succès",
+          "message": "Étape de réservation atteinte avec transition dynamique",
           "details": ""
         },
         {
           "category": "SUCCESS",
-          "message": "Scénario achevé en 26.98s",
+          "message": "Scénario achevé en 28.44s",
           "details": ""
         }
       ]
     },
     {
-      "id": "validation_champs_requis",
-      "name": "Validation des Champs Requis du Formulaire",
-      "category": "VALIDATION_FORMULAIRE",
-      "description": "Vérification que la soumission du formulaire sans adresses de départ/destination bloque l'envoi et reste sur la page d'accueil",
+      "id": "parcours_acces_deeplink",
+      "name": "Flux d'Accès Référencé (Google / Deep Link Pré-encodé Base64)",
+      "category": "DEEPLINK_ACCESS",
+      "description": "Validation du chargement direct de la grille tarifaire via paramètres de recherche injectés dans l'URL",
       "status": "PASS",
-      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\validation_champs_requis.png",
-      "durationMs": 6899,
+      "anomalyDetected": false,
+      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\flux_acces_direct.png",
+      "durationMs": 10709,
       "logs": [
         {
           "category": "SCENARIO",
-          "message": "Démarrage : Validation des Champs Requis du Formulaire",
+          "message": "Démarrage : Flux d'Accès Référencé (Google / Deep Link Pré-encodé Base64)",
           "details": ""
         },
         {
           "category": "INFO",
-          "message": "Étape 1 : Accès au formulaire d'accueil",
+          "message": "Étape 1 : Accès direct via URL pré-encodée (flux Google)",
           "details": ""
         },
         {
           "category": "INFO",
-          "message": "Étape 2 : Tentative de soumission sans saisir de point de départ",
-          "details": ""
-        },
-        {
-          "category": "INFO",
-          "message": "Étape 3 : Contrôle du blocage du formulaire",
+          "message": "Étape 2 : Vérification du chargement dynamique des véhicules",
           "details": ""
         },
         {
           "category": "PASS",
-          "message": "Validation réussie : le formulaire empêche la navigation sans champs obligatoires",
+          "message": "Liste des véhicules restituée avec succès",
           "details": ""
         },
         {
           "category": "SUCCESS",
-          "message": "Scénario achevé en 6.90s",
+          "message": "Scénario achevé en 10.71s",
           "details": ""
         }
       ]
     },
     {
-      "id": "gestion_passagers",
-      "name": "Vérification du Sélecteur de Passagers",
-      "category": "VALIDATION_FORMULAIRE",
-      "description": "Test de modification dynamique du nombre de passagers et vérification de la mise à jour du récapitulatif",
+      "id": "parcours_aller_retour",
+      "name": "Parcours Réservation Aller-Retour avec Date de Reprise",
+      "category": "E2E_ROUNDTRIP",
+      "description": "Validation du formulaire avec activation de l'option aller-retour et saisie d'un retour décalé",
       "status": "PASS",
-      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\gestion_passagers.png",
-      "durationMs": 4848,
+      "anomalyDetected": false,
+      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_aller_retour.png",
+      "durationMs": 13944,
       "logs": [
         {
           "category": "SCENARIO",
-          "message": "Démarrage : Vérification du Sélecteur de Passagers",
+          "message": "Démarrage : Parcours Réservation Aller-Retour avec Date de Reprise",
           "details": ""
         },
         {
@@ -123,125 +127,291 @@
         },
         {
           "category": "INFO",
-          "message": "Étape 2 : Ouverture du sélecteur et ajustement du nombre de passagers",
-          "details": ""
-        },
-        {
-          "category": "WARN",
-          "message": "Composant passagers non interactif au premier essai",
-          "details": ""
-        },
-        {
-          "category": "SUCCESS",
-          "message": "Scénario achevé en 4.85s",
-          "details": ""
-        }
-      ]
-    },
-    {
-      "id": "flux_acces_direct",
-      "name": "Accès Direct au Tunnel de Réservation via URL Paramétrée",
-      "category": "ACCES_DIRECT",
-      "description": "Validation du chargement direct de la page de réservation avec paramètres de recherche pré-remplis dans l'URL",
-      "status": "PASS",
-      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\flux_acces_direct.png",
-      "durationMs": 4782,
-      "logs": [
-        {
-          "category": "SCENARIO",
-          "message": "Démarrage : Accès Direct au Tunnel de Réservation via URL Paramétrée",
+          "message": "Étape 2 : Activation de l'option Aller-Retour",
           "details": ""
         },
         {
           "category": "INFO",
-          "message": "Étape 1 : Accès direct via URL de recherche paramétrée",
+          "message": "Étape 3 : Saisie itinéraire (Paris Montparnasse ➔ Aéroport de Paris-Beauvais (BVA))",
           "details": ""
         },
         {
           "category": "INFO",
-          "message": "Étape 2 : Vérification de la restitution des offres",
+          "message": "Étape 4 : Soumission et vérification des options aller-retour",
           "details": ""
         },
         {
           "category": "PASS",
-          "message": "Page de réservation et offres chargées correctement",
+          "message": "Formulaire aller-retour soumis et pris en charge",
           "details": ""
         },
         {
           "category": "SUCCESS",
-          "message": "Scénario achevé en 4.78s",
+          "message": "Scénario achevé en 13.94s",
           "details": ""
         }
       ]
     },
     {
       "id": "parcours_multilingue_en",
-      "name": "Validation du Parcours en Langue Anglaise (EN)",
-      "category": "MULTILINGUE",
-      "description": "Contrôle du bon chargement de la version internationale anglophone et de la persistance de la locale",
+      "name": "Parcours de Réservation Internationalisé (Locale EN)",
+      "category": "MULTILANG_I18N",
+      "description": "Contrôle de l'affichage du formulaire, de la persistance de langue et du rendu des composants anglophones",
       "status": "PASS",
+      "anomalyDetected": true,
       "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_multilingue_en.png",
-      "durationMs": 4461,
+      "durationMs": 18270,
       "logs": [
         {
           "category": "SCENARIO",
-          "message": "Démarrage : Validation du Parcours en Langue Anglaise (EN)",
+          "message": "Démarrage : Parcours de Réservation Internationalisé (Locale EN)",
           "details": ""
         },
         {
           "category": "INFO",
-          "message": "Étape 1 : Navigation vers la version anglaise (/en)",
+          "message": "Étape 1 : Accès à la version anglaise (/en)",
           "details": ""
         },
         {
           "category": "INFO",
-          "message": "URL actuelle : https://www.ozeroute.com/",
+          "message": "Étape 2 : Recherche en anglais (Disneyland Paris ➔ Paris Charles de Gaulle Airport)",
           "details": ""
+        },
+        {
+          "category": "ANOMALIE",
+          "message": "Crash Widget Elfsight détecté (Quota de vues dépassé)",
+          "details": "eapps.Platform throws: \"Widget \"793bd03e-fa19-4ebf-a7ed-1c86ba0dbeaa\" can`t be initialized because APP_VIEWS_LIMIT_REACHED\" with \n\t -> JSHandle@node"
+        },
+        {
+          "category": "ANOMALIE",
+          "message": "Crash Widget Elfsight détecté (Quota de vues dépassé)",
+          "details": "eapps.Platform throws: \"Widget \"eb98f77c-7a87-4f78-bcbb-0f637b4f5bc5\" can`t be initialized because APP_VIEWS_LIMIT_REACHED\" with \n\t -> JSHandle@node"
         },
         {
           "category": "PASS",
-          "message": "Version anglophone chargée sans anomalie",
+          "message": "Interface internationale (EN) validée sans régression",
           "details": ""
         },
         {
           "category": "SUCCESS",
-          "message": "Scénario achevé en 4.46s",
+          "message": "Scénario achevé en 18.27s",
           "details": ""
         }
       ]
     },
     {
-      "id": "affichage_responsive",
-      "name": "Vérification de l'Affichage sous Format Tablette",
-      "category": "RESPONSIVE",
-      "description": "Validation de la disposition du formulaire et des composants de réservation sur une résolution de 960px",
+      "id": "audit_faille_metier_0km",
+      "name": "Audit Faille Métier - Trajet intra-aéroport 0 km (Orly -> Orly facturé 31,25 €)",
+      "category": "ANOMALIE_METIER",
+      "description": "Vérification du comportement d'intégrité lorsque les adresses de départ et d'arrivée sont identiques (Réf: Rapport Chapitre 2.2)",
       "status": "PASS",
-      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\affichage_responsive.png",
-      "durationMs": 3637,
+      "anomalyDetected": true,
+      "screenshotPath": null,
+      "durationMs": 11277,
       "logs": [
         {
           "category": "SCENARIO",
-          "message": "Démarrage : Vérification de l'Affichage sous Format Tablette",
+          "message": "Démarrage : Audit Faille Métier - Trajet intra-aéroport 0 km (Orly -> Orly facturé 31,25 €)",
           "details": ""
         },
         {
           "category": "INFO",
-          "message": "Étape 1 : Chargement avec résolution tablette (960x800)",
+          "message": "Étape 1 : Saisie de points de départ et d'arrivée identiques (Orly ➔ Orly)",
           "details": ""
+        },
+        {
+          "category": "ANOMALIE",
+          "message": "Crash Widget Elfsight détecté (Quota de vues dépassé)",
+          "details": "eapps.Platform throws: \"Widget \"793bd03e-fa19-4ebf-a7ed-1c86ba0dbeaa\" can`t be initialized because APP_VIEWS_LIMIT_REACHED\" with \n\t -> JSHandle@node"
+        },
+        {
+          "category": "ANOMALIE",
+          "message": "Crash Widget Elfsight détecté (Quota de vues dépassé)",
+          "details": "eapps.Platform throws: \"Widget \"eb98f77c-7a87-4f78-bcbb-0f637b4f5bc5\" can`t be initialized because APP_VIEWS_LIMIT_REACHED\" with \n\t -> JSHandle@node"
         },
         {
           "category": "INFO",
-          "message": "Étape 2 : Vérification du formulaire de réservation",
-          "details": ""
-        },
-        {
-          "category": "PASS",
-          "message": "Composants visuels rendus et capture enregistrée",
+          "message": "Résultat navigation : https://www.ozeroute.com/",
           "details": ""
         },
         {
           "category": "SUCCESS",
-          "message": "Scénario achevé en 3.64s",
+          "message": "Scénario achevé en 11.28s",
+          "details": ""
+        }
+      ]
+    },
+    {
+      "id": "audit_responsive_960px",
+      "name": "Audit Ergonomie Responsive CSS à 960px (Troncature Date et Passagers)",
+      "category": "ANOMALIE_CSS",
+      "description": "Mesure des conteneurs Flexbox et capture haute résolution de la troncature des dates et libellés (Réf: Rapport Chapitre 2.3)",
+      "status": "PASS",
+      "anomalyDetected": true,
+      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\01_bug_css_troncature_date_passagers_960px.png",
+      "durationMs": 7512,
+      "logs": [
+        {
+          "category": "SCENARIO",
+          "message": "Démarrage : Audit Ergonomie Responsive CSS à 960px (Troncature Date et Passagers)",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 1 : Chargement à une résolution de 960px",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 2 : Mesure de la troncature sur le bandeau horizontal Flexbox",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Largeur champ date: 0px | Texte passagers: \"\"",
+          "details": ""
+        },
+        {
+          "category": "ANOMALIE",
+          "message": "Capture haute définition enregistrée pour la troncature CSS (Réf: Rapport 2.3)",
+          "details": ""
+        },
+        {
+          "category": "SUCCESS",
+          "message": "Scénario achevé en 7.51s",
+          "details": ""
+        }
+      ]
+    },
+    {
+      "id": "audit_console_elfsight",
+      "name": "Audit Intégrité Console - Crash Widget Elfsight (APP_VIEWS_LIMIT_REACHED)",
+      "category": "ANOMALIE_TIERS",
+      "description": "Surveillance des erreurs non interceptées et dépassement de quota sur le widget d'avis Google (Réf: Rapport Chapitre 2.4)",
+      "status": "PASS",
+      "anomalyDetected": true,
+      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\02_bug_section_avis_elfsight_vide.png",
+      "durationMs": 7290,
+      "logs": [
+        {
+          "category": "SCENARIO",
+          "message": "Démarrage : Audit Intégrité Console - Crash Widget Elfsight (APP_VIEWS_LIMIT_REACHED)",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 1 : Navigation vers la page d'accueil et défilement vers la section avis",
+          "details": ""
+        },
+        {
+          "category": "ANOMALIE",
+          "message": "Section avis capturée et surveillance de quota Elfsight enregistrée (Réf: Rapport 2.4)",
+          "details": ""
+        },
+        {
+          "category": "SUCCESS",
+          "message": "Scénario achevé en 7.29s",
+          "details": ""
+        }
+      ]
+    },
+    {
+      "id": "audit_reseau_promo_404",
+      "name": "Audit Réseau HTTP - Détection 404 sur Endpoint /v1/common/promo",
+      "category": "ANOMALIE_RESEAU",
+      "description": "Interception réseau lors du chargement pour consigner les requêtes 404 non maîtrisées (Réf: Rapport Chapitre 2.5)",
+      "status": "PASS",
+      "anomalyDetected": true,
+      "screenshotPath": null,
+      "durationMs": 9550,
+      "logs": [
+        {
+          "category": "SCENARIO",
+          "message": "Démarrage : Audit Réseau HTTP - Détection 404 sur Endpoint /v1/common/promo",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 1 : Déclenchement de l'appel endpoint code promo",
+          "details": ""
+        },
+        {
+          "category": "NETWORK",
+          "message": "Endpoint promo a répondu avec code 404 (absence de code promo actif)",
+          "details": ""
+        },
+        {
+          "category": "ANOMALIE",
+          "message": "Trace d'appel réseau promo 404 consignée (Réf: Rapport 2.5)",
+          "details": ""
+        },
+        {
+          "category": "SUCCESS",
+          "message": "Scénario achevé en 9.55s",
+          "details": ""
+        }
+      ]
+    },
+    {
+      "id": "audit_validation_typo_ui",
+      "name": "Audit Qualité Logicielle UI - Faute de Français en Production",
+      "category": "ANOMALIE_UI",
+      "description": "Validation du décompte passagers à 0 adulte et capture du message d'erreur 'Faut avoir au moin un adulte' (Réf: Rapport Chapitre 2.6)",
+      "status": "PASS",
+      "anomalyDetected": false,
+      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\gestion_passagers.png",
+      "durationMs": 11000,
+      "logs": [
+        {
+          "category": "SCENARIO",
+          "message": "Démarrage : Audit Qualité Logicielle UI - Faute de Français en Production",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 1 : Retrait de tous les passagers adultes dans le formulaire",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Message de validation capturé : \"Ce champ est obligatoire\"",
+          "details": ""
+        },
+        {
+          "category": "SUCCESS",
+          "message": "Scénario achevé en 11.00s",
+          "details": ""
+        }
+      ]
+    },
+    {
+      "id": "resilience_stripe_radar",
+      "name": "Test Résilience Réseau - Simulation Filtre Adblocker sur Stripe Radar",
+      "category": "RESILIENCE_SECURITE",
+      "description": "Vérifie la robustesse du tunnel de paiement lors du blocage client de r.stripe.com (Réf: Rapport Chapitre 3.3)",
+      "status": "PASS",
+      "anomalyDetected": false,
+      "screenshotPath": null,
+      "durationMs": 8355,
+      "logs": [
+        {
+          "category": "SCENARIO",
+          "message": "Démarrage : Test Résilience Réseau - Simulation Filtre Adblocker sur Stripe Radar",
+          "details": ""
+        },
+        {
+          "category": "INFO",
+          "message": "Étape 1 : Test de complétion du tunnel sous interception Stripe Radar",
+          "details": ""
+        },
+        {
+          "category": "PASS",
+          "message": "Interception Stripe Radar active sans blocage fonctionnel du tunnel (Réf: Rapport 3.3)",
+          "details": ""
+        },
+        {
+          "category": "SUCCESS",
+          "message": "Scénario achevé en 8.36s",
           "details": ""
         }
       ]
