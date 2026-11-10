@@ -1,20 +1,19 @@
 [
   {
     "id": "parcours_nominal_cdg",
-    "category": "PARCOURS NOMINAL",
-    "name": "SC-01 : Parcours Nominal E2E Complet — Transfert Privé (Gare de Lyon ➔ Paris-CDG ➔ Checkout)",
-    "description": "Automatisation complète du tunnel : saisie Google Places (Gare de Lyon -> CDG), sélection 2 adultes, bascule sur l'onglet Transfert Privé (Berline Eco 62,50 €), validation de la modale Bagages et remplissage du formulaire Checkout (/booking).",
+    "title": "SC-01 : Réservation Transfert Privé (Gare de Lyon ➔ Paris-CDG ➔ Checkout /booking)",
+    "category": "Parcours E2E",
     "type": "e2e_nominal",
     "enabled": true,
     "viewport": "desktop",
     "locale": "fr",
-    "data": {
-      "from": "Gare de Lyon, Paris",
-      "to": "Charles de Gaulle",
+    "input": {
+      "departure": "Gare de Lyon, Paris",
+      "destination": "Charles de Gaulle",
       "daysAhead": 4,
       "time": "14:00",
       "passengers": { "adults": 2, "children": 0, "babies": 0 },
-      "vehicleCategory": "private",
+      "vehicleTab": "private",
       "client": {
         "firstName": "Amenallah",
         "lastName": "Jerbi",
@@ -22,153 +21,195 @@
         "phone": "+33612345678"
       }
     },
-    "screenshot": "screenshots/parcours_nominal.png"
+    "expected": {
+      "shouldReachVehicles": true,
+      "shouldReachCheckout": true,
+      "screenshot": "parcours_nominal.png"
+    }
   },
   {
     "id": "parcours_acces_deeplink",
-    "category": "FLUX GOOGLE / DEEP LINK",
-    "name": "SC-02 : Flux d'Accès Direct Référencé (Deep Link Beauvais BVA ➔ Disneyland Paris)",
-    "description": "Validation de l'hydratation SSR Next.js lors d'un accès direct par URL encodée en Base64 (/mobilite-aeroport/reservation?q=...) et vérification de l'affichage des navettes partagées (57,80 €).",
-    "type": "e2e_deeplink",
+    "title": "SC-02 : Accès Direct Lien Google / Deep Link (Beauvais BVA ➔ Disneyland Paris)",
+    "category": "Parcours E2E",
+    "type": "deeplink_flow",
     "enabled": true,
     "viewport": "desktop",
     "locale": "fr",
-    "data": {
+    "input": {
       "preset": "bva_disneyland",
       "daysAhead": 4,
-      "adults": 2
+      "passengers": { "adults": 2, "children": 0, "babies": 0 }
     },
-    "screenshot": "screenshots/flux_acces_direct.png"
+    "expected": {
+      "shouldDisplayOffers": true,
+      "screenshot": "flux_acces_direct.png"
+    }
   },
   {
     "id": "parcours_aller_retour",
-    "category": "PARCOURS NAVETTE & CHECKOUT",
-    "name": "SC-03 : Réservation Navette Économique & Sélection Terminal (/booking)",
-    "description": "Parcours complet sur une offre Navette Économique (Beauvais -> Disneyland Paris, 2 passagers) : sélection d'un horaire, arrivée sur /booking, choix de l'arrêt (Terminal 1) et saisie des coordonnées passager.",
-    "type": "e2e_roundtrip",
+    "title": "SC-03 : Réservation Navette Économique & Choix Terminal 1 (Beauvais ➔ Disneyland ➔ /booking)",
+    "category": "Parcours E2E",
+    "type": "shuttle_checkout_flow",
     "enabled": true,
     "viewport": "desktop",
     "locale": "fr",
-    "data": {
-      "from": "Aéroport de Paris-Beauvais",
-      "to": "Disneyland Paris",
+    "input": {
+      "departure": "Aéroport de Paris-Beauvais",
+      "destination": "Disneyland Paris",
       "daysAhead": 4,
       "time": "12:00",
-      "passengers": { "adults": 2, "children": 0, "babies": 0 }
+      "passengers": { "adults": 2, "children": 0, "babies": 0 },
+      "vehicleTab": "shuttle"
     },
-    "screenshot": "screenshots/parcours_aller_retour.png"
+    "expected": {
+      "shouldReachCheckout": true,
+      "screenshot": "parcours_aller_retour.png"
+    }
   },
   {
     "id": "parcours_multilingue_en",
-    "category": "INTERNATIONALISATION (i18n)",
-    "name": "SC-04 : Parcours Internationalisé Anglais (/en — Switch Langue & Recherche)",
-    "description": "Validation du changement de langue (FR -> English), contrôle de la traduction des composants (Choose passengers, Search) et soumission d'une recherche complète vers la liste des offres en anglais.",
-    "type": "e2e_multilang",
+    "title": "SC-04 : Parcours Version Anglaise (/en — Switch Langue & Recherche Shuttle/Private)",
+    "category": "Internationalisation",
+    "type": "multilang_flow",
     "enabled": true,
     "viewport": "desktop",
     "locale": "en",
-    "data": {
-      "from": "Beauvais",
-      "to": "Disneyland Paris",
+    "input": {
+      "departure": "Beauvais",
+      "destination": "Disneyland Paris",
       "daysAhead": 4,
       "time": "12:00",
       "passengers": { "adults": 2, "children": 0, "babies": 0 }
     },
-    "screenshot": "screenshots/parcours_multilingue_en.png"
+    "expected": {
+      "urlContains": "/en",
+      "shouldDisplayEnglishUI": true,
+      "screenshot": "parcours_multilingue_en.png"
+    }
+  },
+  {
+    "id": "parcours_excursion_versailles",
+    "title": "SC-05 : Nouveau Module Excursions (/excursions/versailles — Formulaire Réservation)",
+    "category": "Nouveaux Modules",
+    "type": "excursion_flow",
+    "enabled": true,
+    "viewport": "desktop",
+    "locale": "fr",
+    "input": {
+      "excursionSlug": "versailles",
+      "client": {
+        "fullName": "Amenallah Jerbi",
+        "email": "amenallah.jerbi@esprit.tn",
+        "phone": "+33 6 12 34 56 78",
+        "pickupAddress": "Hôtel Pullman Paris Tour Eiffel"
+      }
+    },
+    "expected": {
+      "screenshot": "excursion_versailles.png"
+    }
+  },
+  {
+    "id": "audit_bug_mise_a_disposition",
+    "title": "SC-06 : Faille & Bug Mise à Disposition (Tarif 11H=12H & Manipulation Prix Base64 'offer=' ➔ 1,00 €)",
+    "category": "Bugs Détectés",
+    "type": "anomaly_mise_a_dispo",
+    "enabled": true,
+    "viewport": "desktop",
+    "locale": "fr",
+    "input": {
+      "departure": "Gare de Lyon",
+      "destination": "Tour Eiffel",
+      "daysAhead": 5,
+      "time": "14:00",
+      "passengers": { "adults": 1, "children": 0, "babies": 0 }
+    },
+    "expected": {
+      "anomalyId": "BUG-MAD-01",
+      "severity": "CRITIQUE (P1)",
+      "screenshot": "mise_a_dispo_bug.png"
+    }
   },
   {
     "id": "audit_faille_metier_0km",
-    "category": "AUDIT ANOMALIE P1",
-    "name": "SC-05 : Reproduction Faille Logique Métier — Trajet 0 km (Orly ➔ Orly à 31,25 €)",
-    "description": "Audit du validateur d'itinéraire : soumission d'un point de départ et d'arrivée identiques (Paris-Orly -> Paris-Orly) et constat de la tarification d'une Berline Eco à 31,25 € TTC pour un trajet nul.",
-    "type": "audit_0km",
+    "title": "SC-07 : Bug Logique Métier — Trajet Identique 0 km (Orly ➔ Orly facturé 31,25 €)",
+    "category": "Bugs Détectés",
+    "type": "anomaly_0km",
     "enabled": true,
     "viewport": "desktop",
     "locale": "fr",
-    "data": {
-      "from": "Aéroport de Paris-Orly",
-      "to": "Aéroport de Paris-Orly",
+    "input": {
+      "departure": "Aéroport de Paris-Orly",
+      "destination": "Aéroport de Paris-Orly",
       "daysAhead": 4,
       "time": "14:00",
-      "passengers": { "adults": 1, "children": 0, "babies": 0 },
-      "expectedBuggyPrice": "31,25"
+      "passengers": { "adults": 1, "children": 0, "babies": 0 }
     },
-    "screenshot": "screenshots/03_bug_metier_orly_orly_0km_31euros.png"
-  },
-  {
-    "id": "audit_responsive_960px",
-    "category": "AUDIT ANOMALIE P2",
-    "name": "SC-06 : Audit Ergonomie Responsive CSS à 960px (Bandeau de Recherche)",
-    "description": "Vérification du comportement Flexbox Material-UI à la résolution intermédiaire 960x800px sur la page des résultats (/mobilite-aeroport/reservation) et mesure des dimensions des champs Date et Passagers.",
-    "type": "audit_responsive_960",
-    "enabled": true,
-    "viewport": "tablet_960",
-    "locale": "fr",
-    "data": {
-      "preset": "bva_disneyland",
-      "daysAhead": 4,
-      "adults": 1
-    },
-    "screenshot": "screenshots/01_bug_css_troncature_date_passagers_960px.png"
+    "expected": {
+      "anomalyId": "BUG-0KM",
+      "severity": "CRITIQUE (P1)",
+      "expectedBuggyPrice": "31,25",
+      "screenshot": "03_bug_metier_orly_orly_0km_31euros.png"
+    }
   },
   {
     "id": "audit_validation_typo_ui",
-    "category": "AUDIT QUALITÉ UI / FORMULAIRE",
-    "name": "SC-07 : Contrôle des Champs Obligatoires & Message Passagers ('au moin un adulte')",
-    "description": "Validation des garde-fous du formulaire de recherche en cas d'omission du nombre d'adultes (0 adulte sélectionné) et vérification du blocage de la soumission avec capture du message d'alerte.",
-    "type": "audit_typo_ui",
+    "title": "SC-08 : Validation Formulaire Passagers & Message UI ('Faut avoir au moin un adulte')",
+    "category": "Bugs Détectés",
+    "type": "anomaly_ui_typo",
     "enabled": true,
     "viewport": "desktop",
     "locale": "fr",
-    "data": {
-      "from": "Gare de Lyon, Paris",
-      "to": "Aéroport de Paris-Orly"
+    "input": {
+      "departure": "Gare de Lyon, Paris",
+      "destination": "Aéroport de Paris-Orly",
+      "passengers": { "adults": 0, "children": 0, "babies": 0 }
     },
-    "screenshot": "screenshots/validation_champs_requis.png"
+    "expected": {
+      "anomalyId": "BUG-UI-TYPO",
+      "severity": "MINEUR (P3)",
+      "expectedTypoString": "Faut avoir au moin un adulte",
+      "screenshot": "validation_champs_requis.png"
+    }
   },
   {
-    "id": "audit_console_elfsight",
-    "category": "AUDIT SERVICES TIERS",
-    "name": "SC-08 : Audit Preuve Sociale & Section Avis Google Reviews",
-    "description": "Surveillance des erreurs console JS au chargement et vérification de l'affichage de la section des avis clients Google sur la page d'accueil.",
-    "type": "audit_elfsight",
+    "id": "parcours_groupe_et_mytrip",
+    "title": "SC-09 : Tarif Groupe (2 Adultes + 1 Enfant + 1 Bébé) & Espace Mon Trajet (mytrip.ozeroute.com)",
+    "category": "Nouveaux Modules",
+    "type": "group_and_mytrip_flow",
     "enabled": true,
     "viewport": "desktop",
     "locale": "fr",
-    "data": {},
-    "screenshot": "screenshots/02_bug_section_avis_elfsight_vide.png"
-  },
-  {
-    "id": "audit_reseau_promo_404",
-    "category": "AUDIT CONFIGURATION FAMILLE & NOUVEAUTÉS",
-    "name": "SC-09 : Gestion Multi-Passagers (Adultes/Enfant/Bébé) & Nouveaux Modules (Excursions / Mise à dispo)",
-    "description": "Test du compteur multi-catégories (2 Adultes, 1 Enfant, 1 Bébé = 4 passagers avec remise groupe), surveillance réseau et vérification des pages Mise à disposition et Excursions.",
-    "type": "audit_promo_404",
-    "enabled": true,
-    "viewport": "desktop",
-    "locale": "fr",
-    "data": {
-      "from": "Aéroport de Paris-Beauvais",
-      "to": "Disneyland Paris",
+    "input": {
+      "departure": "Aéroport de Paris-Beauvais",
+      "destination": "Disneyland Paris",
       "daysAhead": 5,
-      "passengers": { "adults": 2, "children": 1, "babies": 1 }
+      "time": "12:00",
+      "passengers": { "adults": 2, "children": 1, "babies": 1 },
+      "testOrderCode": "OZR-2026-TEST"
     },
-    "screenshot": "screenshots/gestion_passagers.png"
+    "expected": {
+      "screenshot": "gestion_passagers.png",
+      "secondScreenshot": "mytrip_verification.png"
+    }
   },
   {
-    "id": "resilience_stripe_radar",
-    "category": "RÉSILIENCE RÉSEAU & PAIEMENT",
-    "name": "SC-10 : Résilience du Tunnel Checkout face au Blocage Adblocker (Stripe Radar)",
-    "description": "Simulation d'un bloqueur de suivi filtrant r.stripe.com (ERR_BLOCKED_BY_CLIENT) et vérification que l'étape finale de paiement (/booking) reste fonctionnelle sans crash.",
-    "type": "resilience_stripe",
+    "id": "audit_securite_api_cors",
+    "title": "SC-10 : Audit Sécurité API (CORS Permissif api.ozeroute.com, Headers Nginx & Résilience Stripe)",
+    "category": "Sécurité & API",
+    "type": "security_and_resilience",
     "enabled": true,
     "viewport": "desktop",
     "locale": "fr",
-    "data": {
+    "input": {
       "preset": "bva_disneyland",
       "daysAhead": 4,
-      "adults": 2
+      "blockStripeRadar": true
     },
-    "screenshot": null
+    "expected": {
+      "anomalyId": "SEC-CORS-HEADERS",
+      "severity": "ÉLEVÉE (P1)",
+      "checkoutStillFunctional": true,
+      "screenshot": "affichage_responsive.png"
+    }
   }
 ]

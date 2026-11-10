@@ -1,175 +1,87 @@
-# Ozeroute QA — Système d'Automatisation E2E Modulaire, Audits & Remédiations
+# Ozeroute — Tests E2E Playwright & Audit Technique
 
-> **Projet de Stage d'Immersion en Entreprise — ESPRIT (2025 - 2026)**  
-> **Élève-Ingénieur :** Amenallah JERBI (`201JMT0157`) — Spécialisation Informatique  
-> **Entreprise d'Accueil :** REM4U SARL (Tunis)  
-> **Plateforme Cible :** [Ozeroute](https://www.ozeroute.com) (Mobilité & Transferts Aéroportuaires)  
-> **Encadrant Technique :** Wael Jlassi (Pôle Technique REM4U)  
-> **Lien du Dépôt :** [https://github.com/JERBIAmenallah/ozeroute-e2e-automation](https://github.com/JERBIAmenallah/ozeroute-e2e-automation)
+Suite de tests End-to-End automatisés sous **Playwright (Node.js)** pour tester le tunnel de réservation d'[Ozeroute](https://www.ozeroute.com), les nouveaux modules (`Excursions`, `Mise à disposition`, `Mon Trajet`) et vérifier la sécurité des endpoints API.
+
+Par défaut en local, les tests se lancent en **mode visuel (`headless: false`)** avec un indicateur d'étape à l'écran et un encadrement des champs cliqués, pour voir le navigateur effectuer chaque action en direct comme un testeur manuel.
 
 ---
 
-## 1. Contexte & Problématique Métier
+## 1. Ce qui est testé dans la suite (`config/scenarios.json`)
 
-Dans le cadre de la fiabilisation du tunnel de vente de la plateforme **Ozeroute**, ce projet d'ingénierie implémente une solution industrielle de validation continue et d'audit automatisé basée sur **Playwright** et **Node.js**.
-
-La plateforme présentait initialement une couverture de validation exclusivement manuelle, générant des risques critiques de régressions lors des déploiements continus et limitant le taux de conversion sur le tunnel d'achat.
-
-Pour répondre à cette problématique, la solution développée repose sur une architecture **Data-Driven Testing** couplée au pattern **Page Object Model (POM)**, enrichie de modules d'interception réseau, de tests API REST, de télémétrie de performance et d'intégration continue sous **GitHub Actions** et **Docker**.
+1. **`parcours_nominal_cdg` (Transfert Privé E2E) :**
+   - Recherche `Gare de Lyon ➔ Paris-CDG` via Google Places Autocomplete, sélection de la date (`J+4`) et de `2 Adultes`.
+   - Passage sur l'onglet `Transfert privé`, clic sur `Choisir`, validation de la modale **`"Bagages Transportés"`**, arrivée sur `/booking` (`62,50 €`) et remplissage du formulaire passager + CGV.
+2. **`parcours_acces_deeplink` (Accès direct lien Google / Deep Link) :**
+   - Ouverture directe d'un lien de recherche pré-rempli (`Beauvais BVA ➔ Disneyland Paris`) et vérification de l'affichage des offres.
+3. **`parcours_aller_retour` (Navette Économique & Terminal) :**
+   - Recherche `Beauvais ➔ Disneyland`, sélection d'une `Navette Économique` (`57,80 €`), sélection de l'arrêt **`Terminal 1`** sur `/booking` et validation des coordonnées.
+4. **`parcours_multilingue_en` (Version Anglaise `/en`) :**
+   - Changement de langue via le menu du header (`FR ➔ English`) et test complet du formulaire en anglais (`Economy Shuttle` / `Private transfer`).
+5. **`parcours_excursion_versailles` (Nouveau module `/excursions`) :**
+   - Navigation vers `/excursions/versailles` (*Château de Versailles*), clic sur **`Réserver cette excursion`** et remplissage du tiroir de demande de réservation (`190 €`).
+6. **`audit_bug_mise_a_disposition` (Faille & Bug Tarifaire sur `/mise-a-disposition` ➔ `/booking`) :**
+   - Test de bout en bout sur la nouvelle page `/mise-a-disposition` (`Gare de Lyon ➔ Tour Eiffel`), sélection d'une `Berline Eco (3)` (`160,00 €` pour `3H`) et arrivée sur `/booking`.
+   - **Faille & Bugs identifiés :**
+     1. **Manipulation de prix côté client (CWE-472) :** Sur `/booking?q=...&offer=...`, tout l'objet de l'offre sélectionnée (y compris la grille tarifaire `prices` et `price.total.value`) est passé dans le paramètre d'URL `offer=` encodé en Base64 **sans signature cryptographique**. En modifiant `prices["3H"] = 1` dans le Base64 de l'URL, la page `/booking` affiche directement **`Prix total : 1,00 €`** au lieu de `160,00 €`.
+     2. **Bug de calcul tarifaire (11H = 12H) :** Dans la réponse de `POST /v1/common/privates`, les paliers `11H` (`587 €`) et `12H` (`587 €`) ont exactement le même prix (la 12ème heure n'est pas facturée), et la requête envoie `"campaign_code": "undefined"`.
+7. **`audit_faille_metier_0km` (Trajet identique `Orly ➔ Orly` à 0 km) :**
+   - Saisie de la même adresse en départ et en destination (`Aéroport de Paris-Orly ➔ Aéroport de Paris-Orly`) : le système accepte la recherche et propose une `Berline Eco` facturée `31,25 €`.
+8. **`audit_validation_typo_ui` (Validation formulaire & appel 404) :**
+   - Soumission avec 0 adulte : vérification du blocage de sécurité et capture du message `"Faut avoir au moin un adulte"` ainsi que de l'appel en 404 sur `https://api.ozeroute.com/v1/common/promo`.
+9. **`parcours_groupe_et_mytrip` (Tarif groupe & Espace `Mon Trajet`) :**
+   - Test multi-passagers (`2 Adultes + 1 Enfant + 1 Bébé` avec remise groupe `-12%`) puis vérification de la recherche de réservation sur `https://mytrip.ozeroute.com` (`POST /v1/common/orders/exists`).
+10. **`audit_securite_api_cors` (Audit Sécurité API & Sous-domaines) :**
+    - Vérification de la configuration CORS sur `https://api.ozeroute.com` (qui reflète actuellement n'importe quel header `Origin` externe avec `Access-Control-Allow-Credentials: true`).
+    - Vérification des headers de sécurité (`X-Frame-Options`, `Content-Security-Policy`, `Strict-Transport-Security`) présents sur `www.ozeroute.com` mais manquants sur les nouveaux sous-domaines `mytrip.ozeroute.com` et `partner.ozeroute.com`.
+    - Test de résilience du Checkout `/booking` lorsque `r.stripe.com` (Stripe Radar) est bloqué par un bloqueur de publicité.
 
 ---
 
-## 2. Correspondance avec le Rapport de Stage
-
-Ce dépôt constitue le livrable technique complet formalisé dans le **Rapport de Stage d'Immersion** :
-
-| Chapitre du Rapport | Composant Technique dans le Dépôt | Description & Objectif |
-| :--- | :--- | :--- |
-| **Chapitre 1 & 2.1** | `tests/api.test.js`, `benchmark.js` | Couverture des modules de la plateforme : Transferts (`/`), International (`/en`), Chauffeur Horaire (`/mise-a-disposition`), Visites (`/excursions`) et Suivi Client (`mytrip.ozeroute.com`). |
-| **Chapitre 2.1 & 3.1** | `pages/`, `config/scenarios.json` | Spécification et automatisation des 4 parcours nominaux E2E jusqu'au Checkout `/booking` (Transfert Privé CDG + modale *Bagages Transportés*, Deep Link BVA-Disneyland, Navette + sélection Terminal, Multilingue `/en`). |
-| **Chapitre 2.2** | `runner.js` (`audit_faille_metier_0km`) | Détection et capture de la faille logique métier : trajet 0 km Orly-Orly facturé à 31,25 € (`Berline Eco`). |
-| **Chapitre 2.3** | `runner.js` (`audit_responsive_960px`) | Audit d'ergonomie et non-régression responsive à 960px sur le bandeau supérieur de recherche. |
-| **Chapitre 2.4** | `runner.js` (`audit_console_elfsight`) | Surveillance console et vérification de la section Preuve Sociale / Avis Google Reviews. |
-| **Chapitre 2.5** | `runner.js` (`audit_reseau_promo_404`) | Gestion multi-passagers (Adultes/Enfant/Bébé), vérification des modules `/mise-a-disposition` et `/excursions`, et interception des requêtes HTTP 404 sur `/v1/common/promo`. |
-| **Chapitre 2.6** | `runner.js` (`audit_validation_typo_ui`) | Détection du défaut de qualité UI en production (*"Faut avoir au moin un adulte"*). |
-| **Chapitre 3.3** | `pages/BasePage.js`, `config/ozeroute.config.js` | Neutralisation d'Axeptio, désactivation propre de la modale promo asynchrone (`ozr_promo_popup_minimized`) sans altérer le Virtual DOM React, et résilience face au blocage de Stripe Radar (`r.stripe.com`). |
-| **Chapitre 3.4 & 3.5** | `benchmark.js`, `reports/rapport_console.txt` | Moteur de télémétrie et de benchmark de performance (TTFB, DOMContentLoaded, volumétrie réseau). |
-| **Chapitre 3.6** | `.github/workflows/playwright.yml`, `Dockerfile` | Pipeline d'Intégration Continue (CI/CD) automatisée sous GitHub Actions et conteneurisation Docker. |
-| **Chapitre 4.2** | `remediation/validationSchema.js` | Implémentation du schéma de validation Zod/Yup pour interdire les trajets aberrants < 1 km. |
-| **Chapitre 4.3** | `remediation/responsive-patch.css` | Patch CSS Flexbox résolvant l'écrasement des composants sur breakpoint tablette 960px. |
-| **Chapitre 4.4** | `remediation/reviews-service.js` | Architecture de secours avec cache ISR pour éliminer la dépendance bloquante au widget tiers. |
-
----
-
-## 3. Architecture du Projet
+## 2. Structure du projet
 
 ```text
-├── .github/
-│   └── workflows/
-│       └── playwright.yml      # Pipeline CI/CD GitHub Actions (exécute tests, API, benchmark)
 ├── config/
-│   ├── ozeroute.config.js      # Configuration globale (viewports, cookies Axeptio, règles réseau)
-│   └── scenarios.json          # Référentiel Data-Driven (10 scénarios : nominaux & audits d'anomalies)
-├── pages/                      # Pattern Page Object Model (POM)
-│   ├── BasePage.js             # Méthodes communes (navigation, cookies, neutralisation des modales)
-│   ├── HomePage.js             # Formulaire d'accueil (adresses, dates, passagers, validation)
-│   ├── BookingPage.js          # Cartes de véhicules, stepper et inspection responsive à 960px
-│   └── CheckoutPage.js         # Tunnel de checkout, récapitulatif et intégration Stripe
-├── remediation/                # Solutions logicielles correctives (Chapitre 4 du rapport)
-│   ├── validationSchema.js     # Validateur Zod/Yup anti-0km et cohérence des itinéraires
-│   ├── responsive-patch.css    # Correctif CSS Flexbox pour les résolutions intermédiaires
-│   └── reviews-service.js      # Service résilient avec cache ISR pour les avis clients
+│   ├── ozeroute.config.js      # URLs, options navigateur (headed/headless), cookies Axeptio
+│   └── scenarios.json          # Liste des 10 scénarios configurables
+├── pages/
+│   ├── BasePage.js             # Navigation, neutralisation promo (ozr_promo_popup_minimized) & indicateur visuel
+│   ├── HomePage.js             # Saisie Google Places, dates, passagers, changement de langue
+│   ├── BookingPage.js          # Attente des offres, changement d'onglet, popup "Bagages Transportés"
+│   └── CheckoutPage.js         # Formulaire /booking (passager, choix Terminal, CGV)
 ├── tests/
-│   └── api.test.js             # Suite de tests d'intégration API REST (endpoints backend)
+│   └── api.test.js             # Tests HTTP/SSR, API et vérification des headers de sécurité / CORS
 ├── utils/
-│   ├── logger.js               # Journalisation horodatée console et fichier (execution.log)
-│   └── reporter.js             # Générateur du rapport HTML interactif et synthèse JSON
-├── reports/                    # Artefacts d'exécution générés automatiquement
-│   ├── report.html             # Dashboard interactif avec statuts, durées et screenshots
-│   ├── summary.json            # Métriques brutes de test au format JSON
-│   ├── rapport_console.txt     # Bilan de télémétrie de performance et temps de chargement
-│   └── execution.log           # Trace d'exécution détaillée
-├── screenshots/                # Captures d'écran et preuves d'audit certifiées
-├── runner.js                   # Moteur d'orchestration Master Playwright Data-Driven
-├── benchmark.js                # Moteur de télémétrie de performance et Web Vitals
-├── Dockerfile                  # Image Docker officielle Playwright pour exécution hermétique
-├── docker-compose.yml          # Orchestration multi-conteneurs
-└── package.json                # Dépendances npm et scripts de lancement
+│   ├── logger.js               # Logs console et fichier
+│   └── reporter.js             # Génération du rapport HTML (reports/report.html) et JSON
+├── reports/                    # Rapports générés après exécution
+├── screenshots/                # Captures d'écran prises pendant les tests
+├── runner.js                   # Script principal d'exécution Playwright
+└── benchmark.js                # Mesure des temps de chargement (TTFB, DOMContentLoaded)
 ```
 
 ---
 
-## 4. Prérequis et Installation
-
-- **Node.js :** Version 18.0 ou supérieure recommandée
-- **Navigateur :** Microsoft Edge ou Chromium natif
-- *(Optionnel)* **Docker & Docker-Compose :** Pour l'exécution en conteneur isolé
+## 3. Installation & Exécution
 
 ```bash
-# 1. Cloner le projet
-git clone https://github.com/JERBIAmenallah/ozeroute-e2e-automation.git
-cd ozeroute-e2e-automation
-
-# 2. Installer les dépendances
+# Installer les dépendances
 npm install
 
-# 3. Installer les navigateurs Playwright (si non préinstallés)
-npx playwright install chromium
-```
-
----
-
-## 5. Commandes d'Exécution
-
-Le projet propose des scripts prêts à l'emploi via `package.json` :
-
-```bash
-# 1. Exécuter l'intégralité de la suite de tests E2E et audits d'anomalies
+# Lancer tous les tests en mode VISUEL (ouvre le navigateur devant vous)
 npm test
 
-# 2. Exécuter uniquement le parcours nominal (Paris Gare de Lyon -> CDG)
+# Lancer un seul scénario en direct (ex: Transfert privé, Excursions, ou Bug Mise à disposition)
 npm run test:nominal
+npm run test:excursions
+npm run test:mise-a-dispo
+npm run test:security
 
-# 3. Exécuter le test d'accès direct référencé (Google / Deep Link)
-npm run test:deeplink
-
-# 4. Exécuter le parcours Aller-Retour avec date de reprise
-npm run test:roundtrip
-
-# 5. Exécuter le parcours internationalisé en anglais (/en)
-npm run test:multilang
-
-# 6. Exécuter l'audit de reproduction de la faille métier 0 km (Orly -> Orly)
-npm run test:anomalies
-
-# 7. Exécuter les tests d'intégration des endpoints API REST
+# Lancer les tests API & vérification sécurité HTTP/CORS
 npm run test:api
 
-# 8. Lancer le moteur de télémétrie et de benchmark de performance
-npm run benchmark
+# Lancer les tests en arrière-plan (sans ouvrir la fenêtre)
+npm run test:headless
 
-# 9. Ouvrir le rapport HTML interactif généré
+# Ouvrir le rapport HTML avec toutes les captures
 npm run report:open
 ```
-
-### Exécution ciblée via le Runner :
-
-```bash
-# Lancer un scénario spécifique par son ID
-node runner.js --scenario=audit_responsive_960px
-node runner.js --scenario=resilience_stripe_radar
-```
-
----
-
-## 6. Exécution Conteneurisée (Docker)
-
-Pour garantir une exécution hermétique identique à l'environnement de production :
-
-```bash
-# Construire et exécuter la suite dans un conteneur Playwright
-docker-compose up --build
-```
-
-Les rapports et captures d'écran sont automatiquement synchronisés dans les dossiers locaux `./reports` et `./screenshots`.
-
----
-
-## 7. Pipeline CI/CD (GitHub Actions)
-
-Le workflow `.github/workflows/playwright.yml` est déclenché automatiquement à chaque `push` et `pull_request` sur la branche `main` :
-1. Mise en place de l'environnement Node.js 20 et cache des dépendances.
-2. Installation des dépendances système et du navigateur Chromium.
-3. Exécution de la suite E2E complète (`runner.js --all`).
-4. Exécution des tests d'intégration API (`tests/api.test.js`).
-5. Exécution du benchmark de performance (`benchmark.js`).
-6. Archivage automatique des rapports HTML et captures d'écran en tant qu'artefacts téléchargeables (rétention 14 jours).
-
----
-
-## 8. Synthèse des Résultats & Télémétrie
-
-À chaque exécution :
-- Un **dashboard visuel interactif** est mis à jour dans [`reports/report.html`](./reports/report.html).
-- Une **synthèse JSON complète** est générée dans [`reports/summary.json`](./reports/summary.json).
-- Les **temps de réponse et Core Web Vitals** sont consignés dans [`reports/rapport_console.txt`](./reports/rapport_console.txt).

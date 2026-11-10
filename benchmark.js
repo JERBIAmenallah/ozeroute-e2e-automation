@@ -1,27 +1,26 @@
-/**
- * Module de Télémétrie & Benchmark de Performance - Ozeroute
- * Mesure les temps de réponse SSR, TTFB et DOMContentLoaded sur les modules clés
- * Auteur : Amenallah JERBI - Élève-Ingénieur ESPRIT (REM4U SARL)
- */
+// Mesure des temps de chargement sur les pages principales Ozeroute
 
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 const config = require('./config/ozeroute.config');
 
+async function launchBrowser() {
+  for (const ch of [config.browser.channel, 'chrome', undefined]) {
+    try {
+      return await chromium.launch(ch ? { headless: true, channel: ch } : { headless: true });
+    } catch (e) {}
+  }
+  return await chromium.launch({ headless: true });
+}
+
 async function runBenchmark() {
-  console.log('======================================================================');
-  console.log('       OZEROUTE PERFORMANCE & TELEMETRY BENCHMARK ENGINE             ');
-  console.log('======================================================================\n');
+  console.log('\n----------------------------------------------------------------------');
+  console.log('          BENCHMARK TEMPS DE CHARGEMENT — OZEROUTE                    ');
+  console.log('----------------------------------------------------------------------\n');
 
-  const browser = await chromium.launch({
-    headless: true,
-    channel: config.browser.channel
-  });
-
-  const context = await browser.newContext({
-    viewport: config.viewports.desktop
-  });
+  const browser = await launchBrowser();
+  const context = await browser.newContext({ viewport: config.viewports.desktop });
   await context.addCookies(config.axeptioCookies);
   await context.route('**/*axept*', route => route.abort());
 
@@ -37,19 +36,19 @@ async function runBenchmark() {
   });
 
   const targetUrls = [
-    { name: 'Portail Transferts (FR)', url: 'https://www.ozeroute.com/' },
-    { name: 'Portail International (EN)', url: 'https://www.ozeroute.com/en' },
-    { name: 'Chauffeur Mise à Disposition', url: 'https://www.ozeroute.com/mise-a-disposition' },
-    { name: 'Module Excursions (Nouveau)', url: 'https://www.ozeroute.com/excursions' },
-    { name: 'Espace Client Mon Trajet', url: 'https://mytrip.ozeroute.com/' }
+    { name: 'Transferts Accueil (FR)', url: 'https://www.ozeroute.com/' },
+    { name: 'Version Anglaise (/en)', url: 'https://www.ozeroute.com/en' },
+    { name: 'Mise à Disposition (/mise-a-disposition)', url: 'https://www.ozeroute.com/mise-a-disposition' },
+    { name: 'Excursions (/excursions)', url: 'https://www.ozeroute.com/excursions' },
+    { name: 'Mon Trajet (mytrip.ozeroute.com)', url: 'https://mytrip.ozeroute.com/' }
   ];
 
   const benchmarkMetrics = [];
 
   for (const target of targetUrls) {
-    console.log(`[BENCHMARK] Analyse de : ${target.name} (${target.url})`);
+    console.log(`[MESURE] ${target.name} (${target.url})`);
     const startTime = Date.now();
-    
+
     await page.goto(target.url, { waitUntil: 'domcontentloaded', timeout: 35000 });
     await page.waitForTimeout(1500);
     const loadTime = Date.now() - startTime;
@@ -66,14 +65,12 @@ async function runBenchmark() {
       };
     });
 
-    const metric = {
+    benchmarkMetrics.push({
       target: target.name,
       url: target.url,
       totalLoadTimeMs: loadTime,
       ...perfTiming
-    };
-
-    benchmarkMetrics.push(metric);
+    });
   }
 
   await browser.close();
@@ -85,9 +82,9 @@ async function runBenchmark() {
   fs.writeFileSync(summaryPath, JSON.stringify(benchmarkMetrics, null, 2), 'utf8');
 
   const consoleLogLines = [
-    `=== OZEROUTE BENCHMARK & TÉLÉMÉTRIE - ${new Date().toISOString()} ===\n`,
-    `Total Modules Évalués : ${benchmarkMetrics.length}`,
-    `Total Requêtes Réseau Tracées : ${networkLogs.length}\n`
+    `=== BENCHMARK TEMPS DE RÉPONSE OZEROUTE - ${new Date().toISOString()} ===\n`,
+    `Pages testées : ${benchmarkMetrics.length}`,
+    `Requêtes réseau tracées : ${networkLogs.length}\n`
   ];
 
   benchmarkMetrics.forEach(m => {
@@ -101,17 +98,13 @@ async function runBenchmark() {
   const consoleLogPath = path.join(reportsDir, 'rapport_console.txt');
   fs.writeFileSync(consoleLogPath, consoleLogLines.join('\n'), 'utf8');
 
-  console.log('\n======================================================================');
-  console.log('              BILAN DE TÉLÉMÉTRIE ET PERFORMANCE                      ');
-  console.log('======================================================================');
   console.table(benchmarkMetrics);
-  console.log(`Rapport sauvegardé : ${consoleLogPath}`);
-  console.log('======================================================================\n');
+  console.log(`Fichier généré : ${consoleLogPath}\n`);
 }
 
 if (require.main === module) {
   runBenchmark().catch(err => {
-    console.error('Fatal Benchmark Error:', err);
+    console.error('Erreur:', err);
     process.exit(1);
   });
 }

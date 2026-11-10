@@ -1,1101 +1,1240 @@
 {
-  "timestamp": "2026-11-10T08:03:53.777Z",
-  "durationSeconds": "384.52",
+  "timestamp": "2026-11-10T13:34:34.956Z",
+  "durationSeconds": "265.97",
   "total": 10,
   "passed": 10,
   "failed": 0,
-  "anomaliesDetected": 3,
+  "anomaliesDetected": 4,
   "scenarios": [
     {
       "id": "parcours_nominal_cdg",
-      "category": "PARCOURS NOMINAL",
-      "name": "SC-01 : Parcours Nominal E2E Complet — Transfert Privé (Gare de Lyon ➔ Paris-CDG ➔ Checkout)",
-      "description": "Automatisation complète du tunnel : saisie Google Places (Gare de Lyon -> CDG), sélection 2 adultes, bascule sur l'onglet Transfert Privé (Berline Eco 62,50 €), validation de la modale Bagages et remplissage du formulaire Checkout (/booking).",
+      "title": "SC-01 : Réservation Transfert Privé (Gare de Lyon ➔ Paris-CDG ➔ Checkout /booking)",
+      "category": "Parcours E2E",
       "status": "PASS",
+      "durationSec": 34.59,
       "anomalyDetected": false,
-      "durationMs": 69647,
-      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_nominal.png",
+      "anomalyDetails": null,
+      "networkAnomaliesCount": 2,
+      "consoleErrorsCount": 3,
+      "screenshot": "../screenshots/parcours_nominal.png",
       "logs": [
         {
-          "timestamp": "2026-11-10T07:57:29.535Z",
+          "timestamp": "2026-11-10T13:30:09.163Z",
           "category": "INFO",
-          "message": "Exécution du scénario [parcours_nominal_cdg] : SC-01 : Parcours Nominal E2E Complet — Transfert Privé (Gare de Lyon ➔ Paris-CDG ➔ Checkout)",
+          "message": "Lancement [parcours_nominal_cdg] : SC-01 : Réservation Transfert Privé (Gare de Lyon ➔ Paris-CDG ➔ Checkout /booking)",
           "details": "",
-          "raw": "[2026-11-10T07:57:29.535Z] [INFO]         Exécution du scénario [parcours_nominal_cdg] : SC-01 : Parcours Nominal E2E Complet — Transfert Privé (Gare de Lyon ➔ Paris-CDG ➔ Checkout)"
+          "raw": "[2026-11-10T13:30:09.163Z] [INFO]         Lancement [parcours_nominal_cdg] : SC-01 : Réservation Transfert Privé (Gare de Lyon ➔ Paris-CDG ➔ Checkout /booking)"
         },
         {
-          "timestamp": "2026-11-10T07:57:29.751Z",
+          "timestamp": "2026-11-10T13:30:09.295Z",
           "category": "INFO",
           "message": "Navigation vers : https://www.ozeroute.com/",
           "details": "",
-          "raw": "[2026-11-10T07:57:29.751Z] [INFO]         Navigation vers : https://www.ozeroute.com/"
+          "raw": "[2026-11-10T13:30:09.295Z] [INFO]         Navigation vers : https://www.ozeroute.com/"
         },
         {
-          "timestamp": "2026-11-10T07:57:34.658Z",
+          "timestamp": "2026-11-10T13:30:17.637Z",
           "category": "INFO",
-          "message": "Saisie du point de départ : \"Gare de Lyon, Paris\"",
+          "message": "Saisie départ : \"Gare de Lyon, Paris\"",
           "details": "",
-          "raw": "[2026-11-10T07:57:34.658Z] [INFO]         Saisie du point de départ : \"Gare de Lyon, Paris\""
+          "raw": "[2026-11-10T13:30:17.637Z] [INFO]         Saisie départ : \"Gare de Lyon, Paris\""
         },
         {
-          "timestamp": "2026-11-10T07:57:39.119Z",
+          "timestamp": "2026-11-10T13:30:20.214Z",
           "category": "INFO",
-          "message": "Suggestion Google Places sélectionnée (Départ) : Gare de Lyon - Place Louis Armand, Paris",
+          "message": "Départ sélectionné : Gare de Lyon - Place Louis Armand, Paris",
           "details": "",
-          "raw": "[2026-11-10T07:57:39.119Z] [INFO]         Suggestion Google Places sélectionnée (Départ) : Gare de Lyon - Place Louis Armand, Paris"
+          "raw": "[2026-11-10T13:30:20.214Z] [INFO]         Départ sélectionné : Gare de Lyon - Place Louis Armand, Paris"
         },
         {
-          "timestamp": "2026-11-10T07:57:41.420Z",
+          "timestamp": "2026-11-10T13:30:20.994Z",
           "category": "INFO",
-          "message": "Saisie de la destination : \"Charles de Gaulle\"",
+          "message": "Saisie destination : \"Charles de Gaulle\"",
           "details": "",
-          "raw": "[2026-11-10T07:57:41.420Z] [INFO]         Saisie de la destination : \"Charles de Gaulle\""
+          "raw": "[2026-11-10T13:30:20.994Z] [INFO]         Saisie destination : \"Charles de Gaulle\""
         },
         {
-          "timestamp": "2026-11-10T07:57:46.545Z",
+          "timestamp": "2026-11-10T13:30:23.824Z",
           "category": "INFO",
-          "message": "Suggestion Google Places sélectionnée (Destination) : Paris Charles de Gaulle Airport (CDG) - Roissy-en-France",
+          "message": "Destination sélectionnée : Paris Charles de Gaulle Airport (CDG) - Roissy-en-France",
           "details": "",
-          "raw": "[2026-11-10T07:57:46.545Z] [INFO]         Suggestion Google Places sélectionnée (Destination) : Paris Charles de Gaulle Airport (CDG) - Roissy-en-France"
+          "raw": "[2026-11-10T13:30:23.824Z] [INFO]         Destination sélectionnée : Paris Charles de Gaulle Airport (CDG) - Roissy-en-France"
         },
         {
-          "timestamp": "2026-11-10T07:57:47.824Z",
+          "timestamp": "2026-11-10T13:30:24.569Z",
           "category": "INFO",
-          "message": "Configuration de la date (14/11/2026) et de l'heure (14:00)",
+          "message": "Date : 14/11/2026 | Heure : 14:00",
           "details": "",
-          "raw": "[2026-11-10T07:57:47.824Z] [INFO]         Configuration de la date (14/11/2026) et de l'heure (14:00)"
+          "raw": "[2026-11-10T13:30:24.569Z] [INFO]         Date : 14/11/2026 | Heure : 14:00"
         },
         {
-          "timestamp": "2026-11-10T07:57:51.451Z",
+          "timestamp": "2026-11-10T13:30:25.593Z",
           "category": "INFO",
-          "message": "Configuration des passagers : 2 Adulte(s), 0 Enfant(s), 0 Bébé(s)",
+          "message": "Passagers : 2 Adulte(s), 0 Enfant(s), 0 Bébé(s)",
           "details": "",
-          "raw": "[2026-11-10T07:57:51.451Z] [INFO]         Configuration des passagers : 2 Adulte(s), 0 Enfant(s), 0 Bébé(s)"
+          "raw": "[2026-11-10T13:30:25.593Z] [INFO]         Passagers : 2 Adulte(s), 0 Enfant(s), 0 Bébé(s)"
         },
         {
-          "timestamp": "2026-11-10T07:57:58.359Z",
+          "timestamp": "2026-11-10T13:30:27.830Z",
           "category": "RÉSEAU / 404",
-          "message": "Ressource promotionnelle introuvable (HTTP 404)",
+          "message": "Appel API en 404 détecté",
           "details": "https://api.ozeroute.com/v1/common/promo",
-          "raw": "[2026-11-10T07:57:58.359Z] [RÉSEAU / 404] Ressource promotionnelle introuvable (HTTP 404) | Détails: https://api.ozeroute.com/v1/common/promo"
+          "raw": "[2026-11-10T13:30:27.830Z] [RÉSEAU / 404] Appel API en 404 détecté | Détails: https://api.ozeroute.com/v1/common/promo"
         },
         {
-          "timestamp": "2026-11-10T07:57:59.268Z",
+          "timestamp": "2026-11-10T13:30:28.162Z",
+          "category": "INFO",
+          "message": "Clic sur Rechercher",
+          "details": "",
+          "raw": "[2026-11-10T13:30:28.162Z] [INFO]         Clic sur Rechercher"
+        },
+        {
+          "timestamp": "2026-11-10T13:30:30.724Z",
+          "category": "INFO",
+          "message": "Attente du chargement des véhicules...",
+          "details": "",
+          "raw": "[2026-11-10T13:30:30.724Z] [INFO]         Attente du chargement des véhicules..."
+        },
+        {
+          "timestamp": "2026-11-10T13:30:31.567Z",
           "category": "RÉSEAU / 404",
-          "message": "Ressource promotionnelle introuvable (HTTP 404)",
+          "message": "Appel API en 404 détecté",
           "details": "https://api.ozeroute.com/v1/common/promo",
-          "raw": "[2026-11-10T07:57:59.268Z] [RÉSEAU / 404] Ressource promotionnelle introuvable (HTTP 404) | Détails: https://api.ozeroute.com/v1/common/promo"
+          "raw": "[2026-11-10T13:30:31.567Z] [RÉSEAU / 404] Appel API en 404 détecté | Détails: https://api.ozeroute.com/v1/common/promo"
         },
         {
-          "timestamp": "2026-11-10T07:58:00.375Z",
-          "category": "INFO",
-          "message": "Clic sur le bouton de soumission \"Rechercher / Search\"",
-          "details": "",
-          "raw": "[2026-11-10T07:58:00.375Z] [INFO]         Clic sur le bouton de soumission \"Rechercher / Search\""
-        },
-        {
-          "timestamp": "2026-11-10T07:58:06.885Z",
-          "category": "INFO",
-          "message": "Attente du chargement des offres de transport (Navette / Transfert Privé)...",
-          "details": "",
-          "raw": "[2026-11-10T07:58:06.885Z] [INFO]         Attente du chargement des offres de transport (Navette / Transfert Privé)..."
-        },
-        {
-          "timestamp": "2026-11-10T07:58:10.686Z",
-          "category": "RÉSEAU / 404",
-          "message": "Ressource promotionnelle introuvable (HTTP 404)",
-          "details": "https://api.ozeroute.com/v1/common/promo",
-          "raw": "[2026-11-10T07:58:10.686Z] [RÉSEAU / 404] Ressource promotionnelle introuvable (HTTP 404) | Détails: https://api.ozeroute.com/v1/common/promo"
-        },
-        {
-          "timestamp": "2026-11-10T07:58:14.810Z",
+          "timestamp": "2026-11-10T13:30:33.096Z",
           "category": "PASS",
-          "message": "5 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best price | Navette Economique | 33,80 € | Best comfort | Transfert privé | A partir de | 62,50 €",
+          "message": "5 offre(s) affichée(s) — Best price | Navette Economique | 33,80 € | Best comfort | Transfert privé | A partir de | 62,50 €",
           "details": "",
-          "raw": "[2026-11-10T07:58:14.810Z] [PASS]         5 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best price | Navette Economique | 33,80 € | Best comfort | Transfert privé | A partir de | 62,50 €"
+          "raw": "[2026-11-10T13:30:33.096Z] [PASS]         5 offre(s) affichée(s) — Best price | Navette Economique | 33,80 € | Best comfort | Transfert privé | A partir de | 62,50 €"
         },
         {
-          "timestamp": "2026-11-10T07:58:15.347Z",
+          "timestamp": "2026-11-10T13:30:33.166Z",
           "category": "INFO",
-          "message": "Bascule vers l'onglet d'offres : \"Transfert privé\"",
+          "message": "Sélection onglet : Transfert privé",
           "details": "",
-          "raw": "[2026-11-10T07:58:15.347Z] [INFO]         Bascule vers l'onglet d'offres : \"Transfert privé\""
+          "raw": "[2026-11-10T13:30:33.166Z] [INFO]         Sélection onglet : Transfert privé"
         },
         {
-          "timestamp": "2026-11-10T07:58:19.634Z",
+          "timestamp": "2026-11-10T13:30:35.156Z",
           "category": "INFO",
-          "message": "Sélection du véhicule (clic sur \"Choisir\")...",
+          "message": "Clic sur le bouton \"Choisir\"",
           "details": "",
-          "raw": "[2026-11-10T07:58:19.634Z] [INFO]         Sélection du véhicule (clic sur \"Choisir\")..."
+          "raw": "[2026-11-10T13:30:35.156Z] [INFO]         Clic sur le bouton \"Choisir\""
         },
         {
-          "timestamp": "2026-11-10T07:58:24.137Z",
+          "timestamp": "2026-11-10T13:30:36.999Z",
           "category": "INFO",
-          "message": "Confirmation de la modale \"Bagages Transportés\" (clic sur \"Choisir\")",
+          "message": "Validation de la modale \"Bagages Transportés\"",
           "details": "",
-          "raw": "[2026-11-10T07:58:24.137Z] [INFO]         Confirmation de la modale \"Bagages Transportés\" (clic sur \"Choisir\")"
+          "raw": "[2026-11-10T13:30:36.999Z] [INFO]         Validation de la modale \"Bagages Transportés\""
         },
         {
-          "timestamp": "2026-11-10T07:58:30.051Z",
+          "timestamp": "2026-11-10T13:30:40.204Z",
           "category": "PASS",
-          "message": "Navigation réussie vers l'étape Checkout (/booking)",
+          "message": "Arrivée sur la page Checkout (/booking)",
           "details": "",
-          "raw": "[2026-11-10T07:58:30.051Z] [PASS]         Navigation réussie vers l'étape Checkout (/booking)"
+          "raw": "[2026-11-10T13:30:40.204Z] [PASS]         Arrivée sur la page Checkout (/booking)"
         },
         {
-          "timestamp": "2026-11-10T07:58:30.100Z",
+          "timestamp": "2026-11-10T13:30:40.222Z",
           "category": "PASS",
-          "message": "Écran de Checkout (/booking) atteint — Tarif récapitulatif : 62,50 €",
+          "message": "Page /booking chargée — Prix total : 62,50 €",
           "details": "",
-          "raw": "[2026-11-10T07:58:30.100Z] [PASS]         Écran de Checkout (/booking) atteint — Tarif récapitulatif : 62,50 €"
+          "raw": "[2026-11-10T13:30:40.222Z] [PASS]         Page /booking chargée — Prix total : 62,50 €"
         },
         {
-          "timestamp": "2026-11-10T07:58:30.146Z",
+          "timestamp": "2026-11-10T13:30:40.234Z",
           "category": "INFO",
-          "message": "Saisie des coordonnées passager sur /booking : Amenallah Jerbi (amenallah.jerbi@esprit.tn)",
+          "message": "Remplissage coordonnées passager : Amenallah Jerbi",
           "details": "",
-          "raw": "[2026-11-10T07:58:30.146Z] [INFO]         Saisie des coordonnées passager sur /booking : Amenallah Jerbi (amenallah.jerbi@esprit.tn)"
+          "raw": "[2026-11-10T13:30:40.234Z] [INFO]         Remplissage coordonnées passager : Amenallah Jerbi"
         },
         {
-          "timestamp": "2026-11-10T07:58:35.269Z",
+          "timestamp": "2026-11-10T13:30:41.884Z",
           "category": "INFO",
-          "message": "Case \"J'accepte les termes et conditions d'Ozeroute\" cochée",
+          "message": "Case CGV cochée",
           "details": "",
-          "raw": "[2026-11-10T07:58:35.269Z] [INFO]         Case \"J'accepte les termes et conditions d'Ozeroute\" cochée"
+          "raw": "[2026-11-10T13:30:41.884Z] [INFO]         Case CGV cochée"
         },
         {
-          "timestamp": "2026-11-10T07:58:37.516Z",
+          "timestamp": "2026-11-10T13:30:42.900Z",
           "category": "PASS",
-          "message": "Formulaire Checkout complété et prêt pour l'étape de paiement Stripe",
+          "message": "Formulaire /booking prêt pour le paiement Stripe",
           "details": "",
-          "raw": "[2026-11-10T07:58:37.516Z] [PASS]         Formulaire Checkout complété et prêt pour l'étape de paiement Stripe"
+          "raw": "[2026-11-10T13:30:42.900Z] [PASS]         Formulaire /booking prêt pour le paiement Stripe"
         },
         {
-          "timestamp": "2026-11-10T07:58:38.731Z",
+          "timestamp": "2026-11-10T13:30:43.624Z",
           "category": "CAPTURE",
-          "message": "Capture d'écran enregistrée",
+          "message": "Capture enregistrée",
           "details": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_nominal.png",
-          "raw": "[2026-11-10T07:58:38.731Z] [CAPTURE]      Capture d'écran enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_nominal.png"
+          "raw": "[2026-11-10T13:30:43.624Z] [CAPTURE]      Capture enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_nominal.png"
         },
         {
-          "timestamp": "2026-11-10T07:58:39.181Z",
+          "timestamp": "2026-11-10T13:30:43.757Z",
           "category": "PASS",
-          "message": "Scénario [parcours_nominal_cdg] terminé en 69.65s",
+          "message": "Scénario [parcours_nominal_cdg] terminé en 34.59s\n",
           "details": "",
-          "raw": "[2026-11-10T07:58:39.181Z] [PASS]         Scénario [parcours_nominal_cdg] terminé en 69.65s"
+          "raw": "[2026-11-10T13:30:43.757Z] [PASS]         Scénario [parcours_nominal_cdg] terminé en 34.59s\n"
         }
       ]
     },
     {
       "id": "parcours_acces_deeplink",
-      "category": "FLUX GOOGLE / DEEP LINK",
-      "name": "SC-02 : Flux d'Accès Direct Référencé (Deep Link Beauvais BVA ➔ Disneyland Paris)",
-      "description": "Validation de l'hydratation SSR Next.js lors d'un accès direct par URL encodée en Base64 (/mobilite-aeroport/reservation?q=...) et vérification de l'affichage des navettes partagées (57,80 €).",
+      "title": "SC-02 : Accès Direct Lien Google / Deep Link (Beauvais BVA ➔ Disneyland Paris)",
+      "category": "Parcours E2E",
       "status": "PASS",
+      "durationSec": 8.11,
       "anomalyDetected": false,
-      "durationMs": 18631,
-      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\flux_acces_direct.png",
+      "anomalyDetails": null,
+      "networkAnomaliesCount": 0,
+      "consoleErrorsCount": 0,
+      "screenshot": "../screenshots/flux_acces_direct.png",
       "logs": [
         {
-          "timestamp": "2026-11-10T07:58:39.197Z",
+          "timestamp": "2026-11-10T13:30:43.761Z",
           "category": "INFO",
-          "message": "Exécution du scénario [parcours_acces_deeplink] : SC-02 : Flux d'Accès Direct Référencé (Deep Link Beauvais BVA ➔ Disneyland Paris)",
+          "message": "Lancement [parcours_acces_deeplink] : SC-02 : Accès Direct Lien Google / Deep Link (Beauvais BVA ➔ Disneyland Paris)",
           "details": "",
-          "raw": "[2026-11-10T07:58:39.197Z] [INFO]         Exécution du scénario [parcours_acces_deeplink] : SC-02 : Flux d'Accès Direct Référencé (Deep Link Beauvais BVA ➔ Disneyland Paris)"
+          "raw": "[2026-11-10T13:30:43.761Z] [INFO]         Lancement [parcours_acces_deeplink] : SC-02 : Accès Direct Lien Google / Deep Link (Beauvais BVA ➔ Disneyland Paris)"
         },
         {
-          "timestamp": "2026-11-10T07:58:39.915Z",
+          "timestamp": "2026-11-10T13:30:43.995Z",
           "category": "INFO",
           "message": "Navigation vers : https://www.ozeroute.com/mobilite-aeroport/reservation?q=eyJmcm9tIjp7ImlkIjoiQ2hJSkxUeU5EWXh2NWtjUmJ0YzlUWkJiRF9vIiwibmFtZSI6IlBhcmlzIEJlYXV2YWlzIEFpcnBvcnQiLCJsb2NhdGlvbiI6eyJsYXQiOjQ5LjQ1NDQ2NzcsImxuZyI6Mi4xMTE1MTExfSwiYWRkcmVzcyI6IlJ0ZSBkZSBsJ0HDqXJvcG9ydCwgNjAwMDAgVGlsbMOpIiwicG9zdGFsQ29kZSI6IjYwMDAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IlRpbGzDqSJ9LCJ0byI6eyJpZCI6IkNoSUp2ZUo2eWhrZDVrY1JZT1lRWTh2NC1sYyIsIm5hbWUiOiJEaXNuZXlsYW5kIFBhcmlzIiwibG9jYXRpb24iOnsibGF0Ijo0OC44NjczODU4LCJsbmciOjIuNzgzNTkzfSwiYWRkcmVzcyI6IkJkIGRlIFBhcmMsIDc3NzAwIENvdXB2cmF5IiwicG9zdGFsQ29kZSI6Ijc3NzAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IkNvdXB2cmF5In0sImRpcmVjdGlvbiI6IkZST00iLCJkaXJlY3Rpb25UeXBlIjoib25lX3dheSIsInBsYWNlIjpudWxsLCJleHRlbnNpb24iOm51bGwsInBhc3NlbmdlcnMiOnsiYWR1bHQiOjIsImluZmFudCI6MCwiYmFieSI6MH0sImRhdGVPZkdvIjoiMTQvMTEvMjAyNiIsInRpbWVPZkdvIjoiMTI6MDAiLCJwcm92aXNpb24iOmZhbHNlLCJwcm92aXNpb25EdXJhdGlvbiI6IiJ9",
           "details": "",
-          "raw": "[2026-11-10T07:58:39.915Z] [INFO]         Navigation vers : https://www.ozeroute.com/mobilite-aeroport/reservation?q=eyJmcm9tIjp7ImlkIjoiQ2hJSkxUeU5EWXh2NWtjUmJ0YzlUWkJiRF9vIiwibmFtZSI6IlBhcmlzIEJlYXV2YWlzIEFpcnBvcnQiLCJsb2NhdGlvbiI6eyJsYXQiOjQ5LjQ1NDQ2NzcsImxuZyI6Mi4xMTE1MTExfSwiYWRkcmVzcyI6IlJ0ZSBkZSBsJ0HDqXJvcG9ydCwgNjAwMDAgVGlsbMOpIiwicG9zdGFsQ29kZSI6IjYwMDAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IlRpbGzDqSJ9LCJ0byI6eyJpZCI6IkNoSUp2ZUo2eWhrZDVrY1JZT1lRWTh2NC1sYyIsIm5hbWUiOiJEaXNuZXlsYW5kIFBhcmlzIiwibG9jYXRpb24iOnsibGF0Ijo0OC44NjczODU4LCJsbmciOjIuNzgzNTkzfSwiYWRkcmVzcyI6IkJkIGRlIFBhcmMsIDc3NzAwIENvdXB2cmF5IiwicG9zdGFsQ29kZSI6Ijc3NzAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IkNvdXB2cmF5In0sImRpcmVjdGlvbiI6IkZST00iLCJkaXJlY3Rpb25UeXBlIjoib25lX3dheSIsInBsYWNlIjpudWxsLCJleHRlbnNpb24iOm51bGwsInBhc3NlbmdlcnMiOnsiYWR1bHQiOjIsImluZmFudCI6MCwiYmFieSI6MH0sImRhdGVPZkdvIjoiMTQvMTEvMjAyNiIsInRpbWVPZkdvIjoiMTI6MDAiLCJwcm92aXNpb24iOmZhbHNlLCJwcm92aXNpb25EdXJhdGlvbiI6IiJ9"
+          "raw": "[2026-11-10T13:30:43.995Z] [INFO]         Navigation vers : https://www.ozeroute.com/mobilite-aeroport/reservation?q=eyJmcm9tIjp7ImlkIjoiQ2hJSkxUeU5EWXh2NWtjUmJ0YzlUWkJiRF9vIiwibmFtZSI6IlBhcmlzIEJlYXV2YWlzIEFpcnBvcnQiLCJsb2NhdGlvbiI6eyJsYXQiOjQ5LjQ1NDQ2NzcsImxuZyI6Mi4xMTE1MTExfSwiYWRkcmVzcyI6IlJ0ZSBkZSBsJ0HDqXJvcG9ydCwgNjAwMDAgVGlsbMOpIiwicG9zdGFsQ29kZSI6IjYwMDAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IlRpbGzDqSJ9LCJ0byI6eyJpZCI6IkNoSUp2ZUo2eWhrZDVrY1JZT1lRWTh2NC1sYyIsIm5hbWUiOiJEaXNuZXlsYW5kIFBhcmlzIiwibG9jYXRpb24iOnsibGF0Ijo0OC44NjczODU4LCJsbmciOjIuNzgzNTkzfSwiYWRkcmVzcyI6IkJkIGRlIFBhcmMsIDc3NzAwIENvdXB2cmF5IiwicG9zdGFsQ29kZSI6Ijc3NzAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IkNvdXB2cmF5In0sImRpcmVjdGlvbiI6IkZST00iLCJkaXJlY3Rpb25UeXBlIjoib25lX3dheSIsInBsYWNlIjpudWxsLCJleHRlbnNpb24iOm51bGwsInBhc3NlbmdlcnMiOnsiYWR1bHQiOjIsImluZmFudCI6MCwiYmFieSI6MH0sImRhdGVPZkdvIjoiMTQvMTEvMjAyNiIsInRpbWVPZkdvIjoiMTI6MDAiLCJwcm92aXNpb24iOmZhbHNlLCJwcm92aXNpb25EdXJhdGlvbiI6IiJ9"
         },
         {
-          "timestamp": "2026-11-10T07:58:45.034Z",
+          "timestamp": "2026-11-10T13:30:50.622Z",
           "category": "INFO",
-          "message": "Attente du chargement des offres de transport (Navette / Transfert Privé)...",
+          "message": "Attente du chargement des véhicules...",
           "details": "",
-          "raw": "[2026-11-10T07:58:45.034Z] [INFO]         Attente du chargement des offres de transport (Navette / Transfert Privé)..."
+          "raw": "[2026-11-10T13:30:50.622Z] [INFO]         Attente du chargement des véhicules..."
         },
         {
-          "timestamp": "2026-11-10T07:58:56.291Z",
+          "timestamp": "2026-11-10T13:30:51.617Z",
           "category": "PASS",
-          "message": "6 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best price | Navette Economique | 57,80 € | Best comfort | Transfert privé | A partir de | 175,00 €",
+          "message": "6 offre(s) affichée(s) — Best price | Navette Economique | 57,80 € | Best comfort | Transfert privé | A partir de | 175,00 €",
           "details": "",
-          "raw": "[2026-11-10T07:58:56.291Z] [PASS]         6 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best price | Navette Economique | 57,80 € | Best comfort | Transfert privé | A partir de | 175,00 €"
+          "raw": "[2026-11-10T13:30:51.617Z] [PASS]         6 offre(s) affichée(s) — Best price | Navette Economique | 57,80 € | Best comfort | Transfert privé | A partir de | 175,00 €"
         },
         {
-          "timestamp": "2026-11-10T07:58:57.315Z",
+          "timestamp": "2026-11-10T13:30:51.832Z",
           "category": "CAPTURE",
-          "message": "Capture d'écran enregistrée",
+          "message": "Capture enregistrée",
           "details": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\flux_acces_direct.png",
-          "raw": "[2026-11-10T07:58:57.315Z] [CAPTURE]      Capture d'écran enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\flux_acces_direct.png"
+          "raw": "[2026-11-10T13:30:51.832Z] [CAPTURE]      Capture enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\flux_acces_direct.png"
         },
         {
-          "timestamp": "2026-11-10T07:58:57.828Z",
+          "timestamp": "2026-11-10T13:30:51.867Z",
           "category": "PASS",
-          "message": "Scénario [parcours_acces_deeplink] terminé en 18.63s",
+          "message": "Scénario [parcours_acces_deeplink] terminé en 8.11s\n",
           "details": "",
-          "raw": "[2026-11-10T07:58:57.828Z] [PASS]         Scénario [parcours_acces_deeplink] terminé en 18.63s"
+          "raw": "[2026-11-10T13:30:51.867Z] [PASS]         Scénario [parcours_acces_deeplink] terminé en 8.11s\n"
         }
       ]
     },
     {
       "id": "parcours_aller_retour",
-      "category": "PARCOURS NAVETTE & CHECKOUT",
-      "name": "SC-03 : Réservation Navette Économique & Sélection Terminal (/booking)",
-      "description": "Parcours complet sur une offre Navette Économique (Beauvais -> Disneyland Paris, 2 passagers) : sélection d'un horaire, arrivée sur /booking, choix de l'arrêt (Terminal 1) et saisie des coordonnées passager.",
+      "title": "SC-03 : Réservation Navette Économique & Choix Terminal 1 (Beauvais ➔ Disneyland ➔ /booking)",
+      "category": "Parcours E2E",
       "status": "PASS",
+      "durationSec": 26.31,
       "anomalyDetected": false,
-      "durationMs": 55556,
-      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_aller_retour.png",
+      "anomalyDetails": null,
+      "networkAnomaliesCount": 0,
+      "consoleErrorsCount": 1,
+      "screenshot": "../screenshots/parcours_aller_retour.png",
       "logs": [
         {
-          "timestamp": "2026-11-10T07:58:57.862Z",
+          "timestamp": "2026-11-10T13:30:51.870Z",
           "category": "INFO",
-          "message": "Exécution du scénario [parcours_aller_retour] : SC-03 : Réservation Navette Économique & Sélection Terminal (/booking)",
+          "message": "Lancement [parcours_aller_retour] : SC-03 : Réservation Navette Économique & Choix Terminal 1 (Beauvais ➔ Disneyland ➔ /booking)",
           "details": "",
-          "raw": "[2026-11-10T07:58:57.862Z] [INFO]         Exécution du scénario [parcours_aller_retour] : SC-03 : Réservation Navette Économique & Sélection Terminal (/booking)"
+          "raw": "[2026-11-10T13:30:51.870Z] [INFO]         Lancement [parcours_aller_retour] : SC-03 : Réservation Navette Économique & Choix Terminal 1 (Beauvais ➔ Disneyland ➔ /booking)"
         },
         {
-          "timestamp": "2026-11-10T07:58:58.534Z",
+          "timestamp": "2026-11-10T13:30:52.163Z",
           "category": "INFO",
           "message": "Navigation vers : https://www.ozeroute.com/",
           "details": "",
-          "raw": "[2026-11-10T07:58:58.534Z] [INFO]         Navigation vers : https://www.ozeroute.com/"
+          "raw": "[2026-11-10T13:30:52.163Z] [INFO]         Navigation vers : https://www.ozeroute.com/"
         },
         {
-          "timestamp": "2026-11-10T07:59:07.428Z",
+          "timestamp": "2026-11-10T13:30:56.510Z",
           "category": "INFO",
-          "message": "Saisie du point de départ : \"Aéroport de Paris-Beauvais\"",
+          "message": "Saisie départ : \"Aéroport de Paris-Beauvais\"",
           "details": "",
-          "raw": "[2026-11-10T07:59:07.428Z] [INFO]         Saisie du point de départ : \"Aéroport de Paris-Beauvais\""
+          "raw": "[2026-11-10T13:30:56.510Z] [INFO]         Saisie départ : \"Aéroport de Paris-Beauvais\""
         },
         {
-          "timestamp": "2026-11-10T07:59:12.146Z",
+          "timestamp": "2026-11-10T13:30:59.099Z",
           "category": "INFO",
-          "message": "Suggestion Google Places sélectionnée (Départ) : Aeroportul Beauvais-Tillé (BVA) - Route de l'Aéroport, Tillé",
+          "message": "Départ sélectionné : Aeroportul Beauvais-Tillé (BVA) - Route de l'Aéroport, Tillé",
           "details": "",
-          "raw": "[2026-11-10T07:59:12.146Z] [INFO]         Suggestion Google Places sélectionnée (Départ) : Aeroportul Beauvais-Tillé (BVA) - Route de l'Aéroport, Tillé"
+          "raw": "[2026-11-10T13:30:59.099Z] [INFO]         Départ sélectionné : Aeroportul Beauvais-Tillé (BVA) - Route de l'Aéroport, Tillé"
         },
         {
-          "timestamp": "2026-11-10T07:59:13.383Z",
+          "timestamp": "2026-11-10T13:30:59.732Z",
           "category": "INFO",
-          "message": "Saisie de la destination : \"Disneyland Paris\"",
+          "message": "Saisie destination : \"Disneyland Paris\"",
           "details": "",
-          "raw": "[2026-11-10T07:59:13.383Z] [INFO]         Saisie de la destination : \"Disneyland Paris\""
+          "raw": "[2026-11-10T13:30:59.732Z] [INFO]         Saisie destination : \"Disneyland Paris\""
         },
         {
-          "timestamp": "2026-11-10T07:59:17.130Z",
+          "timestamp": "2026-11-10T13:31:02.317Z",
           "category": "INFO",
-          "message": "Suggestion Google Places sélectionnée (Destination) : Disneyland Paris - Boulevard de Parc, Coupvray",
+          "message": "Destination sélectionnée : Disneyland Paris - Boulevard de Parc, Coupvray",
           "details": "",
-          "raw": "[2026-11-10T07:59:17.130Z] [INFO]         Suggestion Google Places sélectionnée (Destination) : Disneyland Paris - Boulevard de Parc, Coupvray"
+          "raw": "[2026-11-10T13:31:02.317Z] [INFO]         Destination sélectionnée : Disneyland Paris - Boulevard de Parc, Coupvray"
         },
         {
-          "timestamp": "2026-11-10T07:59:19.305Z",
+          "timestamp": "2026-11-10T13:31:03.044Z",
           "category": "INFO",
-          "message": "Configuration de la date (14/11/2026) et de l'heure (12:00)",
+          "message": "Date : 14/11/2026 | Heure : 12:00",
           "details": "",
-          "raw": "[2026-11-10T07:59:19.305Z] [INFO]         Configuration de la date (14/11/2026) et de l'heure (12:00)"
+          "raw": "[2026-11-10T13:31:03.044Z] [INFO]         Date : 14/11/2026 | Heure : 12:00"
         },
         {
-          "timestamp": "2026-11-10T07:59:22.160Z",
+          "timestamp": "2026-11-10T13:31:03.882Z",
           "category": "INFO",
-          "message": "Configuration des passagers : 2 Adulte(s), 0 Enfant(s), 0 Bébé(s)",
+          "message": "Passagers : 2 Adulte(s), 0 Enfant(s), 0 Bébé(s)",
           "details": "",
-          "raw": "[2026-11-10T07:59:22.160Z] [INFO]         Configuration des passagers : 2 Adulte(s), 0 Enfant(s), 0 Bébé(s)"
+          "raw": "[2026-11-10T13:31:03.882Z] [INFO]         Passagers : 2 Adulte(s), 0 Enfant(s), 0 Bébé(s)"
         },
         {
-          "timestamp": "2026-11-10T07:59:27.499Z",
+          "timestamp": "2026-11-10T13:31:05.889Z",
           "category": "INFO",
-          "message": "Clic sur le bouton de soumission \"Rechercher / Search\"",
+          "message": "Clic sur Rechercher",
           "details": "",
-          "raw": "[2026-11-10T07:59:27.499Z] [INFO]         Clic sur le bouton de soumission \"Rechercher / Search\""
+          "raw": "[2026-11-10T13:31:05.889Z] [INFO]         Clic sur Rechercher"
         },
         {
-          "timestamp": "2026-11-10T07:59:33.805Z",
+          "timestamp": "2026-11-10T13:31:10.291Z",
           "category": "INFO",
-          "message": "Attente du chargement des offres de transport (Navette / Transfert Privé)...",
+          "message": "Attente du chargement des véhicules...",
           "details": "",
-          "raw": "[2026-11-10T07:59:33.805Z] [INFO]         Attente du chargement des offres de transport (Navette / Transfert Privé)..."
+          "raw": "[2026-11-10T13:31:10.291Z] [INFO]         Attente du chargement des véhicules..."
         },
         {
-          "timestamp": "2026-11-10T07:59:39.760Z",
+          "timestamp": "2026-11-10T13:31:11.333Z",
           "category": "PASS",
-          "message": "6 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best price | Navette Economique | 57,80 € | Best comfort | Transfert privé | A partir de | 175,00 €",
+          "message": "6 offre(s) affichée(s) — Best price | Navette Economique | 57,80 € | Best comfort | Transfert privé | Searching...",
           "details": "",
-          "raw": "[2026-11-10T07:59:39.760Z] [PASS]         6 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best price | Navette Economique | 57,80 € | Best comfort | Transfert privé | A partir de | 175,00 €"
+          "raw": "[2026-11-10T13:31:11.333Z] [PASS]         6 offre(s) affichée(s) — Best price | Navette Economique | 57,80 € | Best comfort | Transfert privé | Searching..."
         },
         {
-          "timestamp": "2026-11-10T07:59:40.137Z",
+          "timestamp": "2026-11-10T13:31:11.413Z",
           "category": "INFO",
-          "message": "Sélection du véhicule (clic sur \"Choisir\")...",
+          "message": "Clic sur le bouton \"Choisir\"",
           "details": "",
-          "raw": "[2026-11-10T07:59:40.137Z] [INFO]         Sélection du véhicule (clic sur \"Choisir\")..."
+          "raw": "[2026-11-10T13:31:11.413Z] [INFO]         Clic sur le bouton \"Choisir\""
         },
         {
-          "timestamp": "2026-11-10T07:59:45.867Z",
+          "timestamp": "2026-11-10T13:31:15.078Z",
           "category": "PASS",
-          "message": "Navigation réussie vers l'étape Checkout (/booking)",
+          "message": "Arrivée sur la page Checkout (/booking)",
           "details": "",
-          "raw": "[2026-11-10T07:59:45.867Z] [PASS]         Navigation réussie vers l'étape Checkout (/booking)"
+          "raw": "[2026-11-10T13:31:15.078Z] [PASS]         Arrivée sur la page Checkout (/booking)"
         },
         {
-          "timestamp": "2026-11-10T07:59:46.179Z",
+          "timestamp": "2026-11-10T13:31:15.143Z",
           "category": "PASS",
-          "message": "Écran de Checkout (/booking) atteint — Tarif récapitulatif : 57,80 €",
+          "message": "Page /booking chargée — Prix total : 57,80 €",
           "details": "",
-          "raw": "[2026-11-10T07:59:46.179Z] [PASS]         Écran de Checkout (/booking) atteint — Tarif récapitulatif : 57,80 €"
+          "raw": "[2026-11-10T13:31:15.143Z] [PASS]         Page /booking chargée — Prix total : 57,80 €"
         },
         {
-          "timestamp": "2026-11-10T07:59:46.409Z",
+          "timestamp": "2026-11-10T13:31:15.151Z",
           "category": "INFO",
-          "message": "Saisie des coordonnées passager sur /booking : Amenallah Jerbi (amenallah.jerbi@esprit.tn)",
+          "message": "Remplissage coordonnées passager : Amenallah Jerbi",
           "details": "",
-          "raw": "[2026-11-10T07:59:46.409Z] [INFO]         Saisie des coordonnées passager sur /booking : Amenallah Jerbi (amenallah.jerbi@esprit.tn)"
+          "raw": "[2026-11-10T13:31:15.151Z] [INFO]         Remplissage coordonnées passager : Amenallah Jerbi"
         },
         {
-          "timestamp": "2026-11-10T07:59:50.650Z",
+          "timestamp": "2026-11-10T13:31:16.748Z",
           "category": "INFO",
-          "message": "Case \"J'accepte les termes et conditions d'Ozeroute\" cochée",
+          "message": "Case CGV cochée",
           "details": "",
-          "raw": "[2026-11-10T07:59:50.650Z] [INFO]         Case \"J'accepte les termes et conditions d'Ozeroute\" cochée"
+          "raw": "[2026-11-10T13:31:16.748Z] [INFO]         Case CGV cochée"
         },
         {
-          "timestamp": "2026-11-10T07:59:52.160Z",
+          "timestamp": "2026-11-10T13:31:17.703Z",
           "category": "PASS",
-          "message": "Formulaire Checkout complété et prêt pour l'étape de paiement Stripe",
+          "message": "Formulaire /booking prêt pour le paiement Stripe",
           "details": "",
-          "raw": "[2026-11-10T07:59:52.160Z] [PASS]         Formulaire Checkout complété et prêt pour l'étape de paiement Stripe"
+          "raw": "[2026-11-10T13:31:17.703Z] [PASS]         Formulaire /booking prêt pour le paiement Stripe"
         },
         {
-          "timestamp": "2026-11-10T07:59:53.007Z",
+          "timestamp": "2026-11-10T13:31:18.035Z",
           "category": "CAPTURE",
-          "message": "Capture d'écran enregistrée",
+          "message": "Capture enregistrée",
           "details": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_aller_retour.png",
-          "raw": "[2026-11-10T07:59:53.007Z] [CAPTURE]      Capture d'écran enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_aller_retour.png"
+          "raw": "[2026-11-10T13:31:18.035Z] [CAPTURE]      Capture enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_aller_retour.png"
         },
         {
-          "timestamp": "2026-11-10T07:59:53.417Z",
+          "timestamp": "2026-11-10T13:31:18.175Z",
           "category": "PASS",
-          "message": "Scénario [parcours_aller_retour] terminé en 55.56s",
+          "message": "Scénario [parcours_aller_retour] terminé en 26.31s\n",
           "details": "",
-          "raw": "[2026-11-10T07:59:53.417Z] [PASS]         Scénario [parcours_aller_retour] terminé en 55.56s"
+          "raw": "[2026-11-10T13:31:18.175Z] [PASS]         Scénario [parcours_aller_retour] terminé en 26.31s\n"
         }
       ]
     },
     {
       "id": "parcours_multilingue_en",
-      "category": "INTERNATIONALISATION (i18n)",
-      "name": "SC-04 : Parcours Internationalisé Anglais (/en — Switch Langue & Recherche)",
-      "description": "Validation du changement de langue (FR -> English), contrôle de la traduction des composants (Choose passengers, Search) et soumission d'une recherche complète vers la liste des offres en anglais.",
+      "title": "SC-04 : Parcours Version Anglaise (/en — Switch Langue & Recherche Shuttle/Private)",
+      "category": "Internationalisation",
       "status": "PASS",
+      "durationSec": 33.3,
       "anomalyDetected": false,
-      "durationMs": 51313,
-      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_multilingue_en.png",
+      "anomalyDetails": null,
+      "networkAnomaliesCount": 0,
+      "consoleErrorsCount": 0,
+      "screenshot": "../screenshots/parcours_multilingue_en.png",
       "logs": [
         {
-          "timestamp": "2026-11-10T07:59:53.436Z",
+          "timestamp": "2026-11-10T13:31:18.186Z",
           "category": "INFO",
-          "message": "Exécution du scénario [parcours_multilingue_en] : SC-04 : Parcours Internationalisé Anglais (/en — Switch Langue & Recherche)",
+          "message": "Lancement [parcours_multilingue_en] : SC-04 : Parcours Version Anglaise (/en — Switch Langue & Recherche Shuttle/Private)",
           "details": "",
-          "raw": "[2026-11-10T07:59:53.436Z] [INFO]         Exécution du scénario [parcours_multilingue_en] : SC-04 : Parcours Internationalisé Anglais (/en — Switch Langue & Recherche)"
+          "raw": "[2026-11-10T13:31:18.186Z] [INFO]         Lancement [parcours_multilingue_en] : SC-04 : Parcours Version Anglaise (/en — Switch Langue & Recherche Shuttle/Private)"
         },
         {
-          "timestamp": "2026-11-10T07:59:54.235Z",
+          "timestamp": "2026-11-10T13:31:18.448Z",
           "category": "INFO",
           "message": "Navigation vers : https://www.ozeroute.com/",
           "details": "",
-          "raw": "[2026-11-10T07:59:54.235Z] [INFO]         Navigation vers : https://www.ozeroute.com/"
+          "raw": "[2026-11-10T13:31:18.448Z] [INFO]         Navigation vers : https://www.ozeroute.com/"
         },
         {
-          "timestamp": "2026-11-10T08:00:00.481Z",
+          "timestamp": "2026-11-10T13:31:26.919Z",
           "category": "INFO",
-          "message": "Changement de langue vers Anglais (EN) via le menu de navigation",
+          "message": "Changement de langue FR -> EN",
           "details": "",
-          "raw": "[2026-11-10T08:00:00.481Z] [INFO]         Changement de langue vers Anglais (EN) via le menu de navigation"
+          "raw": "[2026-11-10T13:31:26.919Z] [INFO]         Changement de langue FR -> EN"
         },
         {
-          "timestamp": "2026-11-10T08:00:06.313Z",
+          "timestamp": "2026-11-10T13:31:32.168Z",
           "category": "PASS",
-          "message": "Interface anglaise activée avec succès (https://www.ozeroute.com/)",
+          "message": "Version anglaise active (https://www.ozeroute.com/en)",
           "details": "",
-          "raw": "[2026-11-10T08:00:06.313Z] [PASS]         Interface anglaise activée avec succès (https://www.ozeroute.com/)"
+          "raw": "[2026-11-10T13:31:32.168Z] [PASS]         Version anglaise active (https://www.ozeroute.com/en)"
         },
         {
-          "timestamp": "2026-11-10T08:00:08.902Z",
+          "timestamp": "2026-11-10T13:31:32.187Z",
           "category": "INFO",
-          "message": "Saisie du point de départ : \"Beauvais\"",
+          "message": "Saisie départ : \"Beauvais\"",
           "details": "",
-          "raw": "[2026-11-10T08:00:08.902Z] [INFO]         Saisie du point de départ : \"Beauvais\""
+          "raw": "[2026-11-10T13:31:32.187Z] [INFO]         Saisie départ : \"Beauvais\""
         },
         {
-          "timestamp": "2026-11-10T08:00:14.183Z",
+          "timestamp": "2026-11-10T13:31:34.963Z",
           "category": "INFO",
-          "message": "Suggestion Google Places sélectionnée (Départ) : Beauvais–Tillé Airport (BVA) - Route de l'Aéroport, Tillé",
+          "message": "Départ sélectionné : Beauvais–Tillé Airport (BVA) - Route de l'Aéroport, Tillé",
           "details": "",
-          "raw": "[2026-11-10T08:00:14.183Z] [INFO]         Suggestion Google Places sélectionnée (Départ) : Beauvais–Tillé Airport (BVA) - Route de l'Aéroport, Tillé"
+          "raw": "[2026-11-10T13:31:34.963Z] [INFO]         Départ sélectionné : Beauvais–Tillé Airport (BVA) - Route de l'Aéroport, Tillé"
         },
         {
-          "timestamp": "2026-11-10T08:00:15.677Z",
+          "timestamp": "2026-11-10T13:31:35.616Z",
           "category": "INFO",
-          "message": "Saisie de la destination : \"Disneyland Paris\"",
+          "message": "Saisie destination : \"Disneyland Paris\"",
           "details": "",
-          "raw": "[2026-11-10T08:00:15.677Z] [INFO]         Saisie de la destination : \"Disneyland Paris\""
+          "raw": "[2026-11-10T13:31:35.616Z] [INFO]         Saisie destination : \"Disneyland Paris\""
         },
         {
-          "timestamp": "2026-11-10T08:00:22.402Z",
+          "timestamp": "2026-11-10T13:31:38.203Z",
           "category": "INFO",
-          "message": "Suggestion Google Places sélectionnée (Destination) : Disneyland Paris - Boulevard de Parc, Coupvray",
+          "message": "Destination sélectionnée : Disneyland Paris - Boulevard de Parc, Coupvray",
           "details": "",
-          "raw": "[2026-11-10T08:00:22.402Z] [INFO]         Suggestion Google Places sélectionnée (Destination) : Disneyland Paris - Boulevard de Parc, Coupvray"
+          "raw": "[2026-11-10T13:31:38.203Z] [INFO]         Destination sélectionnée : Disneyland Paris - Boulevard de Parc, Coupvray"
         },
         {
-          "timestamp": "2026-11-10T08:00:24.413Z",
+          "timestamp": "2026-11-10T13:31:38.914Z",
           "category": "INFO",
-          "message": "Configuration de la date (14/11/2026) et de l'heure (12:00)",
+          "message": "Date : 14/11/2026 | Heure : 12:00",
           "details": "",
-          "raw": "[2026-11-10T08:00:24.413Z] [INFO]         Configuration de la date (14/11/2026) et de l'heure (12:00)"
+          "raw": "[2026-11-10T13:31:38.914Z] [INFO]         Date : 14/11/2026 | Heure : 12:00"
         },
         {
-          "timestamp": "2026-11-10T08:00:26.428Z",
+          "timestamp": "2026-11-10T13:31:39.936Z",
           "category": "INFO",
-          "message": "Configuration des passagers : 2 Adulte(s), 0 Enfant(s), 0 Bébé(s)",
+          "message": "Passagers : 2 Adulte(s), 0 Enfant(s), 0 Bébé(s)",
           "details": "",
-          "raw": "[2026-11-10T08:00:26.428Z] [INFO]         Configuration des passagers : 2 Adulte(s), 0 Enfant(s), 0 Bébé(s)"
+          "raw": "[2026-11-10T13:31:39.936Z] [INFO]         Passagers : 2 Adulte(s), 0 Enfant(s), 0 Bébé(s)"
         },
         {
-          "timestamp": "2026-11-10T08:00:30.640Z",
+          "timestamp": "2026-11-10T13:31:42.467Z",
           "category": "INFO",
-          "message": "Clic sur le bouton de soumission \"Rechercher / Search\"",
+          "message": "Clic sur Rechercher",
           "details": "",
-          "raw": "[2026-11-10T08:00:30.640Z] [INFO]         Clic sur le bouton de soumission \"Rechercher / Search\""
+          "raw": "[2026-11-10T13:31:42.467Z] [INFO]         Clic sur Rechercher"
         },
         {
-          "timestamp": "2026-11-10T08:00:36.108Z",
+          "timestamp": "2026-11-10T13:31:47.253Z",
           "category": "INFO",
-          "message": "Attente du chargement des offres de transport (Navette / Transfert Privé)...",
+          "message": "Attente du chargement des véhicules...",
           "details": "",
-          "raw": "[2026-11-10T08:00:36.108Z] [INFO]         Attente du chargement des offres de transport (Navette / Transfert Privé)..."
+          "raw": "[2026-11-10T13:31:47.253Z] [INFO]         Attente du chargement des véhicules..."
         },
         {
-          "timestamp": "2026-11-10T08:00:42.468Z",
+          "timestamp": "2026-11-10T13:31:51.162Z",
           "category": "PASS",
-          "message": "6 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best price | Economy Shuttle | 57,80 € | Best comfort | Private transfer | From | 175,00 €",
+          "message": "6 offre(s) affichée(s) — Best price | Economy Shuttle | 57,80 € | Best comfort | Private transfer | Searching...",
           "details": "",
-          "raw": "[2026-11-10T08:00:42.468Z] [PASS]         6 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best price | Economy Shuttle | 57,80 € | Best comfort | Private transfer | From | 175,00 €"
+          "raw": "[2026-11-10T13:31:51.162Z] [PASS]         6 offre(s) affichée(s) — Best price | Economy Shuttle | 57,80 € | Best comfort | Private transfer | Searching..."
         },
         {
-          "timestamp": "2026-11-10T08:00:44.510Z",
+          "timestamp": "2026-11-10T13:31:51.391Z",
           "category": "CAPTURE",
-          "message": "Capture d'écran enregistrée",
+          "message": "Capture enregistrée",
           "details": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_multilingue_en.png",
-          "raw": "[2026-11-10T08:00:44.510Z] [CAPTURE]      Capture d'écran enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_multilingue_en.png"
+          "raw": "[2026-11-10T13:31:51.391Z] [CAPTURE]      Capture enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\parcours_multilingue_en.png"
         },
         {
-          "timestamp": "2026-11-10T08:00:44.749Z",
+          "timestamp": "2026-11-10T13:31:51.482Z",
           "category": "PASS",
-          "message": "Scénario [parcours_multilingue_en] terminé en 51.31s",
+          "message": "Scénario [parcours_multilingue_en] terminé en 33.30s\n",
           "details": "",
-          "raw": "[2026-11-10T08:00:44.749Z] [PASS]         Scénario [parcours_multilingue_en] terminé en 51.31s"
+          "raw": "[2026-11-10T13:31:51.482Z] [PASS]         Scénario [parcours_multilingue_en] terminé en 33.30s\n"
+        }
+      ]
+    },
+    {
+      "id": "parcours_excursion_versailles",
+      "title": "SC-05 : Nouveau Module Excursions (/excursions/versailles — Formulaire Réservation)",
+      "category": "Nouveaux Modules",
+      "status": "PASS",
+      "durationSec": 10.48,
+      "anomalyDetected": false,
+      "anomalyDetails": null,
+      "networkAnomaliesCount": 0,
+      "consoleErrorsCount": 0,
+      "screenshot": "../screenshots/excursion_versailles.png",
+      "logs": [
+        {
+          "timestamp": "2026-11-10T13:31:51.486Z",
+          "category": "INFO",
+          "message": "Lancement [parcours_excursion_versailles] : SC-05 : Nouveau Module Excursions (/excursions/versailles — Formulaire Réservation)",
+          "details": "",
+          "raw": "[2026-11-10T13:31:51.486Z] [INFO]         Lancement [parcours_excursion_versailles] : SC-05 : Nouveau Module Excursions (/excursions/versailles — Formulaire Réservation)"
+        },
+        {
+          "timestamp": "2026-11-10T13:31:51.745Z",
+          "category": "INFO",
+          "message": "Navigation vers : https://www.ozeroute.com/excursions/versailles",
+          "details": "",
+          "raw": "[2026-11-10T13:31:51.745Z] [INFO]         Navigation vers : https://www.ozeroute.com/excursions/versailles"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:01.577Z",
+          "category": "PASS",
+          "message": "Formulaire de demande d'excursion (Château de Versailles - 190 €) vérifié",
+          "details": "",
+          "raw": "[2026-11-10T13:32:01.577Z] [PASS]         Formulaire de demande d'excursion (Château de Versailles - 190 €) vérifié"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:01.884Z",
+          "category": "CAPTURE",
+          "message": "Capture enregistrée",
+          "details": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\excursion_versailles.png",
+          "raw": "[2026-11-10T13:32:01.884Z] [CAPTURE]      Capture enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\excursion_versailles.png"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:01.964Z",
+          "category": "PASS",
+          "message": "Scénario [parcours_excursion_versailles] terminé en 10.48s\n",
+          "details": "",
+          "raw": "[2026-11-10T13:32:01.964Z] [PASS]         Scénario [parcours_excursion_versailles] terminé en 10.48s\n"
+        }
+      ]
+    },
+    {
+      "id": "audit_bug_mise_a_disposition",
+      "title": "SC-06 : Faille & Bug Mise à Disposition (Tarif 11H=12H & Manipulation Prix Base64 'offer=' ➔ 1,00 €)",
+      "category": "Bugs Détectés",
+      "status": "PASS",
+      "durationSec": 39.71,
+      "anomalyDetected": true,
+      "anomalyDetails": "1) Faille Manipulation de Prix (CWE-472) sur /booking : le paramètre URL 'offer=' contient tout l'objet JSON en Base64 non signé ; en remplaçant prices[\"3H\"]=160 par 1, la page /booking affiche \"Prix total : 1,00 €\". 2) Bug calcul tarifaire API : 11H (587 €) et 12H (587 €) ont exactement le même prix (12ème heure non facturée) + \"campaign_code\":\"undefined\".",
+      "networkAnomaliesCount": 0,
+      "consoleErrorsCount": 1,
+      "screenshot": "../screenshots/mise_a_dispo_bug.png",
+      "logs": [
+        {
+          "timestamp": "2026-11-10T13:32:01.968Z",
+          "category": "INFO",
+          "message": "Lancement [audit_bug_mise_a_disposition] : SC-06 : Faille & Bug Mise à Disposition (Tarif 11H=12H & Manipulation Prix Base64 'offer=' ➔ 1,00 €)",
+          "details": "",
+          "raw": "[2026-11-10T13:32:01.968Z] [INFO]         Lancement [audit_bug_mise_a_disposition] : SC-06 : Faille & Bug Mise à Disposition (Tarif 11H=12H & Manipulation Prix Base64 'offer=' ➔ 1,00 €)"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:02.193Z",
+          "category": "INFO",
+          "message": "Navigation vers : https://www.ozeroute.com/mise-a-disposition",
+          "details": "",
+          "raw": "[2026-11-10T13:32:02.193Z] [INFO]         Navigation vers : https://www.ozeroute.com/mise-a-disposition"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:07.160Z",
+          "category": "INFO",
+          "message": "Saisie départ : \"Gare de Lyon\"",
+          "details": "",
+          "raw": "[2026-11-10T13:32:07.160Z] [INFO]         Saisie départ : \"Gare de Lyon\""
+        },
+        {
+          "timestamp": "2026-11-10T13:32:09.596Z",
+          "category": "INFO",
+          "message": "Départ sélectionné : Gare de Lyon - Place Louis-Armand, Paris, France",
+          "details": "",
+          "raw": "[2026-11-10T13:32:09.596Z] [INFO]         Départ sélectionné : Gare de Lyon - Place Louis-Armand, Paris, France"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:10.213Z",
+          "category": "INFO",
+          "message": "Saisie destination : \"Tour Eiffel\"",
+          "details": "",
+          "raw": "[2026-11-10T13:32:10.213Z] [INFO]         Saisie destination : \"Tour Eiffel\""
+        },
+        {
+          "timestamp": "2026-11-10T13:32:12.710Z",
+          "category": "INFO",
+          "message": "Destination sélectionnée : Tour Eiffel - Avenue Gustave Eiffel, Paris",
+          "details": "",
+          "raw": "[2026-11-10T13:32:12.710Z] [INFO]         Destination sélectionnée : Tour Eiffel - Avenue Gustave Eiffel, Paris"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:13.426Z",
+          "category": "INFO",
+          "message": "Date : 15/11/2026 | Heure : 14:00",
+          "details": "",
+          "raw": "[2026-11-10T13:32:13.426Z] [INFO]         Date : 15/11/2026 | Heure : 14:00"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:14.381Z",
+          "category": "INFO",
+          "message": "Passagers : 1 Adulte(s), 0 Enfant(s), 0 Bébé(s)",
+          "details": "",
+          "raw": "[2026-11-10T13:32:14.381Z] [INFO]         Passagers : 1 Adulte(s), 0 Enfant(s), 0 Bébé(s)"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:16.257Z",
+          "category": "INFO",
+          "message": "Clic sur Rechercher",
+          "details": "",
+          "raw": "[2026-11-10T13:32:16.257Z] [INFO]         Clic sur Rechercher"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:21.019Z",
+          "category": "INFO",
+          "message": "Attente du chargement des véhicules...",
+          "details": "",
+          "raw": "[2026-11-10T13:32:21.019Z] [INFO]         Attente du chargement des véhicules..."
+        },
+        {
+          "timestamp": "2026-11-10T13:32:22.528Z",
+          "category": "PASS",
+          "message": "6 offre(s) affichée(s) — Berline Eco (3) | Toyota, Skoda ou similaire | 14:00 | Gare de Lyon | Durée | 3H | Durée (h) | Max : 3 passagers / véhicule | 3 x | 160,00 € | Choisir",
+          "details": "",
+          "raw": "[2026-11-10T13:32:22.528Z] [PASS]         6 offre(s) affichée(s) — Berline Eco (3) | Toyota, Skoda ou similaire | 14:00 | Gare de Lyon | Durée | 3H | Durée (h) | Max : 3 passagers / véhicule | 3 x | 160,00 € | Choisir"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:22.562Z",
+          "category": "INFO",
+          "message": "Clic sur le bouton \"Choisir\"",
+          "details": "",
+          "raw": "[2026-11-10T13:32:22.562Z] [INFO]         Clic sur le bouton \"Choisir\""
+        },
+        {
+          "timestamp": "2026-11-10T13:32:24.224Z",
+          "category": "INFO",
+          "message": "Validation de la modale \"Bagages Transportés\"",
+          "details": "",
+          "raw": "[2026-11-10T13:32:24.224Z] [INFO]         Validation de la modale \"Bagages Transportés\""
+        },
+        {
+          "timestamp": "2026-11-10T13:32:27.297Z",
+          "category": "PASS",
+          "message": "Arrivée sur la page Checkout (/booking)",
+          "details": "",
+          "raw": "[2026-11-10T13:32:27.297Z] [PASS]         Arrivée sur la page Checkout (/booking)"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:38.481Z",
+          "category": "INFO",
+          "message": "Remplissage coordonnées passager : Amenallah Jerbi",
+          "details": "",
+          "raw": "[2026-11-10T13:32:38.481Z] [INFO]         Remplissage coordonnées passager : Amenallah Jerbi"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:40.327Z",
+          "category": "INFO",
+          "message": "Case CGV cochée",
+          "details": "",
+          "raw": "[2026-11-10T13:32:40.327Z] [INFO]         Case CGV cochée"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:41.298Z",
+          "category": "PASS",
+          "message": "Formulaire /booking prêt pour le paiement Stripe",
+          "details": "",
+          "raw": "[2026-11-10T13:32:41.298Z] [PASS]         Formulaire /booking prêt pour le paiement Stripe"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:41.302Z",
+          "category": "BUG P1",
+          "message": "1) Faille Manipulation de Prix (CWE-472) sur /booking : le paramètre URL 'offer=' contient tout l'objet JSON en Base64 non signé ; en remplaçant prices[\"3H\"]=160 par 1, la page /booking affiche \"Prix total : 1,00 €\". 2) Bug calcul tarifaire API : 11H (587 €) et 12H (587 €) ont exactement le même prix (12ème heure non facturée) + \"campaign_code\":\"undefined\".",
+          "details": "",
+          "raw": "[2026-11-10T13:32:41.302Z] [BUG P1]       1) Faille Manipulation de Prix (CWE-472) sur /booking : le paramètre URL 'offer=' contient tout l'objet JSON en Base64 non signé ; en remplaçant prices[\"3H\"]=160 par 1, la page /booking affiche \"Prix total : 1,00 €\". 2) Bug calcul tarifaire API : 11H (587 €) et 12H (587 €) ont exactement le même prix (12ème heure non facturée) + \"campaign_code\":\"undefined\"."
+        },
+        {
+          "timestamp": "2026-11-10T13:32:41.569Z",
+          "category": "CAPTURE",
+          "message": "Capture enregistrée",
+          "details": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\mise_a_dispo_bug.png",
+          "raw": "[2026-11-10T13:32:41.569Z] [CAPTURE]      Capture enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\mise_a_dispo_bug.png"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:41.676Z",
+          "category": "PASS",
+          "message": "Scénario [audit_bug_mise_a_disposition] terminé en 39.71s\n",
+          "details": "",
+          "raw": "[2026-11-10T13:32:41.676Z] [PASS]         Scénario [audit_bug_mise_a_disposition] terminé en 39.71s\n"
         }
       ]
     },
     {
       "id": "audit_faille_metier_0km",
-      "category": "AUDIT ANOMALIE P1",
-      "name": "SC-05 : Reproduction Faille Logique Métier — Trajet 0 km (Orly ➔ Orly à 31,25 €)",
-      "description": "Audit du validateur d'itinéraire : soumission d'un point de départ et d'arrivée identiques (Paris-Orly -> Paris-Orly) et constat de la tarification d'une Berline Eco à 31,25 € TTC pour un trajet nul.",
+      "title": "SC-07 : Bug Logique Métier — Trajet Identique 0 km (Orly ➔ Orly facturé 31,25 €)",
+      "category": "Bugs Détectés",
       "status": "PASS",
+      "durationSec": 22.15,
       "anomalyDetected": true,
-      "durationMs": 44150,
-      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\03_bug_metier_orly_orly_0km_31euros.png",
+      "anomalyDetails": "Trajet identique Orly ➔ Orly (0 km) accepté sans erreur et facturé 31,25 € (Berline Eco).",
+      "networkAnomaliesCount": 2,
+      "consoleErrorsCount": 2,
+      "screenshot": "../screenshots/03_bug_metier_orly_orly_0km_31euros.png",
       "logs": [
         {
-          "timestamp": "2026-11-10T08:00:44.763Z",
+          "timestamp": "2026-11-10T13:32:41.679Z",
           "category": "INFO",
-          "message": "Exécution du scénario [audit_faille_metier_0km] : SC-05 : Reproduction Faille Logique Métier — Trajet 0 km (Orly ➔ Orly à 31,25 €)",
+          "message": "Lancement [audit_faille_metier_0km] : SC-07 : Bug Logique Métier — Trajet Identique 0 km (Orly ➔ Orly facturé 31,25 €)",
           "details": "",
-          "raw": "[2026-11-10T08:00:44.763Z] [INFO]         Exécution du scénario [audit_faille_metier_0km] : SC-05 : Reproduction Faille Logique Métier — Trajet 0 km (Orly ➔ Orly à 31,25 €)"
+          "raw": "[2026-11-10T13:32:41.679Z] [INFO]         Lancement [audit_faille_metier_0km] : SC-07 : Bug Logique Métier — Trajet Identique 0 km (Orly ➔ Orly facturé 31,25 €)"
         },
         {
-          "timestamp": "2026-11-10T08:00:45.479Z",
+          "timestamp": "2026-11-10T13:32:41.926Z",
           "category": "INFO",
           "message": "Navigation vers : https://www.ozeroute.com/",
           "details": "",
-          "raw": "[2026-11-10T08:00:45.479Z] [INFO]         Navigation vers : https://www.ozeroute.com/"
+          "raw": "[2026-11-10T13:32:41.926Z] [INFO]         Navigation vers : https://www.ozeroute.com/"
         },
         {
-          "timestamp": "2026-11-10T08:00:52.013Z",
+          "timestamp": "2026-11-10T13:32:48.391Z",
           "category": "INFO",
-          "message": "Saisie du point de départ : \"Aéroport de Paris-Orly\"",
+          "message": "Saisie départ : \"Aéroport de Paris-Orly\"",
           "details": "",
-          "raw": "[2026-11-10T08:00:52.013Z] [INFO]         Saisie du point de départ : \"Aéroport de Paris-Orly\""
+          "raw": "[2026-11-10T13:32:48.391Z] [INFO]         Saisie départ : \"Aéroport de Paris-Orly\""
         },
         {
-          "timestamp": "2026-11-10T08:00:58.533Z",
+          "timestamp": "2026-11-10T13:32:50.898Z",
           "category": "INFO",
-          "message": "Suggestion Google Places sélectionnée (Départ) : Aéroport de Paris-Orly (ORY) - Orly",
+          "message": "Départ sélectionné : Aéroport de Paris-Orly (ORY) - Orly",
           "details": "",
-          "raw": "[2026-11-10T08:00:58.533Z] [INFO]         Suggestion Google Places sélectionnée (Départ) : Aéroport de Paris-Orly (ORY) - Orly"
+          "raw": "[2026-11-10T13:32:50.898Z] [INFO]         Départ sélectionné : Aéroport de Paris-Orly (ORY) - Orly"
         },
         {
-          "timestamp": "2026-11-10T08:00:59.635Z",
+          "timestamp": "2026-11-10T13:32:51.524Z",
           "category": "INFO",
-          "message": "Saisie de la destination : \"Aéroport de Paris-Orly\"",
+          "message": "Saisie destination : \"Aéroport de Paris-Orly\"",
           "details": "",
-          "raw": "[2026-11-10T08:00:59.635Z] [INFO]         Saisie de la destination : \"Aéroport de Paris-Orly\""
+          "raw": "[2026-11-10T13:32:51.524Z] [INFO]         Saisie destination : \"Aéroport de Paris-Orly\""
         },
         {
-          "timestamp": "2026-11-10T08:01:04.216Z",
+          "timestamp": "2026-11-10T13:32:54.163Z",
           "category": "INFO",
-          "message": "Suggestion Google Places sélectionnée (Destination) : Aéroport de Paris-Orly (ORY) - Orly",
+          "message": "Destination sélectionnée : Aéroport de Paris-Orly (ORY) - Orly",
           "details": "",
-          "raw": "[2026-11-10T08:01:04.216Z] [INFO]         Suggestion Google Places sélectionnée (Destination) : Aéroport de Paris-Orly (ORY) - Orly"
+          "raw": "[2026-11-10T13:32:54.163Z] [INFO]         Destination sélectionnée : Aéroport de Paris-Orly (ORY) - Orly"
         },
         {
-          "timestamp": "2026-11-10T08:01:05.384Z",
+          "timestamp": "2026-11-10T13:32:54.904Z",
           "category": "INFO",
-          "message": "Configuration de la date (14/11/2026) et de l'heure (14:00)",
+          "message": "Date : 14/11/2026 | Heure : 14:00",
           "details": "",
-          "raw": "[2026-11-10T08:01:05.384Z] [INFO]         Configuration de la date (14/11/2026) et de l'heure (14:00)"
+          "raw": "[2026-11-10T13:32:54.904Z] [INFO]         Date : 14/11/2026 | Heure : 14:00"
         },
         {
-          "timestamp": "2026-11-10T08:01:09.127Z",
+          "timestamp": "2026-11-10T13:32:55.921Z",
           "category": "INFO",
-          "message": "Configuration des passagers : 1 Adulte(s), 0 Enfant(s), 0 Bébé(s)",
+          "message": "Passagers : 1 Adulte(s), 0 Enfant(s), 0 Bébé(s)",
           "details": "",
-          "raw": "[2026-11-10T08:01:09.127Z] [INFO]         Configuration des passagers : 1 Adulte(s), 0 Enfant(s), 0 Bébé(s)"
+          "raw": "[2026-11-10T13:32:55.921Z] [INFO]         Passagers : 1 Adulte(s), 0 Enfant(s), 0 Bébé(s)"
         },
         {
-          "timestamp": "2026-11-10T08:01:13.169Z",
+          "timestamp": "2026-11-10T13:32:57.765Z",
+          "category": "INFO",
+          "message": "Clic sur Rechercher",
+          "details": "",
+          "raw": "[2026-11-10T13:32:57.765Z] [INFO]         Clic sur Rechercher"
+        },
+        {
+          "timestamp": "2026-11-10T13:32:57.839Z",
           "category": "RÉSEAU / 404",
-          "message": "Ressource promotionnelle introuvable (HTTP 404)",
+          "message": "Appel API en 404 détecté",
           "details": "https://api.ozeroute.com/v1/common/promo",
-          "raw": "[2026-11-10T08:01:13.169Z] [RÉSEAU / 404] Ressource promotionnelle introuvable (HTTP 404) | Détails: https://api.ozeroute.com/v1/common/promo"
+          "raw": "[2026-11-10T13:32:57.839Z] [RÉSEAU / 404] Appel API en 404 détecté | Détails: https://api.ozeroute.com/v1/common/promo"
         },
         {
-          "timestamp": "2026-11-10T08:01:13.341Z",
+          "timestamp": "2026-11-10T13:33:00.201Z",
           "category": "INFO",
-          "message": "Clic sur le bouton de soumission \"Rechercher / Search\"",
+          "message": "Attente du chargement des véhicules...",
           "details": "",
-          "raw": "[2026-11-10T08:01:13.341Z] [INFO]         Clic sur le bouton de soumission \"Rechercher / Search\""
+          "raw": "[2026-11-10T13:33:00.201Z] [INFO]         Attente du chargement des véhicules..."
         },
         {
-          "timestamp": "2026-11-10T08:01:19.995Z",
-          "category": "INFO",
-          "message": "Attente du chargement des offres de transport (Navette / Transfert Privé)...",
-          "details": "",
-          "raw": "[2026-11-10T08:01:19.995Z] [INFO]         Attente du chargement des offres de transport (Navette / Transfert Privé)..."
-        },
-        {
-          "timestamp": "2026-11-10T08:01:20.708Z",
+          "timestamp": "2026-11-10T13:33:00.325Z",
           "category": "RÉSEAU / 404",
-          "message": "Ressource promotionnelle introuvable (HTTP 404)",
+          "message": "Appel API en 404 détecté",
           "details": "https://api.ozeroute.com/v1/common/promo",
-          "raw": "[2026-11-10T08:01:20.708Z] [RÉSEAU / 404] Ressource promotionnelle introuvable (HTTP 404) | Détails: https://api.ozeroute.com/v1/common/promo"
+          "raw": "[2026-11-10T13:33:00.325Z] [RÉSEAU / 404] Appel API en 404 détecté | Détails: https://api.ozeroute.com/v1/common/promo"
         },
         {
-          "timestamp": "2026-11-10T08:01:27.225Z",
+          "timestamp": "2026-11-10T13:33:03.600Z",
           "category": "PASS",
-          "message": "6 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best comfort | Transfert privé | A partir de | 31,25 €",
+          "message": "6 offre(s) affichée(s) — Best comfort | Transfert privé | A partir de | 31,25 €",
           "details": "",
-          "raw": "[2026-11-10T08:01:27.225Z] [PASS]         6 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best comfort | Transfert privé | A partir de | 31,25 €"
+          "raw": "[2026-11-10T13:33:03.600Z] [PASS]         6 offre(s) affichée(s) — Best comfort | Transfert privé | A partir de | 31,25 €"
         },
         {
-          "timestamp": "2026-11-10T08:01:27.597Z",
-          "category": "ANOMALIE P1",
-          "message": "Faille logique métier confirmée : trajet Orly ➔ Orly (0 km) accepté et tarifé (31,25 €, 34,38 €, 50,00 €, 55,00 €, 75,00 €)",
+          "timestamp": "2026-11-10T13:33:03.610Z",
+          "category": "BUG P1",
+          "message": "Trajet identique Orly ➔ Orly (0 km) accepté sans erreur et facturé 31,25 € (Berline Eco).",
           "details": "",
-          "raw": "[2026-11-10T08:01:27.597Z] [ANOMALIE P1]  Faille logique métier confirmée : trajet Orly ➔ Orly (0 km) accepté et tarifé (31,25 €, 34,38 €, 50,00 €, 55,00 €, 75,00 €)"
+          "raw": "[2026-11-10T13:33:03.610Z] [BUG P1]       Trajet identique Orly ➔ Orly (0 km) accepté sans erreur et facturé 31,25 € (Berline Eco)."
         },
         {
-          "timestamp": "2026-11-10T08:01:27.645Z",
-          "category": "PASS",
-          "message": "Remédiation Zod/Yup vérifiée : isValid=false (2 erreurs bloquées)",
-          "details": "",
-          "raw": "[2026-11-10T08:01:27.645Z] [PASS]         Remédiation Zod/Yup vérifiée : isValid=false (2 erreurs bloquées)"
-        },
-        {
-          "timestamp": "2026-11-10T08:01:28.426Z",
+          "timestamp": "2026-11-10T13:33:03.758Z",
           "category": "CAPTURE",
-          "message": "Capture d'écran enregistrée",
+          "message": "Capture enregistrée",
           "details": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\03_bug_metier_orly_orly_0km_31euros.png",
-          "raw": "[2026-11-10T08:01:28.426Z] [CAPTURE]      Capture d'écran enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\03_bug_metier_orly_orly_0km_31euros.png"
+          "raw": "[2026-11-10T13:33:03.758Z] [CAPTURE]      Capture enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\03_bug_metier_orly_orly_0km_31euros.png"
         },
         {
-          "timestamp": "2026-11-10T08:01:28.913Z",
+          "timestamp": "2026-11-10T13:33:03.826Z",
           "category": "PASS",
-          "message": "Scénario [audit_faille_metier_0km] terminé en 44.15s",
+          "message": "Scénario [audit_faille_metier_0km] terminé en 22.15s\n",
           "details": "",
-          "raw": "[2026-11-10T08:01:28.913Z] [PASS]         Scénario [audit_faille_metier_0km] terminé en 44.15s"
-        }
-      ]
-    },
-    {
-      "id": "audit_responsive_960px",
-      "category": "AUDIT ANOMALIE P2",
-      "name": "SC-06 : Audit Ergonomie Responsive CSS à 960px (Bandeau de Recherche)",
-      "description": "Vérification du comportement Flexbox Material-UI à la résolution intermédiaire 960x800px sur la page des résultats (/mobilite-aeroport/reservation) et mesure des dimensions des champs Date et Passagers.",
-      "status": "PASS",
-      "anomalyDetected": true,
-      "durationMs": 17027,
-      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\01_bug_css_troncature_date_passagers_960px.png",
-      "logs": [
-        {
-          "timestamp": "2026-11-10T08:01:28.940Z",
-          "category": "INFO",
-          "message": "Exécution du scénario [audit_responsive_960px] : SC-06 : Audit Ergonomie Responsive CSS à 960px (Bandeau de Recherche)",
-          "details": "",
-          "raw": "[2026-11-10T08:01:28.940Z] [INFO]         Exécution du scénario [audit_responsive_960px] : SC-06 : Audit Ergonomie Responsive CSS à 960px (Bandeau de Recherche)"
-        },
-        {
-          "timestamp": "2026-11-10T08:01:29.565Z",
-          "category": "INFO",
-          "message": "Navigation vers : https://www.ozeroute.com/mobilite-aeroport/reservation?q=eyJmcm9tIjp7ImlkIjoiQ2hJSkxUeU5EWXh2NWtjUmJ0YzlUWkJiRF9vIiwibmFtZSI6IlBhcmlzIEJlYXV2YWlzIEFpcnBvcnQiLCJsb2NhdGlvbiI6eyJsYXQiOjQ5LjQ1NDQ2NzcsImxuZyI6Mi4xMTE1MTExfSwiYWRkcmVzcyI6IlJ0ZSBkZSBsJ0HDqXJvcG9ydCwgNjAwMDAgVGlsbMOpIiwicG9zdGFsQ29kZSI6IjYwMDAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IlRpbGzDqSJ9LCJ0byI6eyJpZCI6IkNoSUp2ZUo2eWhrZDVrY1JZT1lRWTh2NC1sYyIsIm5hbWUiOiJEaXNuZXlsYW5kIFBhcmlzIiwibG9jYXRpb24iOnsibGF0Ijo0OC44NjczODU4LCJsbmciOjIuNzgzNTkzfSwiYWRkcmVzcyI6IkJkIGRlIFBhcmMsIDc3NzAwIENvdXB2cmF5IiwicG9zdGFsQ29kZSI6Ijc3NzAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IkNvdXB2cmF5In0sImRpcmVjdGlvbiI6IkZST00iLCJkaXJlY3Rpb25UeXBlIjoib25lX3dheSIsInBsYWNlIjpudWxsLCJleHRlbnNpb24iOm51bGwsInBhc3NlbmdlcnMiOnsiYWR1bHQiOjEsImluZmFudCI6MCwiYmFieSI6MH0sImRhdGVPZkdvIjoiMTQvMTEvMjAyNiIsInRpbWVPZkdvIjoiMTI6MDAiLCJwcm92aXNpb24iOmZhbHNlLCJwcm92aXNpb25EdXJhdGlvbiI6IiJ9",
-          "details": "",
-          "raw": "[2026-11-10T08:01:29.565Z] [INFO]         Navigation vers : https://www.ozeroute.com/mobilite-aeroport/reservation?q=eyJmcm9tIjp7ImlkIjoiQ2hJSkxUeU5EWXh2NWtjUmJ0YzlUWkJiRF9vIiwibmFtZSI6IlBhcmlzIEJlYXV2YWlzIEFpcnBvcnQiLCJsb2NhdGlvbiI6eyJsYXQiOjQ5LjQ1NDQ2NzcsImxuZyI6Mi4xMTE1MTExfSwiYWRkcmVzcyI6IlJ0ZSBkZSBsJ0HDqXJvcG9ydCwgNjAwMDAgVGlsbMOpIiwicG9zdGFsQ29kZSI6IjYwMDAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IlRpbGzDqSJ9LCJ0byI6eyJpZCI6IkNoSUp2ZUo2eWhrZDVrY1JZT1lRWTh2NC1sYyIsIm5hbWUiOiJEaXNuZXlsYW5kIFBhcmlzIiwibG9jYXRpb24iOnsibGF0Ijo0OC44NjczODU4LCJsbmciOjIuNzgzNTkzfSwiYWRkcmVzcyI6IkJkIGRlIFBhcmMsIDc3NzAwIENvdXB2cmF5IiwicG9zdGFsQ29kZSI6Ijc3NzAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IkNvdXB2cmF5In0sImRpcmVjdGlvbiI6IkZST00iLCJkaXJlY3Rpb25UeXBlIjoib25lX3dheSIsInBsYWNlIjpudWxsLCJleHRlbnNpb24iOm51bGwsInBhc3NlbmdlcnMiOnsiYWR1bHQiOjEsImluZmFudCI6MCwiYmFieSI6MH0sImRhdGVPZkdvIjoiMTQvMTEvMjAyNiIsInRpbWVPZkdvIjoiMTI6MDAiLCJwcm92aXNpb24iOmZhbHNlLCJwcm92aXNpb25EdXJhdGlvbiI6IiJ9"
-        },
-        {
-          "timestamp": "2026-11-10T08:01:34.729Z",
-          "category": "INFO",
-          "message": "Attente du chargement des offres de transport (Navette / Transfert Privé)...",
-          "details": "",
-          "raw": "[2026-11-10T08:01:34.729Z] [INFO]         Attente du chargement des offres de transport (Navette / Transfert Privé)..."
-        },
-        {
-          "timestamp": "2026-11-10T08:01:40.681Z",
-          "category": "PASS",
-          "message": "6 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best price | Navette Economique | 28,90 € | Best comfort | Transfert privé | Searching...",
-          "details": "",
-          "raw": "[2026-11-10T08:01:40.681Z] [PASS]         6 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best price | Navette Economique | 28,90 € | Best comfort | Transfert privé | Searching..."
-        },
-        {
-          "timestamp": "2026-11-10T08:01:42.920Z",
-          "category": "INFO",
-          "message": "Mesures Responsive à 960px : Champ Date = 96px (14/11/2026) | Passagers = \"Passagers\" (68px)",
-          "details": "",
-          "raw": "[2026-11-10T08:01:42.920Z] [INFO]         Mesures Responsive à 960px : Champ Date = 96px (14/11/2026) | Passagers = \"Passagers\" (68px)"
-        },
-        {
-          "timestamp": "2026-11-10T08:01:42.984Z",
-          "category": "ANOMALIE P2",
-          "message": "Audit Responsive 960px exécuté : largeur champ Date=96px (14/11/2026) | Passagers=\"Passagers\"",
-          "details": "",
-          "raw": "[2026-11-10T08:01:42.984Z] [ANOMALIE P2]  Audit Responsive 960px exécuté : largeur champ Date=96px (14/11/2026) | Passagers=\"Passagers\""
-        },
-        {
-          "timestamp": "2026-11-10T08:01:44.838Z",
-          "category": "CAPTURE",
-          "message": "Capture d'écran enregistrée",
-          "details": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\01_bug_css_troncature_date_passagers_960px.png",
-          "raw": "[2026-11-10T08:01:44.838Z] [CAPTURE]      Capture d'écran enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\01_bug_css_troncature_date_passagers_960px.png"
-        },
-        {
-          "timestamp": "2026-11-10T08:01:45.607Z",
-          "category": "CAPTURE",
-          "message": "Capture d'écran enregistrée",
-          "details": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\affichage_responsive.png",
-          "raw": "[2026-11-10T08:01:45.607Z] [CAPTURE]      Capture d'écran enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\affichage_responsive.png"
-        },
-        {
-          "timestamp": "2026-11-10T08:01:45.966Z",
-          "category": "PASS",
-          "message": "Scénario [audit_responsive_960px] terminé en 17.03s",
-          "details": "",
-          "raw": "[2026-11-10T08:01:45.966Z] [PASS]         Scénario [audit_responsive_960px] terminé en 17.03s"
+          "raw": "[2026-11-10T13:33:03.826Z] [PASS]         Scénario [audit_faille_metier_0km] terminé en 22.15s\n"
         }
       ]
     },
     {
       "id": "audit_validation_typo_ui",
-      "category": "AUDIT QUALITÉ UI / FORMULAIRE",
-      "name": "SC-07 : Contrôle des Champs Obligatoires & Message Passagers ('au moin un adulte')",
-      "description": "Validation des garde-fous du formulaire de recherche en cas d'omission du nombre d'adultes (0 adulte sélectionné) et vérification du blocage de la soumission avec capture du message d'alerte.",
+      "title": "SC-08 : Validation Formulaire Passagers & Message UI ('Faut avoir au moin un adulte')",
+      "category": "Bugs Détectés",
       "status": "PASS",
+      "durationSec": 18.75,
       "anomalyDetected": true,
-      "durationMs": 24482,
-      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\validation_champs_requis.png",
+      "anomalyDetails": "Message de validation avec faute d'orthographe sur le champ passagers : \"Faut avoir au moin un adulte\" (manque le 's' à moins) + 0 appel(s) 404 sur /v1/common/promo.",
+      "networkAnomaliesCount": 0,
+      "consoleErrorsCount": 0,
+      "screenshot": "../screenshots/validation_champs_requis.png",
       "logs": [
         {
-          "timestamp": "2026-11-10T08:01:46.040Z",
+          "timestamp": "2026-11-10T13:33:03.829Z",
           "category": "INFO",
-          "message": "Exécution du scénario [audit_validation_typo_ui] : SC-07 : Contrôle des Champs Obligatoires & Message Passagers ('au moin un adulte')",
+          "message": "Lancement [audit_validation_typo_ui] : SC-08 : Validation Formulaire Passagers & Message UI ('Faut avoir au moin un adulte')",
           "details": "",
-          "raw": "[2026-11-10T08:01:46.040Z] [INFO]         Exécution du scénario [audit_validation_typo_ui] : SC-07 : Contrôle des Champs Obligatoires & Message Passagers ('au moin un adulte')"
+          "raw": "[2026-11-10T13:33:03.829Z] [INFO]         Lancement [audit_validation_typo_ui] : SC-08 : Validation Formulaire Passagers & Message UI ('Faut avoir au moin un adulte')"
         },
         {
-          "timestamp": "2026-11-10T08:01:46.822Z",
+          "timestamp": "2026-11-10T13:33:04.029Z",
           "category": "INFO",
           "message": "Navigation vers : https://www.ozeroute.com/",
           "details": "",
-          "raw": "[2026-11-10T08:01:46.822Z] [INFO]         Navigation vers : https://www.ozeroute.com/"
+          "raw": "[2026-11-10T13:33:04.029Z] [INFO]         Navigation vers : https://www.ozeroute.com/"
         },
         {
-          "timestamp": "2026-11-10T08:01:51.755Z",
+          "timestamp": "2026-11-10T13:33:09.249Z",
           "category": "INFO",
-          "message": "Saisie du point de départ : \"Gare de Lyon, Paris\"",
+          "message": "Saisie départ : \"Gare de Lyon, Paris\"",
           "details": "",
-          "raw": "[2026-11-10T08:01:51.755Z] [INFO]         Saisie du point de départ : \"Gare de Lyon, Paris\""
+          "raw": "[2026-11-10T13:33:09.249Z] [INFO]         Saisie départ : \"Gare de Lyon, Paris\""
         },
         {
-          "timestamp": "2026-11-10T08:01:55.777Z",
+          "timestamp": "2026-11-10T13:33:11.825Z",
           "category": "INFO",
-          "message": "Suggestion Google Places sélectionnée (Départ) : Gare de Lyon - Place Louis Armand, Paris",
+          "message": "Départ sélectionné : Gare de Lyon - Place Louis Armand, Paris",
           "details": "",
-          "raw": "[2026-11-10T08:01:55.777Z] [INFO]         Suggestion Google Places sélectionnée (Départ) : Gare de Lyon - Place Louis Armand, Paris"
+          "raw": "[2026-11-10T13:33:11.825Z] [INFO]         Départ sélectionné : Gare de Lyon - Place Louis Armand, Paris"
         },
         {
-          "timestamp": "2026-11-10T08:01:56.747Z",
+          "timestamp": "2026-11-10T13:33:12.582Z",
           "category": "INFO",
-          "message": "Saisie de la destination : \"Aéroport de Paris-Orly\"",
+          "message": "Saisie destination : \"Aéroport de Paris-Orly\"",
           "details": "",
-          "raw": "[2026-11-10T08:01:56.747Z] [INFO]         Saisie de la destination : \"Aéroport de Paris-Orly\""
+          "raw": "[2026-11-10T13:33:12.582Z] [INFO]         Saisie destination : \"Aéroport de Paris-Orly\""
         },
         {
-          "timestamp": "2026-11-10T08:02:00.525Z",
+          "timestamp": "2026-11-10T13:33:15.718Z",
           "category": "INFO",
-          "message": "Suggestion Google Places sélectionnée (Destination) : Aéroport de Paris-Orly (ORY) - Orly",
+          "message": "Destination sélectionnée : Aéroport de Paris-Orly (ORY) - Orly",
           "details": "",
-          "raw": "[2026-11-10T08:02:00.525Z] [INFO]         Suggestion Google Places sélectionnée (Destination) : Aéroport de Paris-Orly (ORY) - Orly"
+          "raw": "[2026-11-10T13:33:15.718Z] [INFO]         Destination sélectionnée : Aéroport de Paris-Orly (ORY) - Orly"
         },
         {
-          "timestamp": "2026-11-10T08:02:01.917Z",
+          "timestamp": "2026-11-10T13:33:16.450Z",
           "category": "INFO",
-          "message": "Clic sur le bouton de soumission \"Rechercher / Search\"",
+          "message": "Clic sur Rechercher",
           "details": "",
-          "raw": "[2026-11-10T08:02:01.917Z] [INFO]         Clic sur le bouton de soumission \"Rechercher / Search\""
+          "raw": "[2026-11-10T13:33:16.450Z] [INFO]         Clic sur Rechercher"
         },
         {
-          "timestamp": "2026-11-10T08:02:08.067Z",
+          "timestamp": "2026-11-10T13:33:22.087Z",
           "category": "INFO",
-          "message": "Messages de validation détectés : [\"Départ\",\"Destination\",\"Faut avoir au moin un adulte\",\"Votre prise en charge, en vidéo\\nPoint de rendez-vous, QR code, départ · 37 s\",\"Porte à porte vers toutes destinations. Berline, van ou minibus, selon la gamme de confort choisie.\",\"Vous partez à plusieurs ?\\nTransport de groupe : un seul véhicule pour tout le monde, du départ à l'arrivée.\",\"La date d'arrivée de votre vol, pas celle du départ\"]",
+          "message": "Messages d'erreur affichés : [\"Départ\",\"Destination\",\"Faut avoir au moin un adulte\",\"Votre prise en charge, en vidéo\\nPoint de rendez-vous, QR code, départ · 37 s\",\"Porte à porte vers toutes destinations. Berline, van ou minibus, selon la gamme de confort choisie.\",\"Vous partez à plusieurs ?\\nTransport de groupe : un seul véhicule pour tout le monde, du départ à l'arrivée.\",\"La date d'arrivée de votre vol, pas celle du départ\"]",
           "details": "",
-          "raw": "[2026-11-10T08:02:08.067Z] [INFO]         Messages de validation détectés : [\"Départ\",\"Destination\",\"Faut avoir au moin un adulte\",\"Votre prise en charge, en vidéo\\nPoint de rendez-vous, QR code, départ · 37 s\",\"Porte à porte vers toutes destinations. Berline, van ou minibus, selon la gamme de confort choisie.\",\"Vous partez à plusieurs ?\\nTransport de groupe : un seul véhicule pour tout le monde, du départ à l'arrivée.\",\"La date d'arrivée de votre vol, pas celle du départ\"]"
+          "raw": "[2026-11-10T13:33:22.087Z] [INFO]         Messages d'erreur affichés : [\"Départ\",\"Destination\",\"Faut avoir au moin un adulte\",\"Votre prise en charge, en vidéo\\nPoint de rendez-vous, QR code, départ · 37 s\",\"Porte à porte vers toutes destinations. Berline, van ou minibus, selon la gamme de confort choisie.\",\"Vous partez à plusieurs ?\\nTransport de groupe : un seul véhicule pour tout le monde, du départ à l'arrivée.\",\"La date d'arrivée de votre vol, pas celle du départ\"]"
         },
         {
-          "timestamp": "2026-11-10T08:02:08.103Z",
-          "category": "ANOMALIE P3",
-          "message": "Message de validation avec faute d'orthographe confirmé : \"Faut avoir au moin un adulte\"",
+          "timestamp": "2026-11-10T13:33:22.089Z",
+          "category": "BUG P3",
+          "message": "Message de validation avec faute d'orthographe sur le champ passagers : \"Faut avoir au moin un adulte\" (manque le 's' à moins) + 0 appel(s) 404 sur /v1/common/promo.",
           "details": "",
-          "raw": "[2026-11-10T08:02:08.103Z] [ANOMALIE P3]  Message de validation avec faute d'orthographe confirmé : \"Faut avoir au moin un adulte\""
+          "raw": "[2026-11-10T13:33:22.089Z] [BUG P3]       Message de validation avec faute d'orthographe sur le champ passagers : \"Faut avoir au moin un adulte\" (manque le 's' à moins) + 0 appel(s) 404 sur /v1/common/promo."
         },
         {
-          "timestamp": "2026-11-10T08:02:10.089Z",
+          "timestamp": "2026-11-10T13:33:22.522Z",
           "category": "CAPTURE",
-          "message": "Capture d'écran enregistrée",
+          "message": "Capture enregistrée",
           "details": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\validation_champs_requis.png",
-          "raw": "[2026-11-10T08:02:10.089Z] [CAPTURE]      Capture d'écran enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\validation_champs_requis.png"
+          "raw": "[2026-11-10T13:33:22.522Z] [CAPTURE]      Capture enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\validation_champs_requis.png"
         },
         {
-          "timestamp": "2026-11-10T08:02:10.521Z",
+          "timestamp": "2026-11-10T13:33:22.575Z",
           "category": "PASS",
-          "message": "Scénario [audit_validation_typo_ui] terminé en 24.48s",
+          "message": "Scénario [audit_validation_typo_ui] terminé en 18.75s\n",
           "details": "",
-          "raw": "[2026-11-10T08:02:10.521Z] [PASS]         Scénario [audit_validation_typo_ui] terminé en 24.48s"
+          "raw": "[2026-11-10T13:33:22.575Z] [PASS]         Scénario [audit_validation_typo_ui] terminé en 18.75s\n"
         }
       ]
     },
     {
-      "id": "audit_console_elfsight",
-      "category": "AUDIT SERVICES TIERS",
-      "name": "SC-08 : Audit Preuve Sociale & Section Avis Google Reviews",
-      "description": "Surveillance des erreurs console JS au chargement et vérification de l'affichage de la section des avis clients Google sur la page d'accueil.",
+      "id": "parcours_groupe_et_mytrip",
+      "title": "SC-09 : Tarif Groupe (2 Adultes + 1 Enfant + 1 Bébé) & Espace Mon Trajet (mytrip.ozeroute.com)",
+      "category": "Nouveaux Modules",
       "status": "PASS",
+      "durationSec": 60.97,
       "anomalyDetected": false,
-      "durationMs": 11990,
-      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\02_bug_section_avis_elfsight_vide.png",
+      "anomalyDetails": null,
+      "networkAnomaliesCount": 0,
+      "consoleErrorsCount": 0,
+      "screenshot": "../screenshots/gestion_passagers.png",
       "logs": [
         {
-          "timestamp": "2026-11-10T08:02:10.574Z",
+          "timestamp": "2026-11-10T13:33:22.582Z",
           "category": "INFO",
-          "message": "Exécution du scénario [audit_console_elfsight] : SC-08 : Audit Preuve Sociale & Section Avis Google Reviews",
+          "message": "Lancement [parcours_groupe_et_mytrip] : SC-09 : Tarif Groupe (2 Adultes + 1 Enfant + 1 Bébé) & Espace Mon Trajet (mytrip.ozeroute.com)",
           "details": "",
-          "raw": "[2026-11-10T08:02:10.574Z] [INFO]         Exécution du scénario [audit_console_elfsight] : SC-08 : Audit Preuve Sociale & Section Avis Google Reviews"
+          "raw": "[2026-11-10T13:33:22.582Z] [INFO]         Lancement [parcours_groupe_et_mytrip] : SC-09 : Tarif Groupe (2 Adultes + 1 Enfant + 1 Bébé) & Espace Mon Trajet (mytrip.ozeroute.com)"
         },
         {
-          "timestamp": "2026-11-10T08:02:11.576Z",
+          "timestamp": "2026-11-10T13:33:22.821Z",
           "category": "INFO",
           "message": "Navigation vers : https://www.ozeroute.com/",
           "details": "",
-          "raw": "[2026-11-10T08:02:11.576Z] [INFO]         Navigation vers : https://www.ozeroute.com/"
+          "raw": "[2026-11-10T13:33:22.821Z] [INFO]         Navigation vers : https://www.ozeroute.com/"
         },
         {
-          "timestamp": "2026-11-10T08:02:18.828Z",
-          "category": "PASS",
-          "message": "Section Preuve Sociale & Avis Google vérifiée sur la page d'accueil (4,4 · 430 avis Google)",
+          "timestamp": "2026-11-10T13:33:29.444Z",
+          "category": "INFO",
+          "message": "Saisie départ : \"Aéroport de Paris-Beauvais\"",
           "details": "",
-          "raw": "[2026-11-10T08:02:18.828Z] [PASS]         Section Preuve Sociale & Avis Google vérifiée sur la page d'accueil (4,4 · 430 avis Google)"
+          "raw": "[2026-11-10T13:33:29.444Z] [INFO]         Saisie départ : \"Aéroport de Paris-Beauvais\""
         },
         {
-          "timestamp": "2026-11-10T08:02:22.364Z",
+          "timestamp": "2026-11-10T13:33:32.004Z",
+          "category": "INFO",
+          "message": "Départ sélectionné : Aeroportul Beauvais-Tillé (BVA) - Route de l'Aéroport, Tillé",
+          "details": "",
+          "raw": "[2026-11-10T13:33:32.004Z] [INFO]         Départ sélectionné : Aeroportul Beauvais-Tillé (BVA) - Route de l'Aéroport, Tillé"
+        },
+        {
+          "timestamp": "2026-11-10T13:33:32.639Z",
+          "category": "INFO",
+          "message": "Saisie destination : \"Disneyland Paris\"",
+          "details": "",
+          "raw": "[2026-11-10T13:33:32.639Z] [INFO]         Saisie destination : \"Disneyland Paris\""
+        },
+        {
+          "timestamp": "2026-11-10T13:33:35.399Z",
+          "category": "INFO",
+          "message": "Destination sélectionnée : Disneyland Paris - Boulevard de Parc, Coupvray",
+          "details": "",
+          "raw": "[2026-11-10T13:33:35.399Z] [INFO]         Destination sélectionnée : Disneyland Paris - Boulevard de Parc, Coupvray"
+        },
+        {
+          "timestamp": "2026-11-10T13:33:36.133Z",
+          "category": "INFO",
+          "message": "Date : 15/11/2026 | Heure : 12:00",
+          "details": "",
+          "raw": "[2026-11-10T13:33:36.133Z] [INFO]         Date : 15/11/2026 | Heure : 12:00"
+        },
+        {
+          "timestamp": "2026-11-10T13:33:37.153Z",
+          "category": "INFO",
+          "message": "Passagers : 2 Adulte(s), 1 Enfant(s), 1 Bébé(s)",
+          "details": "",
+          "raw": "[2026-11-10T13:33:37.153Z] [INFO]         Passagers : 2 Adulte(s), 1 Enfant(s), 1 Bébé(s)"
+        },
+        {
+          "timestamp": "2026-11-10T13:33:40.722Z",
+          "category": "INFO",
+          "message": "Clic sur Rechercher",
+          "details": "",
+          "raw": "[2026-11-10T13:33:40.722Z] [INFO]         Clic sur Rechercher"
+        },
+        {
+          "timestamp": "2026-11-10T13:33:46.204Z",
+          "category": "INFO",
+          "message": "Attente du chargement des véhicules...",
+          "details": "",
+          "raw": "[2026-11-10T13:33:46.204Z] [INFO]         Attente du chargement des véhicules..."
+        },
+        {
+          "timestamp": "2026-11-10T13:33:47.330Z",
+          "category": "PASS",
+          "message": "8 offre(s) affichée(s) — Best price | Navette Economique | 96,62 € | Best comfort | Transfert privé | A partir de | 192,50 €",
+          "details": "",
+          "raw": "[2026-11-10T13:33:47.330Z] [PASS]         8 offre(s) affichée(s) — Best price | Navette Economique | 96,62 € | Best comfort | Transfert privé | A partir de | 192,50 €"
+        },
+        {
+          "timestamp": "2026-11-10T13:33:47.578Z",
           "category": "CAPTURE",
-          "message": "Capture d'écran enregistrée",
-          "details": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\02_bug_section_avis_elfsight_vide.png",
-          "raw": "[2026-11-10T08:02:22.364Z] [CAPTURE]      Capture d'écran enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\02_bug_section_avis_elfsight_vide.png"
-        },
-        {
-          "timestamp": "2026-11-10T08:02:22.564Z",
-          "category": "PASS",
-          "message": "Scénario [audit_console_elfsight] terminé en 11.99s",
-          "details": "",
-          "raw": "[2026-11-10T08:02:22.564Z] [PASS]         Scénario [audit_console_elfsight] terminé en 11.99s"
-        }
-      ]
-    },
-    {
-      "id": "audit_reseau_promo_404",
-      "category": "AUDIT CONFIGURATION FAMILLE & NOUVEAUTÉS",
-      "name": "SC-09 : Gestion Multi-Passagers (Adultes/Enfant/Bébé) & Nouveaux Modules (Excursions / Mise à dispo)",
-      "description": "Test du compteur multi-catégories (2 Adultes, 1 Enfant, 1 Bébé = 4 passagers avec remise groupe), surveillance réseau et vérification des pages Mise à disposition et Excursions.",
-      "status": "PASS",
-      "anomalyDetected": false,
-      "durationMs": 65126,
-      "screenshotPath": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\gestion_passagers.png",
-      "logs": [
-        {
-          "timestamp": "2026-11-10T08:02:22.607Z",
-          "category": "INFO",
-          "message": "Exécution du scénario [audit_reseau_promo_404] : SC-09 : Gestion Multi-Passagers (Adultes/Enfant/Bébé) & Nouveaux Modules (Excursions / Mise à dispo)",
-          "details": "",
-          "raw": "[2026-11-10T08:02:22.607Z] [INFO]         Exécution du scénario [audit_reseau_promo_404] : SC-09 : Gestion Multi-Passagers (Adultes/Enfant/Bébé) & Nouveaux Modules (Excursions / Mise à dispo)"
-        },
-        {
-          "timestamp": "2026-11-10T08:02:23.277Z",
-          "category": "INFO",
-          "message": "Navigation vers : https://www.ozeroute.com/",
-          "details": "",
-          "raw": "[2026-11-10T08:02:23.277Z] [INFO]         Navigation vers : https://www.ozeroute.com/"
-        },
-        {
-          "timestamp": "2026-11-10T08:02:28.560Z",
-          "category": "INFO",
-          "message": "Saisie du point de départ : \"Aéroport de Paris-Beauvais\"",
-          "details": "",
-          "raw": "[2026-11-10T08:02:28.560Z] [INFO]         Saisie du point de départ : \"Aéroport de Paris-Beauvais\""
-        },
-        {
-          "timestamp": "2026-11-10T08:02:34.636Z",
-          "category": "INFO",
-          "message": "Suggestion Google Places sélectionnée (Départ) : Aeroportul Beauvais-Tillé (BVA) - Route de l'Aéroport, Tillé",
-          "details": "",
-          "raw": "[2026-11-10T08:02:34.636Z] [INFO]         Suggestion Google Places sélectionnée (Départ) : Aeroportul Beauvais-Tillé (BVA) - Route de l'Aéroport, Tillé"
-        },
-        {
-          "timestamp": "2026-11-10T08:02:36.210Z",
-          "category": "INFO",
-          "message": "Saisie de la destination : \"Disneyland Paris\"",
-          "details": "",
-          "raw": "[2026-11-10T08:02:36.210Z] [INFO]         Saisie de la destination : \"Disneyland Paris\""
-        },
-        {
-          "timestamp": "2026-11-10T08:02:41.865Z",
-          "category": "INFO",
-          "message": "Suggestion Google Places sélectionnée (Destination) : Disneyland Paris - Boulevard de Parc, Coupvray",
-          "details": "",
-          "raw": "[2026-11-10T08:02:41.865Z] [INFO]         Suggestion Google Places sélectionnée (Destination) : Disneyland Paris - Boulevard de Parc, Coupvray"
-        },
-        {
-          "timestamp": "2026-11-10T08:02:43.903Z",
-          "category": "INFO",
-          "message": "Configuration de la date (15/11/2026) et de l'heure (12:00)",
-          "details": "",
-          "raw": "[2026-11-10T08:02:43.903Z] [INFO]         Configuration de la date (15/11/2026) et de l'heure (12:00)"
-        },
-        {
-          "timestamp": "2026-11-10T08:02:45.992Z",
-          "category": "INFO",
-          "message": "Configuration des passagers : 2 Adulte(s), 1 Enfant(s), 1 Bébé(s)",
-          "details": "",
-          "raw": "[2026-11-10T08:02:45.992Z] [INFO]         Configuration des passagers : 2 Adulte(s), 1 Enfant(s), 1 Bébé(s)"
-        },
-        {
-          "timestamp": "2026-11-10T08:02:52.371Z",
-          "category": "INFO",
-          "message": "Clic sur le bouton de soumission \"Rechercher / Search\"",
-          "details": "",
-          "raw": "[2026-11-10T08:02:52.371Z] [INFO]         Clic sur le bouton de soumission \"Rechercher / Search\""
-        },
-        {
-          "timestamp": "2026-11-10T08:02:58.863Z",
-          "category": "INFO",
-          "message": "Attente du chargement des offres de transport (Navette / Transfert Privé)...",
-          "details": "",
-          "raw": "[2026-11-10T08:02:58.863Z] [INFO]         Attente du chargement des offres de transport (Navette / Transfert Privé)..."
-        },
-        {
-          "timestamp": "2026-11-10T08:03:07.168Z",
-          "category": "PASS",
-          "message": "8 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best price | Navette Economique | 96,62 € | Best comfort | Transfert privé | A partir de | 192,50 €",
-          "details": "",
-          "raw": "[2026-11-10T08:03:07.168Z] [PASS]         8 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best price | Navette Economique | 96,62 € | Best comfort | Transfert privé | A partir de | 192,50 €"
-        },
-        {
-          "timestamp": "2026-11-10T08:03:08.472Z",
-          "category": "CAPTURE",
-          "message": "Capture d'écran enregistrée",
+          "message": "Capture enregistrée",
           "details": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\gestion_passagers.png",
-          "raw": "[2026-11-10T08:03:08.472Z] [CAPTURE]      Capture d'écran enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\gestion_passagers.png"
+          "raw": "[2026-11-10T13:33:47.578Z] [CAPTURE]      Capture enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\gestion_passagers.png"
         },
         {
-          "timestamp": "2026-11-10T08:03:08.481Z",
+          "timestamp": "2026-11-10T13:33:47.579Z",
           "category": "INFO",
-          "message": "Navigation vers : https://www.ozeroute.com/mise-a-disposition",
+          "message": "Navigation vers : https://mytrip.ozeroute.com",
           "details": "",
-          "raw": "[2026-11-10T08:03:08.481Z] [INFO]         Navigation vers : https://www.ozeroute.com/mise-a-disposition"
+          "raw": "[2026-11-10T13:33:47.579Z] [INFO]         Navigation vers : https://mytrip.ozeroute.com"
         },
         {
-          "timestamp": "2026-11-10T08:03:19.359Z",
+          "timestamp": "2026-11-10T13:34:23.041Z",
           "category": "PASS",
-          "message": "Module \"Mise à disposition\" (/mise-a-disposition) vérifié : true",
+          "message": "Web-app Mon Trajet (mytrip.ozeroute.com) et endpoint POST /v1/common/orders/exists vérifiés",
           "details": "",
-          "raw": "[2026-11-10T08:03:19.359Z] [PASS]         Module \"Mise à disposition\" (/mise-a-disposition) vérifié : true"
+          "raw": "[2026-11-10T13:34:23.041Z] [PASS]         Web-app Mon Trajet (mytrip.ozeroute.com) et endpoint POST /v1/common/orders/exists vérifiés"
         },
         {
-          "timestamp": "2026-11-10T08:03:19.391Z",
-          "category": "INFO",
-          "message": "Navigation vers : https://www.ozeroute.com/excursions",
-          "details": "",
-          "raw": "[2026-11-10T08:03:19.391Z] [INFO]         Navigation vers : https://www.ozeroute.com/excursions"
+          "timestamp": "2026-11-10T13:34:23.516Z",
+          "category": "CAPTURE",
+          "message": "Capture enregistrée",
+          "details": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\mytrip_verification.png",
+          "raw": "[2026-11-10T13:34:23.516Z] [CAPTURE]      Capture enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\mytrip_verification.png"
         },
         {
-          "timestamp": "2026-11-10T08:03:27.511Z",
+          "timestamp": "2026-11-10T13:34:23.548Z",
           "category": "PASS",
-          "message": "Nouveau module \"Excursions\" (/excursions) vérifié : true",
+          "message": "Scénario [parcours_groupe_et_mytrip] terminé en 60.97s\n",
           "details": "",
-          "raw": "[2026-11-10T08:03:27.511Z] [PASS]         Nouveau module \"Excursions\" (/excursions) vérifié : true"
-        },
-        {
-          "timestamp": "2026-11-10T08:03:27.733Z",
-          "category": "PASS",
-          "message": "Scénario [audit_reseau_promo_404] terminé en 65.13s",
-          "details": "",
-          "raw": "[2026-11-10T08:03:27.733Z] [PASS]         Scénario [audit_reseau_promo_404] terminé en 65.13s"
+          "raw": "[2026-11-10T13:34:23.548Z] [PASS]         Scénario [parcours_groupe_et_mytrip] terminé en 60.97s\n"
         }
       ]
     },
     {
-      "id": "resilience_stripe_radar",
-      "category": "RÉSILIENCE RÉSEAU & PAIEMENT",
-      "name": "SC-10 : Résilience du Tunnel Checkout face au Blocage Adblocker (Stripe Radar)",
-      "description": "Simulation d'un bloqueur de suivi filtrant r.stripe.com (ERR_BLOCKED_BY_CLIENT) et vérification que l'étape finale de paiement (/booking) reste fonctionnelle sans crash.",
+      "id": "audit_securite_api_cors",
+      "title": "SC-10 : Audit Sécurité API (CORS Permissif api.ozeroute.com, Headers Nginx & Résilience Stripe)",
+      "category": "Sécurité & API",
       "status": "PASS",
-      "anomalyDetected": false,
-      "durationMs": 22321,
-      "screenshotPath": null,
+      "durationSec": 11.02,
+      "anomalyDetected": true,
+      "anomalyDetails": "1) CORS permissif sur api.ozeroute.com : reflète Origin=\"https://evil- external-site.com\" avec Access-Control-Allow-Credentials=true. 2) Headers X-Frame-Options/CSP/HSTS absents sur mytrip.ozeroute.com (true) et partner.ozeroute.com (true).",
+      "networkAnomaliesCount": 0,
+      "consoleErrorsCount": 31,
+      "screenshot": "../screenshots/affichage_responsive.png",
       "logs": [
         {
-          "timestamp": "2026-11-10T08:03:27.752Z",
+          "timestamp": "2026-11-10T13:34:23.550Z",
           "category": "INFO",
-          "message": "Exécution du scénario [resilience_stripe_radar] : SC-10 : Résilience du Tunnel Checkout face au Blocage Adblocker (Stripe Radar)",
+          "message": "Lancement [audit_securite_api_cors] : SC-10 : Audit Sécurité API (CORS Permissif api.ozeroute.com, Headers Nginx & Résilience Stripe)",
           "details": "",
-          "raw": "[2026-11-10T08:03:27.752Z] [INFO]         Exécution du scénario [resilience_stripe_radar] : SC-10 : Résilience du Tunnel Checkout face au Blocage Adblocker (Stripe Radar)"
+          "raw": "[2026-11-10T13:34:23.550Z] [INFO]         Lancement [audit_securite_api_cors] : SC-10 : Audit Sécurité API (CORS Permissif api.ozeroute.com, Headers Nginx & Résilience Stripe)"
         },
         {
-          "timestamp": "2026-11-10T08:03:28.274Z",
+          "timestamp": "2026-11-10T13:34:23.774Z",
+          "category": "INFO",
+          "message": "Exécution de l'audit de sécurité HTTP/CORS sur api.ozeroute.com et sous-domaines...",
+          "details": "",
+          "raw": "[2026-11-10T13:34:23.774Z] [INFO]         Exécution de l'audit de sécurité HTTP/CORS sur api.ozeroute.com et sous-domaines..."
+        },
+        {
+          "timestamp": "2026-11-10T13:34:24.508Z",
+          "category": "SÉCURITÉ P1",
+          "message": "1) CORS permissif sur api.ozeroute.com : reflète Origin=\"https://evil- external-site.com\" avec Access-Control-Allow-Credentials=true. 2) Headers X-Frame-Options/CSP/HSTS absents sur mytrip.ozeroute.com (true) et partner.ozeroute.com (true).",
+          "details": "",
+          "raw": "[2026-11-10T13:34:24.508Z] [SÉCURITÉ P1]  1) CORS permissif sur api.ozeroute.com : reflète Origin=\"https://evil- external-site.com\" avec Access-Control-Allow-Credentials=true. 2) Headers X-Frame-Options/CSP/HSTS absents sur mytrip.ozeroute.com (true) et partner.ozeroute.com (true)."
+        },
+        {
+          "timestamp": "2026-11-10T13:34:24.531Z",
           "category": "INFO",
           "message": "Navigation vers : https://www.ozeroute.com/mobilite-aeroport/reservation?q=eyJmcm9tIjp7ImlkIjoiQ2hJSkxUeU5EWXh2NWtjUmJ0YzlUWkJiRF9vIiwibmFtZSI6IlBhcmlzIEJlYXV2YWlzIEFpcnBvcnQiLCJsb2NhdGlvbiI6eyJsYXQiOjQ5LjQ1NDQ2NzcsImxuZyI6Mi4xMTE1MTExfSwiYWRkcmVzcyI6IlJ0ZSBkZSBsJ0HDqXJvcG9ydCwgNjAwMDAgVGlsbMOpIiwicG9zdGFsQ29kZSI6IjYwMDAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IlRpbGzDqSJ9LCJ0byI6eyJpZCI6IkNoSUp2ZUo2eWhrZDVrY1JZT1lRWTh2NC1sYyIsIm5hbWUiOiJEaXNuZXlsYW5kIFBhcmlzIiwibG9jYXRpb24iOnsibGF0Ijo0OC44NjczODU4LCJsbmciOjIuNzgzNTkzfSwiYWRkcmVzcyI6IkJkIGRlIFBhcmMsIDc3NzAwIENvdXB2cmF5IiwicG9zdGFsQ29kZSI6Ijc3NzAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IkNvdXB2cmF5In0sImRpcmVjdGlvbiI6IkZST00iLCJkaXJlY3Rpb25UeXBlIjoib25lX3dheSIsInBsYWNlIjpudWxsLCJleHRlbnNpb24iOm51bGwsInBhc3NlbmdlcnMiOnsiYWR1bHQiOjIsImluZmFudCI6MCwiYmFieSI6MH0sImRhdGVPZkdvIjoiMTQvMTEvMjAyNiIsInRpbWVPZkdvIjoiMTI6MDAiLCJwcm92aXNpb24iOmZhbHNlLCJwcm92aXNpb25EdXJhdGlvbiI6IiJ9",
           "details": "",
-          "raw": "[2026-11-10T08:03:28.274Z] [INFO]         Navigation vers : https://www.ozeroute.com/mobilite-aeroport/reservation?q=eyJmcm9tIjp7ImlkIjoiQ2hJSkxUeU5EWXh2NWtjUmJ0YzlUWkJiRF9vIiwibmFtZSI6IlBhcmlzIEJlYXV2YWlzIEFpcnBvcnQiLCJsb2NhdGlvbiI6eyJsYXQiOjQ5LjQ1NDQ2NzcsImxuZyI6Mi4xMTE1MTExfSwiYWRkcmVzcyI6IlJ0ZSBkZSBsJ0HDqXJvcG9ydCwgNjAwMDAgVGlsbMOpIiwicG9zdGFsQ29kZSI6IjYwMDAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IlRpbGzDqSJ9LCJ0byI6eyJpZCI6IkNoSUp2ZUo2eWhrZDVrY1JZT1lRWTh2NC1sYyIsIm5hbWUiOiJEaXNuZXlsYW5kIFBhcmlzIiwibG9jYXRpb24iOnsibGF0Ijo0OC44NjczODU4LCJsbmciOjIuNzgzNTkzfSwiYWRkcmVzcyI6IkJkIGRlIFBhcmMsIDc3NzAwIENvdXB2cmF5IiwicG9zdGFsQ29kZSI6Ijc3NzAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IkNvdXB2cmF5In0sImRpcmVjdGlvbiI6IkZST00iLCJkaXJlY3Rpb25UeXBlIjoib25lX3dheSIsInBsYWNlIjpudWxsLCJleHRlbnNpb24iOm51bGwsInBhc3NlbmdlcnMiOnsiYWR1bHQiOjIsImluZmFudCI6MCwiYmFieSI6MH0sImRhdGVPZkdvIjoiMTQvMTEvMjAyNiIsInRpbWVPZkdvIjoiMTI6MDAiLCJwcm92aXNpb24iOmZhbHNlLCJwcm92aXNpb25EdXJhdGlvbiI6IiJ9"
+          "raw": "[2026-11-10T13:34:24.531Z] [INFO]         Navigation vers : https://www.ozeroute.com/mobilite-aeroport/reservation?q=eyJmcm9tIjp7ImlkIjoiQ2hJSkxUeU5EWXh2NWtjUmJ0YzlUWkJiRF9vIiwibmFtZSI6IlBhcmlzIEJlYXV2YWlzIEFpcnBvcnQiLCJsb2NhdGlvbiI6eyJsYXQiOjQ5LjQ1NDQ2NzcsImxuZyI6Mi4xMTE1MTExfSwiYWRkcmVzcyI6IlJ0ZSBkZSBsJ0HDqXJvcG9ydCwgNjAwMDAgVGlsbMOpIiwicG9zdGFsQ29kZSI6IjYwMDAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IlRpbGzDqSJ9LCJ0byI6eyJpZCI6IkNoSUp2ZUo2eWhrZDVrY1JZT1lRWTh2NC1sYyIsIm5hbWUiOiJEaXNuZXlsYW5kIFBhcmlzIiwibG9jYXRpb24iOnsibGF0Ijo0OC44NjczODU4LCJsbmciOjIuNzgzNTkzfSwiYWRkcmVzcyI6IkJkIGRlIFBhcmMsIDc3NzAwIENvdXB2cmF5IiwicG9zdGFsQ29kZSI6Ijc3NzAwIiwiY291bnRyeUNvZGUiOiJGUiIsImNvdW50cnlOYW1lIjoiRnJhbmNlIiwiY2l0eSI6IkNvdXB2cmF5In0sImRpcmVjdGlvbiI6IkZST00iLCJkaXJlY3Rpb25UeXBlIjoib25lX3dheSIsInBsYWNlIjpudWxsLCJleHRlbnNpb24iOm51bGwsInBhc3NlbmdlcnMiOnsiYWR1bHQiOjIsImluZmFudCI6MCwiYmFieSI6MH0sImRhdGVPZkdvIjoiMTQvMTEvMjAyNiIsInRpbWVPZkdvIjoiMTI6MDAiLCJwcm92aXNpb24iOmZhbHNlLCJwcm92aXNpb25EdXJhdGlvbiI6IiJ9"
         },
         {
-          "timestamp": "2026-11-10T08:03:33.439Z",
+          "timestamp": "2026-11-10T13:34:27.741Z",
+          "category": "TIERS / BLOCAGE",
+          "message": "Requête Stripe Radar bloquée (simulation Adblocker)",
+          "details": "https://r.stripe.com/b",
+          "raw": "[2026-11-10T13:34:27.741Z] [TIERS / BLOCAGE] Requête Stripe Radar bloquée (simulation Adblocker) | Détails: https://r.stripe.com/b"
+        },
+        {
+          "timestamp": "2026-11-10T13:34:28.709Z",
+          "category": "TIERS / BLOCAGE",
+          "message": "Requête Stripe Radar bloquée (simulation Adblocker)",
+          "details": "https://r.stripe.com/b",
+          "raw": "[2026-11-10T13:34:28.709Z] [TIERS / BLOCAGE] Requête Stripe Radar bloquée (simulation Adblocker) | Détails: https://r.stripe.com/b"
+        },
+        {
+          "timestamp": "2026-11-10T13:34:28.998Z",
           "category": "INFO",
-          "message": "Attente du chargement des offres de transport (Navette / Transfert Privé)...",
+          "message": "Attente du chargement des véhicules...",
           "details": "",
-          "raw": "[2026-11-10T08:03:33.439Z] [INFO]         Attente du chargement des offres de transport (Navette / Transfert Privé)..."
+          "raw": "[2026-11-10T13:34:28.998Z] [INFO]         Attente du chargement des véhicules..."
         },
         {
-          "timestamp": "2026-11-10T08:03:42.638Z",
+          "timestamp": "2026-11-10T13:34:30.587Z",
           "category": "PASS",
-          "message": "6 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best price | Navette Economique | 57,80 € | Best comfort | Transfert privé | A partir de | 175,00 €",
+          "message": "6 offre(s) affichée(s) — Best price | Navette Economique | 57,80 € | Best comfort | Transfert privé | A partir de | 175,00 €",
           "details": "",
-          "raw": "[2026-11-10T08:03:42.638Z] [PASS]         6 offre(s) réservable(s) affichée(s) avec succès. Extrait : Best price | Navette Economique | 57,80 € | Best comfort | Transfert privé | A partir de | 175,00 €"
+          "raw": "[2026-11-10T13:34:30.587Z] [PASS]         6 offre(s) affichée(s) — Best price | Navette Economique | 57,80 € | Best comfort | Transfert privé | A partir de | 175,00 €"
         },
         {
-          "timestamp": "2026-11-10T08:03:42.833Z",
+          "timestamp": "2026-11-10T13:34:30.770Z",
+          "category": "CAPTURE",
+          "message": "Capture enregistrée",
+          "details": "C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\affichage_responsive.png",
+          "raw": "[2026-11-10T13:34:30.770Z] [CAPTURE]      Capture enregistrée | Détails: C:\\Users\\mino2\\OneDrive\\Documents\\Stage projet\\screenshots\\affichage_responsive.png"
+        },
+        {
+          "timestamp": "2026-11-10T13:34:30.844Z",
           "category": "INFO",
-          "message": "Sélection du véhicule (clic sur \"Choisir\")...",
+          "message": "Clic sur le bouton \"Choisir\"",
           "details": "",
-          "raw": "[2026-11-10T08:03:42.833Z] [INFO]         Sélection du véhicule (clic sur \"Choisir\")..."
+          "raw": "[2026-11-10T13:34:30.844Z] [INFO]         Clic sur le bouton \"Choisir\""
         },
         {
-          "timestamp": "2026-11-10T08:03:47.157Z",
+          "timestamp": "2026-11-10T13:34:31.469Z",
           "category": "TIERS / BLOCAGE",
-          "message": "Requête Stripe Radar interceptée (ERR_BLOCKED_BY_CLIENT)",
+          "message": "Requête Stripe Radar bloquée (simulation Adblocker)",
           "details": "https://r.stripe.com/b",
-          "raw": "[2026-11-10T08:03:47.157Z] [TIERS / BLOCAGE] Requête Stripe Radar interceptée (ERR_BLOCKED_BY_CLIENT) | Détails: https://r.stripe.com/b"
+          "raw": "[2026-11-10T13:34:31.469Z] [TIERS / BLOCAGE] Requête Stripe Radar bloquée (simulation Adblocker) | Détails: https://r.stripe.com/b"
         },
         {
-          "timestamp": "2026-11-10T08:03:47.255Z",
+          "timestamp": "2026-11-10T13:34:31.503Z",
           "category": "TIERS / BLOCAGE",
-          "message": "Requête Stripe Radar interceptée (ERR_BLOCKED_BY_CLIENT)",
+          "message": "Requête Stripe Radar bloquée (simulation Adblocker)",
           "details": "https://r.stripe.com/b",
-          "raw": "[2026-11-10T08:03:47.255Z] [TIERS / BLOCAGE] Requête Stripe Radar interceptée (ERR_BLOCKED_BY_CLIENT) | Détails: https://r.stripe.com/b"
+          "raw": "[2026-11-10T13:34:31.503Z] [TIERS / BLOCAGE] Requête Stripe Radar bloquée (simulation Adblocker) | Détails: https://r.stripe.com/b"
         },
         {
-          "timestamp": "2026-11-10T08:03:47.325Z",
+          "timestamp": "2026-11-10T13:34:32.122Z",
           "category": "TIERS / BLOCAGE",
-          "message": "Requête Stripe Radar interceptée (ERR_BLOCKED_BY_CLIENT)",
+          "message": "Requête Stripe Radar bloquée (simulation Adblocker)",
           "details": "https://r.stripe.com/b",
-          "raw": "[2026-11-10T08:03:47.325Z] [TIERS / BLOCAGE] Requête Stripe Radar interceptée (ERR_BLOCKED_BY_CLIENT) | Détails: https://r.stripe.com/b"
+          "raw": "[2026-11-10T13:34:32.122Z] [TIERS / BLOCAGE] Requête Stripe Radar bloquée (simulation Adblocker) | Détails: https://r.stripe.com/b"
         },
         {
-          "timestamp": "2026-11-10T08:03:48.629Z",
+          "timestamp": "2026-11-10T13:34:32.225Z",
           "category": "TIERS / BLOCAGE",
-          "message": "Requête Stripe Radar interceptée (ERR_BLOCKED_BY_CLIENT)",
+          "message": "Requête Stripe Radar bloquée (simulation Adblocker)",
           "details": "https://r.stripe.com/b",
-          "raw": "[2026-11-10T08:03:48.629Z] [TIERS / BLOCAGE] Requête Stripe Radar interceptée (ERR_BLOCKED_BY_CLIENT) | Détails: https://r.stripe.com/b"
+          "raw": "[2026-11-10T13:34:32.225Z] [TIERS / BLOCAGE] Requête Stripe Radar bloquée (simulation Adblocker) | Détails: https://r.stripe.com/b"
         },
         {
-          "timestamp": "2026-11-10T08:03:48.785Z",
+          "timestamp": "2026-11-10T13:34:32.238Z",
           "category": "TIERS / BLOCAGE",
-          "message": "Requête Stripe Radar interceptée (ERR_BLOCKED_BY_CLIENT)",
+          "message": "Requête Stripe Radar bloquée (simulation Adblocker)",
           "details": "https://r.stripe.com/b",
-          "raw": "[2026-11-10T08:03:48.785Z] [TIERS / BLOCAGE] Requête Stripe Radar interceptée (ERR_BLOCKED_BY_CLIENT) | Détails: https://r.stripe.com/b"
+          "raw": "[2026-11-10T13:34:32.238Z] [TIERS / BLOCAGE] Requête Stripe Radar bloquée (simulation Adblocker) | Détails: https://r.stripe.com/b"
         },
         {
-          "timestamp": "2026-11-10T08:03:49.091Z",
+          "timestamp": "2026-11-10T13:34:32.241Z",
           "category": "TIERS / BLOCAGE",
-          "message": "Requête Stripe Radar interceptée (ERR_BLOCKED_BY_CLIENT)",
+          "message": "Requête Stripe Radar bloquée (simulation Adblocker)",
           "details": "https://r.stripe.com/b",
-          "raw": "[2026-11-10T08:03:49.091Z] [TIERS / BLOCAGE] Requête Stripe Radar interceptée (ERR_BLOCKED_BY_CLIENT) | Détails: https://r.stripe.com/b"
+          "raw": "[2026-11-10T13:34:32.241Z] [TIERS / BLOCAGE] Requête Stripe Radar bloquée (simulation Adblocker) | Détails: https://r.stripe.com/b"
         },
         {
-          "timestamp": "2026-11-10T08:03:49.137Z",
+          "timestamp": "2026-11-10T13:34:32.245Z",
           "category": "TIERS / BLOCAGE",
-          "message": "Requête Stripe Radar interceptée (ERR_BLOCKED_BY_CLIENT)",
+          "message": "Requête Stripe Radar bloquée (simulation Adblocker)",
           "details": "https://r.stripe.com/b",
-          "raw": "[2026-11-10T08:03:49.137Z] [TIERS / BLOCAGE] Requête Stripe Radar interceptée (ERR_BLOCKED_BY_CLIENT) | Détails: https://r.stripe.com/b"
+          "raw": "[2026-11-10T13:34:32.245Z] [TIERS / BLOCAGE] Requête Stripe Radar bloquée (simulation Adblocker) | Détails: https://r.stripe.com/b"
         },
         {
-          "timestamp": "2026-11-10T08:03:49.497Z",
+          "timestamp": "2026-11-10T13:34:32.473Z",
+          "category": "TIERS / BLOCAGE",
+          "message": "Requête Stripe Radar bloquée (simulation Adblocker)",
+          "details": "https://r.stripe.com/b",
+          "raw": "[2026-11-10T13:34:32.473Z] [TIERS / BLOCAGE] Requête Stripe Radar bloquée (simulation Adblocker) | Détails: https://r.stripe.com/b"
+        },
+        {
+          "timestamp": "2026-11-10T13:34:32.539Z",
+          "category": "TIERS / BLOCAGE",
+          "message": "Requête Stripe Radar bloquée (simulation Adblocker)",
+          "details": "https://r.stripe.com/b",
+          "raw": "[2026-11-10T13:34:32.539Z] [TIERS / BLOCAGE] Requête Stripe Radar bloquée (simulation Adblocker) | Détails: https://r.stripe.com/b"
+        },
+        {
+          "timestamp": "2026-11-10T13:34:32.876Z",
+          "category": "TIERS / BLOCAGE",
+          "message": "Requête Stripe Radar bloquée (simulation Adblocker)",
+          "details": "https://r.stripe.com/b",
+          "raw": "[2026-11-10T13:34:32.876Z] [TIERS / BLOCAGE] Requête Stripe Radar bloquée (simulation Adblocker) | Détails: https://r.stripe.com/b"
+        },
+        {
+          "timestamp": "2026-11-10T13:34:34.191Z",
+          "category": "TIERS / BLOCAGE",
+          "message": "Requête Stripe Radar bloquée (simulation Adblocker)",
+          "details": "https://r.stripe.com/b",
+          "raw": "[2026-11-10T13:34:34.191Z] [TIERS / BLOCAGE] Requête Stripe Radar bloquée (simulation Adblocker) | Détails: https://r.stripe.com/b"
+        },
+        {
+          "timestamp": "2026-11-10T13:34:34.455Z",
           "category": "PASS",
-          "message": "Navigation réussie vers l'étape Checkout (/booking)",
+          "message": "Arrivée sur la page Checkout (/booking)",
           "details": "",
-          "raw": "[2026-11-10T08:03:49.497Z] [PASS]         Navigation réussie vers l'étape Checkout (/booking)"
+          "raw": "[2026-11-10T13:34:34.455Z] [PASS]         Arrivée sur la page Checkout (/booking)"
         },
         {
-          "timestamp": "2026-11-10T08:03:49.760Z",
+          "timestamp": "2026-11-10T13:34:34.477Z",
           "category": "PASS",
-          "message": "Écran de Checkout (/booking) atteint — Tarif récapitulatif : 57,80 €",
+          "message": "Page /booking chargée — Prix total : 57,80 €",
           "details": "",
-          "raw": "[2026-11-10T08:03:49.760Z] [PASS]         Écran de Checkout (/booking) atteint — Tarif récapitulatif : 57,80 €"
+          "raw": "[2026-11-10T13:34:34.477Z] [PASS]         Page /booking chargée — Prix total : 57,80 €"
         },
         {
-          "timestamp": "2026-11-10T08:03:49.771Z",
+          "timestamp": "2026-11-10T13:34:34.478Z",
           "category": "PASS",
-          "message": "Résilience validée : le tunnel /booking reste 100% opérationnel malgré le filtrage de r.stripe.com",
+          "message": "Tunnel /booking résilient malgré le blocage Adblocker sur r.stripe.com",
           "details": "",
-          "raw": "[2026-11-10T08:03:49.771Z] [PASS]         Résilience validée : le tunnel /booking reste 100% opérationnel malgré le filtrage de r.stripe.com"
+          "raw": "[2026-11-10T13:34:34.478Z] [PASS]         Tunnel /booking résilient malgré le blocage Adblocker sur r.stripe.com"
         },
         {
-          "timestamp": "2026-11-10T08:03:50.073Z",
+          "timestamp": "2026-11-10T13:34:34.569Z",
           "category": "PASS",
-          "message": "Scénario [resilience_stripe_radar] terminé en 22.32s",
+          "message": "Scénario [audit_securite_api_cors] terminé en 11.02s\n",
           "details": "",
-          "raw": "[2026-11-10T08:03:50.073Z] [PASS]         Scénario [resilience_stripe_radar] terminé en 22.32s"
+          "raw": "[2026-11-10T13:34:34.569Z] [PASS]         Scénario [audit_securite_api_cors] terminé en 11.02s\n"
         }
       ]
     }
