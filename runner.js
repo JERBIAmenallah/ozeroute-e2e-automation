@@ -299,7 +299,7 @@ async function runSuite() {
             const tamperedBase64 = Buffer.from(JSON.stringify(offerObj)).toString('base64');
             currentUrl.searchParams.set('offer', tamperedBase64);
 
-            await homePage.showStep('Test Sécurité : Modification du tarif Base64 (offer=) dans l\'URL /booking ➔ 1,00 €');
+            await homePage.showStep('Test : Modification du prix dans l\'URL (offer= en base64) -> 1,00 €');
             await page.goto(currentUrl.toString(), { waitUntil: 'domcontentloaded' });
             await page.waitForTimeout(3000);
           }
@@ -313,7 +313,7 @@ async function runSuite() {
           });
 
           anomalyDetected = true;
-          anomalyDetails = `1) Faille Manipulation de Prix (CWE-472) sur /booking : le paramètre URL 'offer=' contient tout l'objet JSON en Base64 non signé ; en remplaçant prices["3H"]=${original3H} par 1, la page /booking affiche "Prix total : 1,00 €". 2) Bug calcul tarifaire API : 11H (${price11H} €) et 12H (${price12H} €) ont exactement le même prix (12ème heure non facturée) + "campaign_code":"undefined".`;
+          anomalyDetails = `1) Sur /booking, le parametre URL 'offer=' contient le prix en Base64 sans verification : si on change prices["3H"]=${original3H} par 1 dans l'URL, la page affiche "Prix total : 1,00 €". 2) Dans la reponse API, 11H (${price11H} €) et 12H (${price12H} €) ont le meme prix.`;
           scenarioLogger.log('BUG P1', anomalyDetails);
 
           if (scenario.expected.screenshot) {
@@ -337,7 +337,7 @@ async function runSuite() {
 
           if (priceCheck.has3125 || priceCheck.prices.length > 0) {
             anomalyDetected = true;
-            anomalyDetails = `Trajet identique Orly ➔ Orly (0 km) accepté sans erreur et facturé ${priceCheck.prices[0] || '31,25 €'} (Berline Eco).`;
+            anomalyDetails = `Même adresse départ et arrivée (Orly -> Orly, 0 km) acceptée sans erreur et facturée ${priceCheck.prices[0] || '31,25 €'}.`;
             scenarioLogger.log('BUG P1', anomalyDetails);
           }
 
