@@ -1,7 +1,7 @@
 /**
- * Suite de Tests API Backend & Services Tiers - Ozeroute
- * Valide les endpoints REST, les statuts HTTP et les temps de réponse
- * Réf: Rapport de Stage Chapitre 3.4
+ * Suite de Tests d'Intégration HTTP / SSR & Nouveaux Modules - Ozeroute
+ * Valide les routes principales, l'internationalisation (/en), les nouveaux modules
+ * (/mise-a-disposition, /excursions, mytrip.ozeroute.com) et les temps de réponse.
  * Auteur : Amenallah JERBI - Élève-Ingénieur ESPRIT (REM4U SARL)
  */
 
@@ -11,61 +11,46 @@ const Logger = require('../utils/logger');
 
 async function runApiTests() {
   const logger = new Logger();
-  logger.info('Démarrage de la suite de tests d\'intégration API REST Ozeroute');
+  logger.info('Démarrage de la suite de tests d\'intégration HTTP & SSR Ozeroute');
 
   const apiContext = await request.newContext({
     baseURL: config.baseUrl,
     extraHTTPHeaders: {
-      'Accept': 'application/json',
-      'User-Agent': 'Ozeroute-QA-Engine/2.0 (Playwright E2E)'
+      'Accept': 'text/html,application/json',
+      'User-Agent': 'Ozeroute-QA-Engine/2.0 (Playwright Integration)'
     }
   });
 
+  const endpointsToTest = [
+    { name: 'Portail Principal (Transferts FR)', url: '/', expectedStatus: 200 },
+    { name: 'Portail International (Anglais /en)', url: '/en', expectedStatus: 200 },
+    { name: 'Module Chauffeur Horaire (/mise-a-disposition)', url: '/mise-a-disposition', expectedStatus: 200 },
+    { name: 'Nouveau Module Visites (/excursions)', url: '/excursions', expectedStatus: 200 },
+    { name: 'Espace Client Suivi & QR Code (mytrip.ozeroute.com)', url: 'https://mytrip.ozeroute.com', expectedStatus: 200 },
+    { name: 'Page FAQ & Support (/faq)', url: '/faq', expectedStatus: 200 },
+    { name: 'Page Contact (/contact)', url: '/contact', expectedStatus: 200 }
+  ];
+
   const results = [];
 
-  // TEST 1 : Vérification de la disponibilité du frontend / SSR
-  try {
-    const t0 = Date.now();
-    const res = await apiContext.get('/');
-    const duration = Date.now() - t0;
-    const ok = res.status() === 200;
-    logger.log(ok ? 'PASS' : 'FAIL', `API Test [GET /] - Statut: ${res.status()} (${duration}ms)`);
-    results.push({ endpoint: '/', method: 'GET', status: res.status(), duration, pass: ok });
-  } catch (err) {
-    logger.fail(`API Test [GET /] a échoué: ${err.message}`);
-    results.push({ endpoint: '/', method: 'GET', error: err.message, pass: false });
-  }
-
-  // TEST 2 : Audit de l'endpoint promo (/common/promo ou /v1/common/promo)
-  try {
-    const t0 = Date.now();
-    const res = await apiContext.get('/v1/common/promo', { timeout: 6000 });
-    const duration = Date.now() - t0;
-    // La documentation note que ce endpoint retourne 404 lorsqu'aucun code promo n'est actif
-    logger.log('INFO', `API Test [GET /v1/common/promo] - Statut: ${res.status()} (${duration}ms)`);
-    results.push({ endpoint: '/v1/common/promo', method: 'GET', status: res.status(), duration, pass: true });
-  } catch (err) {
-    logger.warn(`API Test [GET /v1/common/promo] hors-ligne ou temporisé : ${err.message}`);
-    results.push({ endpoint: '/v1/common/promo', method: 'GET', error: err.message, pass: true });
-  }
-
-  // TEST 3 : Validation du service de localisation et autocomplete
-  try {
-    const t0 = Date.now();
-    const res = await apiContext.get('/en', { timeout: 8000 });
-    const duration = Date.now() - t0;
-    const ok = res.status() === 200;
-    logger.log(ok ? 'PASS' : 'FAIL', `API Test [GET /en - Internationalisation] - Statut: ${res.status()} (${duration}ms)`);
-    results.push({ endpoint: '/en', method: 'GET', status: res.status(), duration, pass: ok });
-  } catch (err) {
-    logger.fail(`API Test [GET /en] a échoué: ${err.message}`);
-    results.push({ endpoint: '/en', method: 'GET', error: err.message, pass: false });
+  for (const ep of endpointsToTest) {
+    try {
+      const t0 = Date.now();
+      const res = await apiContext.get(ep.url, { timeout: 12000 });
+      const duration = Date.now() - t0;
+      const ok = res.status() === ep.expectedStatus;
+      logger.log(ok ? 'PASS' : 'FAIL', `[GET ${ep.url}] ${ep.name} - Statut: ${res.status()} (${duration}ms)`);
+      results.push({ module: ep.name, endpoint: ep.url, status: res.status(), durationMs: duration, pass: ok });
+    } catch (err) {
+      logger.fail(`[GET ${ep.url}] ${ep.name} a échoué: ${err.message}`);
+      results.push({ module: ep.name, endpoint: ep.url, error: err.message, pass: false });
+    }
   }
 
   await apiContext.dispose();
 
   console.log('\n======================================================================');
-  console.log('              SYNTHÈSE DES TESTS API BACKEND OZEROUTE                 ');
+  console.log('         SYNTHÈSE DES TESTS HTTP / SSR & MODULES OZEROUTE             ');
   console.log('======================================================================');
   console.table(results);
   console.log('======================================================================\n');

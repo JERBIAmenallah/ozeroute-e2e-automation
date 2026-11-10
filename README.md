@@ -25,18 +25,19 @@ Ce dépôt constitue le livrable technique complet formalisé dans le **Rapport 
 
 | Chapitre du Rapport | Composant Technique dans le Dépôt | Description & Objectif |
 | :--- | :--- | :--- |
-| **Chapitre 2.1 & 3.1** | `pages/`, `config/scenarios.json` | Spécification et automatisation des 4 parcours nominaux clés (CDG, Aller-Retour, Deep Link, Multilingue). |
-| **Chapitre 2.2** | `runner.js` (`audit_faille_metier_0km`) | Détection et capture de la faille logique métier : trajet 0 km Orly-Orly facturé à 31,25 €. |
-| **Chapitre 2.3** | `runner.js` (`audit_responsive_960px`) | Mesure de la régression Flexbox à 960px (écrasement du champ date et libellé passagers tronqué). |
-| **Chapitre 2.4** | `runner.js` (`audit_console_elfsight`) | Surveillance console et détection du crash tiers Elfsight (`APP_VIEWS_LIMIT_REACHED`). |
-| **Chapitre 2.5** | `runner.js` (`audit_reseau_promo_404`) | Interception des requêtes HTTP 404 non gérées sur l'endpoint `/v1/common/promo`. |
+| **Chapitre 1 & 2.1** | `tests/api.test.js`, `benchmark.js` | Couverture des modules de la plateforme : Transferts (`/`), International (`/en`), Chauffeur Horaire (`/mise-a-disposition`), Visites (`/excursions`) et Suivi Client (`mytrip.ozeroute.com`). |
+| **Chapitre 2.1 & 3.1** | `pages/`, `config/scenarios.json` | Spécification et automatisation des 4 parcours nominaux E2E jusqu'au Checkout `/booking` (Transfert Privé CDG + modale *Bagages Transportés*, Deep Link BVA-Disneyland, Navette + sélection Terminal, Multilingue `/en`). |
+| **Chapitre 2.2** | `runner.js` (`audit_faille_metier_0km`) | Détection et capture de la faille logique métier : trajet 0 km Orly-Orly facturé à 31,25 € (`Berline Eco`). |
+| **Chapitre 2.3** | `runner.js` (`audit_responsive_960px`) | Audit d'ergonomie et non-régression responsive à 960px sur le bandeau supérieur de recherche. |
+| **Chapitre 2.4** | `runner.js` (`audit_console_elfsight`) | Surveillance console et vérification de la section Preuve Sociale / Avis Google Reviews. |
+| **Chapitre 2.5** | `runner.js` (`audit_reseau_promo_404`) | Gestion multi-passagers (Adultes/Enfant/Bébé), vérification des modules `/mise-a-disposition` et `/excursions`, et interception des requêtes HTTP 404 sur `/v1/common/promo`. |
 | **Chapitre 2.6** | `runner.js` (`audit_validation_typo_ui`) | Détection du défaut de qualité UI en production (*"Faut avoir au moin un adulte"*). |
-| **Chapitre 3.3** | `config/ozeroute.config.js` | Neutralisation des cookies Axeptio et résilience réseau face aux Adblockers (Stripe Radar). |
-| **Chapitre 3.4 & 3.5** | `benchmark.js`, `reports/rapport_console.txt` | Moteur de télémétrie et de benchmark de performance (TTFB, FCP, LCP, volumétrie réseau). |
+| **Chapitre 3.3** | `pages/BasePage.js`, `config/ozeroute.config.js` | Neutralisation d'Axeptio, désactivation propre de la modale promo asynchrone (`ozr_promo_popup_minimized`) sans altérer le Virtual DOM React, et résilience face au blocage de Stripe Radar (`r.stripe.com`). |
+| **Chapitre 3.4 & 3.5** | `benchmark.js`, `reports/rapport_console.txt` | Moteur de télémétrie et de benchmark de performance (TTFB, DOMContentLoaded, volumétrie réseau). |
 | **Chapitre 3.6** | `.github/workflows/playwright.yml`, `Dockerfile` | Pipeline d'Intégration Continue (CI/CD) automatisée sous GitHub Actions et conteneurisation Docker. |
 | **Chapitre 4.2** | `remediation/validationSchema.js` | Implémentation du schéma de validation Zod/Yup pour interdire les trajets aberrants < 1 km. |
 | **Chapitre 4.3** | `remediation/responsive-patch.css` | Patch CSS Flexbox résolvant l'écrasement des composants sur breakpoint tablette 960px. |
-| **Chapitre 4.4** | `remediation/reviews-service.js` | Architecture de secours avec cache ISR pour éliminer la dépendance bloquante à Elfsight. |
+| **Chapitre 4.4** | `remediation/reviews-service.js` | Architecture de secours avec cache ISR pour éliminer la dépendance bloquante au widget tiers. |
 
 ---
 

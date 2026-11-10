@@ -55,8 +55,13 @@ class Logger {
   warn(msg, details = '') { this.log('WARN', msg, details); }
   anomaly(msg, details = '') { this.log('ANOMALIE', msg, details); }
   network(msg, details = '') { this.log('NETWORK', msg, details); }
+  capture(msg, details = '') { this.log('CAPTURE', msg, details); }
 
   getLogs() {
+    return this.memoryLogs;
+  }
+
+  getEntries() {
     return this.memoryLogs;
   }
 }

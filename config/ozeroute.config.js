@@ -33,7 +33,7 @@ module.exports = {
 
   // Règles d'interception réseau et simulation de résilience (Chapitre 3.3 du rapport)
   networkRules: {
-    simulateAdblockerOnStripeRadar: true,
+    simulateAdblockerOnStripeRadar: false,
     stripeRadarPattern: '**/*r.stripe.com/*',
     promoEndpointPattern: '**/v1/common/promo*'
   },

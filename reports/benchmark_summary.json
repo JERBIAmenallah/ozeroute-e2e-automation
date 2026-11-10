@@ -1,32 +1,52 @@
 [
   {
-    "target": "Page d'Accueil (FR)",
+    "target": "Portail Transferts (FR)",
     "url": "https://www.ozeroute.com/",
-    "totalLoadTimeMs": 1690,
-    "dnsLookup": 93,
-    "tcpConnect": 151,
-    "ttfb": 113,
-    "domInteractive": 437,
-    "domContentLoaded": 1279
+    "totalLoadTimeMs": 18620,
+    "dnsLookup": 25,
+    "tcpConnect": 251,
+    "ttfb": 478,
+    "domInteractive": 6877,
+    "domContentLoaded": 16913
   },
   {
-    "target": "Page Internationale (EN)",
+    "target": "Portail International (EN)",
     "url": "https://www.ozeroute.com/en",
-    "totalLoadTimeMs": 367,
+    "totalLoadTimeMs": 24108,
     "dnsLookup": 0,
     "tcpConnect": 0,
-    "ttfb": 97,
-    "domInteractive": 236,
-    "domContentLoaded": 357
+    "ttfb": 677,
+    "domInteractive": 4274,
+    "domContentLoaded": 21864
   },
   {
-    "target": "Page Contact & FAQ",
-    "url": "https://www.ozeroute.com/contact",
-    "totalLoadTimeMs": 1491,
+    "target": "Chauffeur Mise à Disposition",
+    "url": "https://www.ozeroute.com/mise-a-disposition",
+    "totalLoadTimeMs": 16643,
     "dnsLookup": 0,
     "tcpConnect": 0,
-    "ttfb": 130,
-    "domInteractive": 216,
-    "domContentLoaded": 286
+    "ttfb": 605,
+    "domInteractive": 11480,
+    "domContentLoaded": 15053
+  },
+  {
+    "target": "Module Excursions (Nouveau)",
+    "url": "https://www.ozeroute.com/excursions",
+    "totalLoadTimeMs": 10127,
+    "dnsLookup": 0,
+    "tcpConnect": 0,
+    "ttfb": 434,
+    "domInteractive": 1355,
+    "domContentLoaded": 8241
+  },
+  {
+    "target": "Espace Client Mon Trajet",
+    "url": "https://mytrip.ozeroute.com/",
+    "totalLoadTimeMs": 23388,
+    "dnsLookup": 0,
+    "tcpConnect": 820,
+    "ttfb": 115,
+    "domInteractive": 1431,
+    "domContentLoaded": 21800
   }
 ]

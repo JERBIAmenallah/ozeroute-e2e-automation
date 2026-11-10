@@ -1,0 +1,34 @@
+=== OZEROUTE BENCHMARK & TÉLÉMÉTRIE - 2026-11-10T08:10:16.699Z ===
+
+Total Modules Évalués : 5
+Total Requêtes Réseau Tracées : 520
+
+--- Portail Transferts (FR) ---
+  URL                        : https://www.ozeroute.com/
+  Temps de chargement global : 18620 ms
+  TTFB (Time to First Byte)  : 478 ms
+  DOM Content Loaded         : 16913 ms
+
+--- Portail International (EN) ---
+  URL                        : https://www.ozeroute.com/en
+  Temps de chargement global : 24108 ms
+  TTFB (Time to First Byte)  : 677 ms
+  DOM Content Loaded         : 21864 ms
+
+--- Chauffeur Mise à Disposition ---
+  URL                        : https://www.ozeroute.com/mise-a-disposition
+  Temps de chargement global : 16643 ms
+  TTFB (Time to First Byte)  : 605 ms
+  DOM Content Loaded         : 15053 ms
+
+--- Module Excursions (Nouveau) ---
+  URL                        : https://www.ozeroute.com/excursions
+  Temps de chargement global : 10127 ms
+  TTFB (Time to First Byte)  : 434 ms
+  DOM Content Loaded         : 8241 ms
+
+--- Espace Client Mon Trajet ---
+  URL                        : https://mytrip.ozeroute.com/
+  Temps de chargement global : 23388 ms
+  TTFB (Time to First Byte)  : 115 ms
+  DOM Content Loaded         : 21800 ms

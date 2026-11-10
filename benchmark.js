@@ -1,7 +1,6 @@
 /**
  * Module de Télémétrie & Benchmark de Performance - Ozeroute
- * Mesure les Core Web Vitals, temps de réponse et résilience réseau
- * Réf: Rapport de Stage Chapitre 3.5
+ * Mesure les temps de réponse SSR, TTFB et DOMContentLoaded sur les modules clés
  * Auteur : Amenallah JERBI - Élève-Ingénieur ESPRIT (REM4U SARL)
  */
 
@@ -24,6 +23,7 @@ async function runBenchmark() {
     viewport: config.viewports.desktop
   });
   await context.addCookies(config.axeptioCookies);
+  await context.route('**/*axept*', route => route.abort());
 
   const page = await context.newPage();
   const networkLogs = [];
@@ -37,9 +37,11 @@ async function runBenchmark() {
   });
 
   const targetUrls = [
-    { name: 'Page d\'Accueil (FR)', url: 'https://www.ozeroute.com/' },
-    { name: 'Page Internationale (EN)', url: 'https://www.ozeroute.com/en' },
-    { name: 'Page Contact & FAQ', url: 'https://www.ozeroute.com/contact' }
+    { name: 'Portail Transferts (FR)', url: 'https://www.ozeroute.com/' },
+    { name: 'Portail International (EN)', url: 'https://www.ozeroute.com/en' },
+    { name: 'Chauffeur Mise à Disposition', url: 'https://www.ozeroute.com/mise-a-disposition' },
+    { name: 'Module Excursions (Nouveau)', url: 'https://www.ozeroute.com/excursions' },
+    { name: 'Espace Client Mon Trajet', url: 'https://mytrip.ozeroute.com/' }
   ];
 
   const benchmarkMetrics = [];
@@ -48,12 +50,13 @@ async function runBenchmark() {
     console.log(`[BENCHMARK] Analyse de : ${target.name} (${target.url})`);
     const startTime = Date.now();
     
-    await page.goto(target.url, { waitUntil: 'load', timeout: 45000 });
+    await page.goto(target.url, { waitUntil: 'domcontentloaded', timeout: 35000 });
+    await page.waitForTimeout(1500);
     const loadTime = Date.now() - startTime;
 
-    // Extraction des métriques de navigation du navigateur
     const perfTiming = await page.evaluate(() => {
       const timing = performance.getEntriesByType('navigation')[0];
+      if (!timing) return { dnsLookup: 0, tcpConnect: 0, ttfb: 0, domInteractive: 0, domContentLoaded: 0 };
       return {
         dnsLookup: Math.round(timing.domainLookupEnd - timing.domainLookupStart),
         tcpConnect: Math.round(timing.connectEnd - timing.connectStart),
@@ -75,23 +78,21 @@ async function runBenchmark() {
 
   await browser.close();
 
-  // Écriture du rapport JSON
   const reportsDir = path.join(__dirname, 'reports');
   if (!fs.existsSync(reportsDir)) fs.mkdirSync(reportsDir, { recursive: true });
 
   const summaryPath = path.join(reportsDir, 'benchmark_summary.json');
   fs.writeFileSync(summaryPath, JSON.stringify(benchmarkMetrics, null, 2), 'utf8');
 
-  // Génération du rapport console formaté
   const consoleLogLines = [
     `=== OZEROUTE BENCHMARK & TÉLÉMÉTRIE - ${new Date().toISOString()} ===\n`,
-    `Total Pages Évaluées : ${benchmarkMetrics.length}`,
+    `Total Modules Évalués : ${benchmarkMetrics.length}`,
     `Total Requêtes Réseau Tracées : ${networkLogs.length}\n`
   ];
 
   benchmarkMetrics.forEach(m => {
     consoleLogLines.push(`--- ${m.target} ---`);
-    consoleLogLines.push(`  URL: ${m.url}`);
+    consoleLogLines.push(`  URL                        : ${m.url}`);
     consoleLogLines.push(`  Temps de chargement global : ${m.totalLoadTimeMs} ms`);
     consoleLogLines.push(`  TTFB (Time to First Byte)  : ${m.ttfb} ms`);
     consoleLogLines.push(`  DOM Content Loaded         : ${m.domContentLoaded} ms\n`);

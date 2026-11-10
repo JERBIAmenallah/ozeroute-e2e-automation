@@ -22,8 +22,9 @@ RAPPORT_*
 scanner/
 scratch/
 
-# Execution log (keeping HTML and JSON reports)
+# Execution log (keeping HTML, JSON and telemetry reports)
 reports/execution.log
+!reports/rapport_console.txt
 
 # OS & IDE metadata
 .DS_Store
