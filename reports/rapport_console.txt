@@ -1,34 +1,34 @@
-=== OZEROUTE BENCHMARK & TÉLÉMÉTRIE - 2026-11-10T08:10:16.699Z ===
+=== BENCHMARK TEMPS DE RÉPONSE OZEROUTE - 2026-11-13T14:44:37.538Z ===
 
-Total Modules Évalués : 5
-Total Requêtes Réseau Tracées : 520
+Pages testées : 5
+Requêtes réseau tracées : 756
 
---- Portail Transferts (FR) ---
+--- Transferts Accueil (FR) ---
   URL                        : https://www.ozeroute.com/
-  Temps de chargement global : 18620 ms
-  TTFB (Time to First Byte)  : 478 ms
-  DOM Content Loaded         : 16913 ms
+  Temps de chargement global : 2775 ms
+  TTFB (Time to First Byte)  : 99 ms
+  DOM Content Loaded         : 1264 ms
 
---- Portail International (EN) ---
+--- Version Anglaise (/en) ---
   URL                        : https://www.ozeroute.com/en
-  Temps de chargement global : 24108 ms
-  TTFB (Time to First Byte)  : 677 ms
-  DOM Content Loaded         : 21864 ms
+  Temps de chargement global : 3599 ms
+  TTFB (Time to First Byte)  : 120 ms
+  DOM Content Loaded         : 2064 ms
 
---- Chauffeur Mise à Disposition ---
+--- Mise à Disposition (/mise-a-disposition) ---
   URL                        : https://www.ozeroute.com/mise-a-disposition
-  Temps de chargement global : 16643 ms
-  TTFB (Time to First Byte)  : 605 ms
-  DOM Content Loaded         : 15053 ms
+  Temps de chargement global : 2821 ms
+  TTFB (Time to First Byte)  : 77 ms
+  DOM Content Loaded         : 1255 ms
 
---- Module Excursions (Nouveau) ---
+--- Excursions (/excursions) ---
   URL                        : https://www.ozeroute.com/excursions
-  Temps de chargement global : 10127 ms
-  TTFB (Time to First Byte)  : 434 ms
-  DOM Content Loaded         : 8241 ms
+  Temps de chargement global : 3101 ms
+  TTFB (Time to First Byte)  : 194 ms
+  DOM Content Loaded         : 1573 ms
 
---- Espace Client Mon Trajet ---
+--- Mon Trajet (mytrip.ozeroute.com) ---
   URL                        : https://mytrip.ozeroute.com/
-  Temps de chargement global : 23388 ms
-  TTFB (Time to First Byte)  : 115 ms
-  DOM Content Loaded         : 21800 ms
+  Temps de chargement global : 2824 ms
+  TTFB (Time to First Byte)  : 61 ms
+  DOM Content Loaded         : 1297 ms

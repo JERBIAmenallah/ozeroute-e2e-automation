@@ -46,7 +46,7 @@
     }
   },
   {
-    "id": "parcours_aller_retour",
+    "id": "parcours_navette_beauvais",
     "title": "Test 3 : Réservation Navette Économique + choix Terminal 1",
     "category": "Parcours client",
     "type": "shuttle_checkout_flow",
@@ -63,7 +63,7 @@
     },
     "expected": {
       "shouldReachCheckout": true,
-      "screenshot": "parcours_aller_retour.png"
+      "screenshot": "parcours_navette_beauvais.png"
     }
   },
   {

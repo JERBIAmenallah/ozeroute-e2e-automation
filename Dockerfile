@@ -1,5 +1,4 @@
-# Dockerfile - Environnement Conteneurisé d'Exécution Playwright Ozeroute
-# Réf: Rapport de Stage Chapitre 3.6
+# Dockerfile pour lancer les tests Playwright Ozeroute en conteneur
 FROM mcr.microsoft.com/playwright:v1.40.0-jammy
 
 WORKDIR /app

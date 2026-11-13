@@ -66,23 +66,55 @@ class CheckoutPage extends BasePage {
 
     const telInput = this.page.locator('input[type="tel"]').first();
     if (await telInput.count() > 0) {
-      await this.showStep(`Saisie Téléphone : ${phone}`, telInput);
-      await telInput.fill(phone);
+      let normalizedPhone = (phone || '+33612345678').trim();
+      if (/^0\d{9}$/.test(normalizedPhone.replace(/\s+/g, ''))) {
+        normalizedPhone = '+33' + normalizedPhone.replace(/\s+/g, '').slice(1);
+      } else if (/^\d{9}$/.test(normalizedPhone.replace(/\s+/g, ''))) {
+        normalizedPhone = '+33' + normalizedPhone.replace(/\s+/g, '');
+      }
+      await this.showStep(`Saisie Téléphone : ${normalizedPhone}`, telInput);
+      await telInput.click();
+      await telInput.fill(normalizedPhone);
+      const val = await telInput.inputValue();
+      if (val.replace(/\D/g, '').length < 8) {
+        await telInput.click();
+        await this.page.keyboard.press('Control+A');
+        await telInput.pressSequentially(normalizedPhone, { delay: 15 });
+      }
+      this.logger.info(`Téléphone saisi : ${await telInput.inputValue()}`);
     }
 
-    const terminalChip = this.page.locator('span, div, button').filter({ hasText: /^(Terminal 1|Terminal 2E|Terminal 2F)$/ }).first();
-    if (await terminalChip.count() > 0 && await terminalChip.isVisible()) {
-      const termName = (await terminalChip.innerText()).trim();
-      await this.showStep(`Sélection arrêt : ${termName}`, terminalChip);
-      this.logger.info(`Arrêt sélectionné : ${termName}`);
-      await terminalChip.click({ timeout: 3000 }).catch(() => {});
-      await this.page.waitForTimeout(300);
+    const terminalInput = this.page.locator('input[placeholder*="Terminal" i]').first();
+    if (await terminalInput.count() > 0 && await terminalInput.isVisible()) {
+      await terminalInput.click();
+      await this.page.waitForTimeout(400);
+      const opt = this.page.locator('[role="option"]').filter({ hasText: /Terminal 2E|Terminal 1/i }).first();
+      const targetOpt = (await opt.count() > 0) ? opt : this.page.locator('[role="option"]').first();
+      if (await targetOpt.count() > 0) {
+        const termName = (await targetOpt.innerText()).trim();
+        await this.showStep(`Sélection terminal : ${termName}`, terminalInput);
+        await targetOpt.click();
+        await this.page.waitForTimeout(300);
+        this.logger.info(`Terminal sélectionné : ${termName}`);
+      }
+    } else {
+      const terminalChip = this.page.locator('span, div, button').filter({ hasText: /^(Terminal 1|Terminal 2E|Terminal 2F)$/ }).first();
+      if (await terminalChip.count() > 0 && await terminalChip.isVisible()) {
+        const termName = (await terminalChip.innerText()).trim();
+        await this.showStep(`Sélection arrêt : ${termName}`, terminalChip);
+        this.logger.info(`Arrêt sélectionné : ${termName}`);
+        await terminalChip.click({ timeout: 3000 }).catch(() => {});
+        await this.page.waitForTimeout(300);
+      }
     }
 
+    const cgvCheckbox = this.page.locator('input[type="checkbox"]').last();
     const cgvLabel = this.page.locator('text=/J\'accepte les termes|I accept the terms/i').first();
     if (await cgvLabel.count() > 0 && await cgvLabel.isVisible()) {
       await this.showStep('Acceptation des conditions générales (CGV)', cgvLabel);
-      await cgvLabel.click();
+      if (await cgvCheckbox.count() > 0 && !(await cgvCheckbox.isChecked().catch(() => false))) {
+        await cgvCheckbox.check({ force: true }).catch(async () => { await cgvLabel.click(); });
+      }
       this.logger.info('Case CGV cochée');
     }
 

@@ -1,52 +1,52 @@
 [
   {
-    "target": "Portail Transferts (FR)",
+    "target": "Transferts Accueil (FR)",
     "url": "https://www.ozeroute.com/",
-    "totalLoadTimeMs": 18620,
-    "dnsLookup": 25,
-    "tcpConnect": 251,
-    "ttfb": 478,
-    "domInteractive": 6877,
-    "domContentLoaded": 16913
+    "totalLoadTimeMs": 2775,
+    "dnsLookup": 26,
+    "tcpConnect": 84,
+    "ttfb": 99,
+    "domInteractive": 309,
+    "domContentLoaded": 1264
   },
   {
-    "target": "Portail International (EN)",
+    "target": "Version Anglaise (/en)",
     "url": "https://www.ozeroute.com/en",
-    "totalLoadTimeMs": 24108,
+    "totalLoadTimeMs": 3599,
     "dnsLookup": 0,
     "tcpConnect": 0,
-    "ttfb": 677,
-    "domInteractive": 4274,
-    "domContentLoaded": 21864
+    "ttfb": 120,
+    "domInteractive": 271,
+    "domContentLoaded": 2064
   },
   {
-    "target": "Chauffeur Mise à Disposition",
+    "target": "Mise à Disposition (/mise-a-disposition)",
     "url": "https://www.ozeroute.com/mise-a-disposition",
-    "totalLoadTimeMs": 16643,
+    "totalLoadTimeMs": 2821,
     "dnsLookup": 0,
     "tcpConnect": 0,
-    "ttfb": 605,
-    "domInteractive": 11480,
-    "domContentLoaded": 15053
+    "ttfb": 77,
+    "domInteractive": 186,
+    "domContentLoaded": 1255
   },
   {
-    "target": "Module Excursions (Nouveau)",
+    "target": "Excursions (/excursions)",
     "url": "https://www.ozeroute.com/excursions",
-    "totalLoadTimeMs": 10127,
+    "totalLoadTimeMs": 3101,
     "dnsLookup": 0,
     "tcpConnect": 0,
-    "ttfb": 434,
-    "domInteractive": 1355,
-    "domContentLoaded": 8241
+    "ttfb": 194,
+    "domInteractive": 412,
+    "domContentLoaded": 1573
   },
   {
-    "target": "Espace Client Mon Trajet",
+    "target": "Mon Trajet (mytrip.ozeroute.com)",
     "url": "https://mytrip.ozeroute.com/",
-    "totalLoadTimeMs": 23388,
-    "dnsLookup": 0,
-    "tcpConnect": 820,
-    "ttfb": 115,
-    "domInteractive": 1431,
-    "domContentLoaded": 21800
+    "totalLoadTimeMs": 2824,
+    "dnsLookup": 32,
+    "tcpConnect": 102,
+    "ttfb": 61,
+    "domInteractive": 270,
+    "domContentLoaded": 1297
   }
 ]

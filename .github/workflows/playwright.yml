@@ -28,7 +28,7 @@ jobs:
       - name: Install Playwright Browsers & OS Dependencies
         run: npx playwright install --with-deps chromium
 
-      - name: Run E2E Test Suite (Data-Driven Engine)
+      - name: Lancer les tests E2E Ozeroute
         run: node runner.js --all
         env:
           HEADLESS: 'true'

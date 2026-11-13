@@ -244,10 +244,25 @@ async function runSuite() {
             await homePage.showStep(`Saisie Email : ${scenario.input.client.email}`, emailInput);
             await emailInput.fill(scenario.input.client.email);
           }
+          const excDialog = page.locator('[role="dialog"], .MuiModal-root').filter({ hasText: /Demander cette excursion/i }).first();
           const telInputs = page.locator('input[type="tel"]');
           if (await telInputs.count() >= 2) {
+            const digits = (scenario.input.client.phone || '+33612345678').replace(/\D/g, '').replace(/^33/, '').replace(/^0/, '');
             await homePage.showStep(`Saisie Téléphone WhatsApp : ${scenario.input.client.phone}`, telInputs.nth(1));
-            await telInputs.nth(1).fill(scenario.input.client.phone);
+            await telInputs.nth(1).click();
+            await page.keyboard.press('End');
+            await telInputs.nth(1).pressSequentially(digits, { delay: 15 });
+          }
+          if (await excDialog.count() > 0) {
+            const pickupInput = excDialog.getByLabel(/Adresse de prise en charge/i);
+            if (await pickupInput.count() > 0) {
+              await homePage.showStep('Saisie Adresse de prise en charge', pickupInput);
+              await pickupInput.fill(scenario.input.client.pickupAddress || 'Hôtel Pullman Paris Tour Eiffel');
+            }
+            const consentCb = excDialog.locator('input[type="checkbox"]').first();
+            if (await consentCb.count() > 0 && !(await consentCb.isChecked().catch(() => false))) {
+              await consentCb.click({ force: true });
+            }
           }
           if (await textInputs.count() >= 3) {
             await homePage.showStep(`Adresse de prise en charge : ${scenario.input.client.pickupAddress}`, textInputs.nth(2));
@@ -361,7 +376,10 @@ async function runSuite() {
 
           if (hasTypo) {
             anomalyDetected = true;
-            anomalyDetails = `Message de validation avec faute d'orthographe sur le champ passagers : "Faut avoir au moin un adulte" (manque le 's' à moins) + ${networkAnomalies.length} appel(s) 404 sur /v1/common/promo.`;
+            const promoNote = networkAnomalies.length > 0
+              ? ` + ${networkAnomalies.length} appel(s) 404 sur /v1/common/promo`
+              : '';
+            anomalyDetails = `Message de validation avec faute d'orthographe sur le champ passagers : "Faut avoir au moin un adulte" (manque le 's' à moins)${promoNote}.`;
             scenarioLogger.log('BUG P3', anomalyDetails);
           }
 
@@ -413,7 +431,7 @@ async function runSuite() {
           // 1. Audit CORS & Headers de sécurité sur api.ozeroute.com, mytrip.ozeroute.com et partner.ozeroute.com
           scenarioLogger.info('Exécution de l\'audit de sécurité HTTP/CORS sur api.ozeroute.com et sous-domaines...');
           const corsRes = await fetch(`${config.apiUrl}/v1/activity_sites?locale=fr`, {
-            headers: { 'Origin': 'https://evil- external-site.com' }
+            headers: { 'Origin': 'https://evil-external-site.com' }
           });
           const allowOrigin = corsRes.headers.get('access-control-allow-origin');
           const allowCreds = corsRes.headers.get('access-control-allow-credentials');

@@ -9,7 +9,7 @@
     "test:headless": "powershell -Command \"$env:HEADLESS='true'; node runner.js --all\"",
     "test:nominal": "node runner.js --scenario=parcours_nominal_cdg",
     "test:deeplink": "node runner.js --scenario=parcours_acces_deeplink",
-    "test:roundtrip": "node runner.js --scenario=parcours_aller_retour",
+    "test:shuttle": "node runner.js --scenario=parcours_navette_beauvais",
     "test:multilang": "node runner.js --scenario=parcours_multilingue_en",
     "test:excursions": "node runner.js --scenario=parcours_excursion_versailles",
     "test:mise-a-dispo": "node runner.js --scenario=audit_bug_mise_a_disposition",
